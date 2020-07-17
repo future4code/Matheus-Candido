@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+}
+
+body {
+    background-color: lightcoral;
+}
+
+body>h2 {
+    margin: 1%;
+}
+
+p {
+    font-size: 15px;
+    text-align: justify;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+#cabecario {
+    background-color: cornflowerblue;
+    padding: 1.5%;
+    margin-bottom: 20px;
+}
+
+#cabecario p {
+    font-size: 20px;
+}
+
+#menu, a {
+    padding: 1%;
+    margin: auto auto 1.5% 1%;
+    font-size: 20px;
+}
+
+#fundo {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+}
+
+#produtos img {
+    width: 200px;
+    margin: 10px 15px 10px 15px;
+}
+
+#produtos th, td {
+    font-size: 18px;
+}
+
+#add-produtos div {
+    margin: 0.5%;
+}
+
+#logos img {
+    width: 100px;
+    margin: 0.5%;
+    align-items: center;
+}
+
+#rodape {
+    background-image: url(./img/rodape2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+    margin-top: 20%;
+    padding-left: 40%;
+}
