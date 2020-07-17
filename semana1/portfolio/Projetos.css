@@ -1,0 +1,30 @@
+body {
+    background-image: url(./Img/bg.jpg);
+    background-size: cover;
+    color: aliceblue;
+    margin: 0;
+}
+header p{
+    text-align: center;
+}
+.item {
+    margin:  5px;
+    text-align: center;
+    font-size: 50px;
+}
+
+.container-flex {
+    max-width: 50%;
+    margin: 0 auto;
+    border:  1px solid #ccc;
+    flex-wrap: wrap-reverse;
+}
+
+.flex {
+    display: flex;
+}
+
+.item img {
+    width: 40%;
+    margin: auto;
+}
