@@ -3,10 +3,12 @@
   *  ESTILOS GERAIS 
   *
   **/
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 h2 {
@@ -75,7 +77,6 @@ div img {
 }
 
 #texto {
-    font-family: Arial, Helvetica, sans-serif;
     margin-left: 372px;
     margin-right: 372px;
 }
