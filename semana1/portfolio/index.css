@@ -89,6 +89,11 @@ section.espaco p {
     height: 100%;
 }
 
+img:hover {
+    box-shadow: 1px 1px 10px 5px turquoise;
+    transition: 1s;
+}
+
 footer {
     margin: 10%;
     display: block;

@@ -4,20 +4,35 @@ body {
     color: aliceblue;
     margin: 0;
 }
-header p{
-    text-align: center;
-}
-.item {
-    margin:  5px;
+
+header h2 {
     text-align: center;
     font-size: 50px;
 }
 
-.container-flex {
+
+a {
+    color: aliceblue;
+    text-decoration: none;
+    margin-left: 30px;
+}
+
+a:hover {
+    color: turquoise;
+}
+
+.container {
     max-width: 50%;
     margin: 0 auto;
-    border:  1px solid #ccc;
-    flex-wrap: wrap-reverse;
+    display: flex;
+}
+
+.item {
+    flex: 1;
+    margin: 20px;
+    text-align: center;
+    font-size: 25px;
+    align-self: center;
 }
 
 .flex {
@@ -25,6 +40,12 @@ header p{
 }
 
 .item img {
-    width: 40%;
+    width: 100%;
     margin: auto;
+    border: 1px tomato solid;
+}
+
+img:hover {
+    box-shadow: 1px 1px 10px 5px turquoise;
+    transition: 1s;
 }
