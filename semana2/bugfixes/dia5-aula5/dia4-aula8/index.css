@@ -132,9 +132,6 @@ button:hover {
     background-color: #d3b429;
 }
 
-button:active {
-    color: gray;
-}
 
 .container-do-search {
     margin-top: 20px;
