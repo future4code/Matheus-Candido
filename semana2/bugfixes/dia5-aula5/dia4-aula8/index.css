@@ -71,6 +71,13 @@ div img {
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
+    
+}
+
+#texto {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 372px;
+    margin-right: 372px;
 }
 
 #container-de-descricao>ol {
