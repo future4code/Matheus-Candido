@@ -57,6 +57,7 @@ div img {
     height: 500px;
     text-align: center;
     padding-top: 90px;
+    margin: 0 auto;
 }
 
 .icone {
@@ -74,10 +75,15 @@ div img {
     color: white;
 }
 
+numered:before{
+    content: counter(mynum);
+    counter-increment: mynum;
+}
 #texto {
     margin-left: 372px;
     margin-right: 372px;
 }
+
 
 #container-de-descricao>ol {
     padding: 15px 0px;
