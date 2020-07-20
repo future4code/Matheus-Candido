@@ -135,6 +135,13 @@ button:active {
     margin-top: 20px;
     height: 100px;
 }
+.container-do-search input {
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px double;
+    border-left: none;
+    opacity: 0.5;
+}
 
 img.icone {
     background-color: transparent;
