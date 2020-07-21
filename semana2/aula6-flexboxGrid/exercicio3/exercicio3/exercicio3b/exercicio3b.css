@@ -1,0 +1,117 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+    color: white;
+}
+
+
+
+#main-container {
+    width: 100%;
+    height: 100%;
+    
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(13, 1fr);
+}
+
+#top-container {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-column: 1/ span 13;
+}
+
+.green-background {
+    background-color: green;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-column: 1/4;
+}
+
+.yellow-background {
+    background-color: yellow;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-column: 4/ span 13;
+}
+
+.pink-background {
+    background-color: fuchsia;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-row: 2/ span 7;
+    grid-column: 1/ span 13;
+}
+
+#middle-container {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(13, 1fr);
+    grid-row: 9/13;
+    grid-column: 1/ span 13;
+}
+
+#content2 {
+    display: grid;
+    grid-row: 1/ span 13;
+    grid-column: 1/ span 7;
+}
+
+.blue-background {
+    background-color: blue;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+#blank {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-column: 8/11;
+    grid-row: 1/ span 13;
+}
+
+#vertical-middle-container {
+    display: grid;
+    grid-column: 11/ span 13;
+    grid-row: 1/ span 13;
+}
+
+#image {
+    display: grid;
+}
+
+.red-background {
+    background-color: red;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+#extra {
+    display: grid;
+}
+
+.lightgreen-background {
+    background-color: lightgreen;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+#bottom-container {
+    display: grid;
+    grid-column: 1/ span 13;
+}
+.purple-background {
+    background-color: purple;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
