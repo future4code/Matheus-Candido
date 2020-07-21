@@ -1,0 +1,101 @@
+body {
+    background-image: url(./Img/bg.jpg);
+    background-size: cover;
+    color: aliceblue;
+    margin: 0;
+}
+
+p {
+    text-align: justify;
+}
+
+a {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+}
+
+.cabecalho {
+    color: aliceblue;
+    text-align: center;
+    border-bottom: 5px black dashed;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.cabecalho img {
+    width: 6%;
+}
+
+.interface {
+    background-color: rgba(37, 35, 20, 0.7);
+    padding: 0.1% 1% 30% 1%;
+    width: 70%;
+    margin: auto;
+    border-radius: 2%;
+}
+
+/* Primeira parte do código */
+
+.lado-esquerdo {
+    float: left;
+    display: block;
+    width: 30%;
+    border: 2% antiquewhite solid;
+    margin-top: 3%;
+}
+
+/* Segunda parte do código */
+
+.exp-esquerdo {
+    float: left;
+    display: block;
+    width: 47.5%;
+    padding-left: 2%;
+}
+
+.exp-direito {
+    float: right;
+    display: block;
+    width: 30%;
+    padding-left: 19.5%;
+}
+
+
+
+section.espaco p {
+    margin: 3% 2% 2% 2%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.trabalhos {
+    text-align: center;
+    padding: 5.4%;
+}
+
+.projetos h2 {
+    text-align: center;
+    margin: 2% auto 3% auto;
+    margin-bottom: 3%;
+}
+
+.projetos img {
+    box-shadow: 1px 1px 10px 5px white;
+    display: block;
+    margin: auto;
+    width: 50%;
+    height: 100%;
+}
+
+img:hover {
+    box-shadow: 1px 1px 10px 5px turquoise;
+    transition: 1s;
+}
+
+footer {
+    margin: 10%;
+    display: block;
+    bottom: 0 auto;
+}
