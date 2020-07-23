@@ -132,11 +132,12 @@ article img {
     height: 5vh;
     grid-row: 3;
     padding: 20px;
-    justify-content: center;
-    align-items: center;
+    
 }
 
 @media screen and (max-width: 640px){
+    body {
+    }
     #main-container {
         grid-template-rows: repeat(3, 1fr);
     }
