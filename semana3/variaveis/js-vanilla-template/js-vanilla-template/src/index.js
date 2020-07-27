@@ -21,37 +21,37 @@
 //d - Como não foi definido um número para para variável ele voltou como resultado "undefined" justamente por não ter definido valor
 
 //d
-// const nome = prompt("Qual o seu nome")
-// let idade = prompt("Qual sua idade")
+ const nome = prompt("Qual o seu nome")
+ let idade = prompt("Qual sua idade")
 
 //e
 // console.log(typeof nome, idade)
 // Notei que ao pedir o tipo de variavel, ele me deu como resultado que tanto a idade quanto o nome são strings
 
 //f
-// console.log("Olá", nome, "você tem", idade, "anos")
+ console.log("Olá", nome,",", "você tem", idade, "anos")
 
 //2.
 
-// let um = prompt("1. Qual sua comida preferida")
-// console.log("1. Qual sua comida preferida")
-// console.log("R:", um)
+//  let um = prompt("1. Qual sua comida preferida?")
+//  console.log("1. Qual sua comida preferida?")
+//  console.log("R:", um)
 
-// let dois = prompt("2. Gosta de gatos?")
-// console.log("2. Gosta de gatos?")
-// console.log("R:", dois)
+//  let dois = prompt("2. Gosta de gatos?")
+//  console.log("2. Gosta de gatos?")
+//  console.log("R:", dois)
 
-// let tres = prompt("3. Gosta de suco?")
-// console.log("3. Gosta de suco?")
-// console.log("R:", tres)
+//  let tres = prompt("3. Gosta de suco?")
+//  console.log("3. Gosta de suco?")
+//  console.log("R:", tres)
 
-// let quatro = prompt("4. Qual gênero musical você gosta?")
-// console.log("4. Qual gênero musical você gosta?")
-// console.log("R:", quatro)
+//  let quatro = prompt("4. Qual gênero musical você gosta?")
+//  console.log("4. Qual gênero musical você gosta?")
+//  console.log("R:", quatro)
 
-// let cinco = prompt("5. Qual seu endereço")
-// console.log("5. Qual seu endereço")
-// console.log("R:", cinco)
+//  let cinco = prompt("5. Qual seu endereço?")
+//  console.log("5. Qual seu endereço?")
+//  console.log("R:", cinco)
 
 
 //3.
