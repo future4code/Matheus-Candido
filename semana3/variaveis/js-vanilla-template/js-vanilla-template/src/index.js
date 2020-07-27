@@ -25,7 +25,7 @@
 
 //e
  console.log(typeof nome, idade)
- Notei que ao pedir o tipo de variavel, ele me deu como resultado que tanto a idade quanto o nome são strings
+// Notei que ao pedir o tipo de variavel, ele me deu como resultado que tanto a idade quanto o nome são strings
 
 //f
  console.log("Olá", nome,",", "você tem", idade, "anos")
