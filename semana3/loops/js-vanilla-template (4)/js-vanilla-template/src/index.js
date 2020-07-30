@@ -43,6 +43,9 @@ for (let array of arrayOriginal) {
 
 //c
 const arrayOriginal = [80, 30, 130, 40, 60, 21, 70, 120, 90, 103, 110, 55]
+arrayOriginal.splice(5,1)
+arrayOriginal.splice(8,1)
+arrayOriginal.splice(9,1)
 
 for (let array of arrayOriginal) {
 } console.log(arrayOriginal)
