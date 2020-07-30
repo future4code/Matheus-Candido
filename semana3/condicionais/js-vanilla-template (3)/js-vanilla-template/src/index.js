@@ -122,32 +122,258 @@
 //2
 let nome = prompt("Nome Completo")
 let tpJogo = prompt("Qual tipo de jogo? -IN ou -DO?")
-let etapaDoJogo = prompt("Etapa do jogo")
-let categoria = prompt("Categoria")
-let quantidade = prompt("Quantidade")
+
 
 if (tpJogo === "DO") {
-    let etapaDeJogoDO = prompt("Etapa do jogo")
-    if (etapaDeJogoDo === "SF") {
-        let categoriaSF = prompt("Categoria")
-        if (categoriaSF === "1") {
-
+    console.log("---Dados da compra---")
+    console.log("Nome do cliente:", nome)
+    console.log("Tipo de jogo:", tpJogo)
+    let etapaDeJogoDO = prompt("Etapa do jogo: -SF -DT ou -FI")
+    console.log("Etapa de jogo:", etapaDeJogoDO)
+    if (etapaDeJogoDO === "SF") {
+        let categoriaSF = Number(prompt("Categorias 1, 2, 3 ou 4?"))
+        console.log("Categoria:", categoriaSF)
+        if (categoriaSF === 1) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade de ingressos:", quantidade)
+            let valor1 = Number(1320.00)
+            console.log("---Valor---")
+            console.log("Valor do ingresso: R$", valor1)
+            console.log("Valor toltal: R$", valor1 * quantidade)
         }
-    } else if (etapaDeJogoDo === "DT") {
-        let categoriaDT = prompt("Categoria")
-        if (categoriaDT === "1") {
-
+        else if (categoriaSF === 2) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade)
+            let valor2 = Number(880.00)
+            console.log("---Valor---")
+            console.log("Valor do ingresso: R$", valor2)
+            console.log("Valor toltal: R$", valor2 * quantidade)
         }
-    } else if (etapaDeJogoDo === "FI") {
-        let categoriaFI = prompt("Categoria")
-        if (categoriaFI === "1") {
-
+        else if (categoriaSF === 3) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade)
+            let valor3 = Number(550.00)
+            console.log("---Valor---")
+            console.log("Valor do ingresso: R$", valor3)
+            console.log("Valor toltal: R$", valor3 * quantidade)
+        }
+        else if (categoriaSF === 4) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade)
+            let valor4 = Number(220.00)
+            console.log("---Valor---")
+            console.log("Valor do ingresso: R$", valor4)
+            console.log("Valor toltal: R$", valor4 * quantidade)
+        }
+        else {
+            console.log("Digite uma das categorias 1,2,3,4")
+        }
+    }
+    else if (etapaDeJogoDO === "DT") {
+        let categoriaDT = Number(prompt("Categoria"))
+        console.log("Categoria:", categoriaDT)
+        if (categoriaDT === 1) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade)
+            let valor1 = Number(1980.00)
+            console.log("---Valor---")
+            console.log("Valor do ingresso: R$", valor1)
+            console.log("Valor toltal: R$", valor1 * quantidade)
+        }
+        else if (categoriaDT === 2) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade)
+            let valor2 = Number(1320.00)
+            console.log("---Valor---")
+            console.log("Valor do ingresso: R$", valor2)
+            console.log("Valor toltal: R$", valor2 * quantidade)
+        }
+        else if (categoriaDT === 3) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade)
+            let valor3 = Number(880.00)
+            console.log("---Valor---")
+            console.log("Valor do ingresso: R$", valor3)
+            console.log("Valor toltal: R$", valor3 * quantidade)
+        }
+        else if (categoriaDT === 4) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade)
+            let valor4 = Number(330.00)
+            console.log("---Valor---")
+            console.log("Valor do ingresso: R$", valor4)
+            console.log("Valor toltal: R$", valor4 * quantidade)
+        }
+        else {
+            console.log("Digite uma das categorias 1,2,3,4")
+        }
+    }
+    else if (etapaDeJogoDO === "FI") {
+        let categoriaFI = Number(prompt("Categoria"))
+        console.log("Categoria:", categoriaFI)
+        if (categoriaFI === 1) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade)
+            let valor1 = Number(330.00)
+            console.log("---Valor---")
+            console.log("Valor do ingresso: R$", valor1)
+            console.log("Valor toltal: R$", valor1 * quantidade)
+        }
+        else if (categoriaFI === 2) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade)
+            let valor2 = Number(330.00)
+            console.log("---Valor---")
+            console.log("Valor do ingresso: R$", valor2)
+            console.log("Valor toltal: R$", valor2 * quantidade)
+        }
+        else if (categoriaFI === 3) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade)
+            let valor3 = Number(330.00)
+            console.log("---Valor---")
+            console.log("Valor do ingresso: R$", valor3)
+            console.log("Valor toltal: R$", valor3 * quantidade)
+        }
+        else if (categoriaFI === 4) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade)
+            let valor4 = Number(330.00)
+            console.log("---Valor---")
+            console.log("Valor do ingresso: R$", valor4)
+            console.log("Valor toltal: R$", valor4 * quantidade)
+        }
+        else {
+            console.log("Digite uma das categorias 1,2,3,4")
         }
     } else {
-        console.log("Digite uma categoria válida")
+        console.log("Digite uma categoria nacional válida")
     }
 } else if (tpJogo === "IN") {
-    let etapaDeJogoIN = prompt("Etapa do jogo")
+    console.log("---Dados da compra---")
+    console.log("Nome do cliente:", nome)
+    console.log("Tipo de jogo:", tpJogo)
+    let etapaDeJogoIN = prompt("Etapa do jogo: -SF -DT ou -FI")
+    console.log("Etapa de jogo:", etapaDeJogoIN)
+    if (etapaDeJogoIN === "SF") {
+        let categoriaSF = Number(prompt("Categorias 1, 2, 3 ou 4?"))
+        console.log("Categoria:", categoriaSF)
+        if (categoriaSF === 1) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade, "ingressos")
+            let valor1 = Number(1320.00) * 4.20
+            console.log("---Valor---")
+            console.log("Valor do ingresso: U$", valor1)
+            console.log("Valor toltal: U$", valor1 * quantidade)
+        }
+        else if (categoriaSF === 2) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade, "ingressos")
+            let valor2 = Number(880.00) * 4.20
+            console.log("---Valor---")
+            console.log("Valor do ingresso: U$", valor2)
+            console.log("Valor toltal: U$", valor2 * quantidade)
+        }
+        else if (categoriaSF === 3) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade, "ingressos")
+            let valor3 = Number(550.00) * 4.20
+            console.log("---Valor---")
+            console.log("Valor do ingresso: U$", valor3)
+            console.log("Valor toltal: U$", valor3 * quantidade)
+        }
+        else if (categoriaSF === 4) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade, "ingressos")
+            let valor4 = Number(220.00) * 4.20
+            console.log("---Valor---")
+            console.log("Valor do ingresso: U$", valor4)
+            console.log("Valor toltal: U$", valor4 * quantidade)
+        }
+        else {
+            console.log("Digite uma das categorias 1,2,3,4")
+        }
+    }
+    else if (etapaDeJogoIN === "DT") {
+        let categoriaDT = Number(prompt("Categoria"))
+        console.log("Categoria:", categoriaDT)
+        if (categoriaDT === 1) {
+            console.log("Quantidade:", quantidade, "ingressos")
+            console.log("Quantidade:", quantidade)
+            let valor1 = Number(1980.00) * 4.20
+            console.log("---Valor---")
+            console.log("Valor do ingresso: U$", valor1)
+            console.log("Valor toltal: U$", valor1 * quantidade)
+        }
+        else if (categoriaDT === 2) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade, "ingressos")
+            let valor2 = Number(1320.00) * 4.20
+            console.log("---Valor---")
+            console.log("Valor do ingresso: U$", valor2)
+            console.log("Valor toltal: U$", valor2 * quantidade)
+        }
+        else if (categoriaDT === 3) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade, "ingressos")
+            let valor3 = Number(880.00) * 4.20
+            console.log("---Valor---")
+            console.log("Valor do ingresso: U$", valor3)
+            console.log("Valor toltal: U$", valor3 * quantidade)
+        }
+        else if (categoriaDT === 4) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade, "ingressos")
+            let valor4 = Number(330.00) * 4.20
+            console.log("---Valor---")
+            console.log("Valor do ingresso: U$", valor4)
+            console.log("Valor toltal: U$", valor4 * quantidade)
+        }
+        else {
+            console.log("Digite uma das categorias 1,2,3,4")
+        }
+    }
+    else if (etapaDeJogoIN === "FI") {
+        let categoriaFI = Number(prompt("Categoria"))
+        console.log("Categoria:", categoriaFI)
+        if (categoriaFI === 1) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade, "ingressos")
+            let valor1 = Number(330.00) * 4.20
+            console.log("---Valor---")
+            console.log("Valor do ingresso: U$", valor1)
+            console.log("Valor toltal: U$", valor1 * quantidade)
+        }
+        else if (categoriaFI === 2) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade, "ingressos")
+            let valor2 = Number(330.00) * 4.20
+            console.log("---Valor---")
+            console.log("Valor do ingresso: U$", valor2)
+            console.log("Valor toltal: U$", valor2 * quantidade)
+        }
+        else if (categoriaFI === 3) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade)
+            let valor3 = Number(330.00) * 4.20
+            console.log("---Valor---")
+            console.log("Valor do ingresso: U$", valor3)
+            console.log("Valor toltal: U$", valor3 * quantidade)
+        }
+        else if (categoriaFI === 4) {
+            let quantidade = Number(prompt("Quantidade"))
+            console.log("Quantidade:", quantidade, "ingressos")
+            let valor4 = Number(330.00) * 4.20
+            console.log("---Valor---")
+            console.log("Valor do ingresso: U$", valor4)
+            console.log("Valor toltal: U$", valor4 * quantidade)
+        }
+        else {
+            console.log("Digite uma das categorias 1,2,3,4")
+        }
+    } else {
+        console.log("Digite uma categoria internacional válida")
+    }
 } else {
     console.log("Dados inválidos")
-}
+};
