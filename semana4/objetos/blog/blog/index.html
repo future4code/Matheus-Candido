@@ -12,7 +12,7 @@
 
 <body>
     <section id="formulario">
-        <form action="posts.html">
+        <form action="">
             <label for="titulo-post">Título:</label>
             <input type="text" id="titulo-post" value="" onkeydown="apertouEnter(event)" name="tituloPost">
 
@@ -23,13 +23,12 @@
             <textarea id="conteudo-post" cols="30" rows="7" value="" onkeydown="apertouEnter(event)"
                 name="conteudoPost"></textarea>
 
-            <!-- <label for="imagem"></label>
-            <input type="link" id="link-imagem" value="" placeholder="Insira o link da imagem" onkeydown="cliqueEnter(event)">
-
-            <button onclick="cliqueImagem(event)">Enviar imagem</button> -->
+            <label for="imagem-post"></label>
+            <input type="text" id="link-imagem" value="" onkeydown="cliqueEnter(event)">
 
         </form>
-        <button onclick="apertouBotao()">Criar Post<a href="./posts.html"> </a></button>
+        <button onclick="cliqueImagem()">Enviar imagem</button>
+        <button onclick="apertouBotao()">Criar Post</button>
     </section>
 
     <section id="container-de-posts">
