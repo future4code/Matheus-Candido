@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <script src="./script.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <section id="cadastro">
+
+        <h1>Controlador de Despesas</h1>
+        <h3>Cadastrar Despesas</h3>
+
+        <label for="number">Valor:</label>
+        <input type="number" name="Valor" id="valor" />
+
+        <label for="text">Tipo:(Casa, Viagem, Rolês, Outros)</label>
+        <select name="descricaoCadastro" id="tipo">
+            <option value="outros">outros</option>
+            <option value="casa">sla</option>
+            <option value="mudança">sla2</option>
+        </select>
+
+        <label for="text">Descrição:</label>
+        <input type="text" name="Descrição" id="descricao" />
+
+        <button type="submit" onclick=botao()>Cadastrar</button>
+        <button type="reset" onclick=limpar()>Despensar</button>
+
+    </section>
+    <section id="detalhes">
+
+        <label for="text">Tipo: (Casa Viagem, Rolês)</label>
+        <select name="filtro" id="filtro">
+            <option value="outros">outros</option>
+            <option value="casa">sla</option>
+            <option value="mudança">sla2</option>
+        </select>
+
+        <label for="Valor Mínimo">Valor Mínimo</label>
+        <input type="number" name="Valor Mínimo" id="valorMin">
+
+        <label for="Valor Máximo">Valor Máximo</label>
+        <input type="number" name="Valor Máximo" id="valorMax">
+
+        <button id="botaoFiltrar">Filtrar</button>
+        <button id="limparFiltro">Limpar Filtro</button>
+    </section>
+
+    <section id="extrato"><h2>Extrato</h2></section>
+
+</body>
+
+</html>
