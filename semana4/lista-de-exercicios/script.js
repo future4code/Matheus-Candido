@@ -50,7 +50,7 @@ Cria uma variável "numero1" com valor infinity, e outra chamada "numero2" com v
 
 Tem um laço onde é criado uma variável "numero" para a array numeros(logo se eu falar da variável "numero" dentro desse laço, se trata da array numeros) com duas condiçoes dentro do laço que são executados ao memso tempo por serem dois if,
 onde o primeiro if verifica se "numero" é menor que o array "numero1", se for ele diz que numero1 é igual a "numero",
-e o segundo if verifica se o "numero" é maior que o array "numero2", se for ele diz que "numero2" é igual a "numero" 
+e o segundo if verifica se o "numero" é maior que o array "numero2", se for ele diz que "numero2" é igual a "numero"
 
 Dois console log:
 Primeiro - imprime o array "numero1" que vai ter como valor o mesmo valor da array "numeros"
@@ -86,7 +86,7 @@ Segundo - imprime o array "numero2" que vai ter como valor o mesmo valor da arra
 
 
 //3
-/* Não funciona porque faltava complementos do loop, no caso faltava o i++ pra que o loop funcionasse corretamente, 
+/* Não funciona porque faltava complementos do loop, no caso faltava o i++ pra que o loop funcionasse corretamente,
 e invez de dar resultado dentro do console log, faltou criar uma const result que fazia a operação e dar conseole log dessa const*/
 // const quantidadeDeNumerosPares =[1,2,3,4,5]
 // let i = 0
@@ -180,3 +180,44 @@ e invez de dar resultado dentro do console log, faltou criar uma const result qu
 // // const tela = mensagem()
 
 
+// EXERCÍCIOS DE OBJETOS 
+
+//1 - Arrays são listas onde guardamos coisas, porem listas pequenas que podemos gurdar coisas mas não tantas.
+// Agora Objetos podem ser considerados listas mas são usados para guardar mais coisas e mais organizadamente.
+
+//2
+// function criaRetangulo(lado1, lado2) {
+//     const infos = {
+//         largura: lado1,
+//         altura: lado2,
+//         perimetro: (2 * (lado1 + lado2)),
+//         area: lado1 * lado2
+//     }
+//     return infos
+// }
+// const result = criaRetangulo(2, 4)
+// console.log(result)
+
+//3
+// const arrayFilmes = {
+//     titulo: "Kimi no na wa",
+//     ano: 2017,
+//     diretor: "Makoto Shinkai",
+//     atoresAtrizes: ["Taki", "Mitsuha"]
+// }
+// console.log(`Venha assistir ao filme ${arrayFilmes.titulo}, de ${arrayFilmes.ano}, dirigido por ${arrayFilmes.diretor} e estrelados por ${arrayFilmes.atoresAtrizes[0]} e ${arrayFilmes.atoresAtrizes[1]} (personagens de anime).`)
+
+//4
+// const pessoa = {
+//     nome: "Matheus",
+//     idade: 21,
+//     email: "imperadorderoma@gmail.com",
+//     endereco: ["rua 200", "nº 25", "bairro holandes"]
+// }
+
+// const anonimizarPessoa = {
+//     ...pessoa,
+//     nome:"anonimo"
+// }
+
+// console.log(anonimizarPessoa)
