@@ -1,0 +1,53 @@
+p, li {
+    font-size: 8px;
+    margin: 0;
+    display: flex;
+    text-align: center ;
+}
+
+h4, h5 {
+    display: flex;
+    justify-content: center;
+}
+
+div, input {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+label, select {
+    font-size: 8px;
+    margin-left: 5px;
+}
+
+#principal {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#cadastro {
+    border: 2px dashed darksalmon;
+    width: 30%;
+}
+
+#detalhes {
+    border: 2px dashed darksalmon;
+    width: 30%;
+}
+
+#extrato {
+    border: 2px dashed darksalmon;
+    width: 30%;
+}
+
+button {
+    width: 80px;
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 90%;
+    font-size: 9px;
+    margin-bottom: 5px;
+}
