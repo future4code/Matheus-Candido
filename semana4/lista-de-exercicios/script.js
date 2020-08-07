@@ -151,3 +151,32 @@ e invez de dar resultado dentro do console log, faltou criar uma const result qu
 // }
 // const resultado = numeros(30, 15)
 
+
+//EXERCÍCIOS DE FUNÇÕES
+
+//1
+// const numeros = [20, 10, 7, 5, 13]
+// function verificaArray(arrayDeNumeros) {
+//     for (let elemento of arrayDeNumeros) {
+//         if (numeros.length > elemento) {
+//             console.log(elemento)
+//         }
+
+//     }
+
+//     return arrayDeNumeros
+// }
+
+
+
+// const resultado1 = verificaArray(numeros)
+
+// console.log(resultado1)
+
+// //2
+// // const mensagem = function(){
+// //    return alert("Hello Future4")
+// // }
+// // const tela = mensagem()
+
+
