@@ -221,3 +221,58 @@ e invez de dar resultado dentro do console log, faltou criar uma const result qu
 // }
 
 // console.log(anonimizarPessoa)
+
+
+//EXERCÍCIOS DE FUNÇÔES DE ARRAY
+
+//a
+// const array = [
+//     { nome: "Pedro", idade: 20 },
+//     { nome: "João", idade: 10 },
+//     { nome: "Paula", idade: 12 },
+//     { nome: "Artur", idade: 89 }
+// ]
+
+// const callback = (element, index, array) => {
+//     if (element.idade >= 20) {
+//         return true
+//     }
+// }
+
+// const novoArray = array.filter(callback)
+
+// console.log(novoArray)
+
+//b
+// const array = [
+//     { nome: "Pedro", idade: 20 },
+//     { nome: "João", idade: 10 },
+//     { nome: "Paula", idade: 12 },
+//     { nome: "Artur", idade: 89 }
+// ]
+
+// const callback = (element, index, array) => {
+//     if (element.idade < 20) {
+//         return true
+//     }
+// }
+
+// const novoArray = array.filter(callback)
+
+// console.log(novoArray)
+
+//2
+
+
+function numeros() {
+    const arrayNumeros = [1, 2, 3, 4, 5, 6]
+    let i = 0
+    while (i < arrayNumeros.length) {
+        const result = i * 2
+        //console.log(result)
+        i++
+        return i
+    }
+}
+const num = numeros()
+console.log(num)
