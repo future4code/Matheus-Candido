@@ -1,7 +1,7 @@
 // - - - - - - - LISTA DE EXERCÍCIOS - - - - - - - //
 
 
-// // EXERCÍCIOS DE INTERPRETAÇÃO DE CÓDIGO // //
+// // - - - - - - - EXERCÍCIOS DE INTERPRETAÇÃO DE CÓDIGO - - - - - - - // //
 
 //1
 /*É criado uma função com o argumento "valorEmDolar".
@@ -57,7 +57,7 @@ Primeiro - imprime o array "numero1" que vai ter como valor o mesmo valor da arr
 Segundo - imprime o array "numero2" que vai ter como valor o mesmo valor da array "numeros" porém sem o -10 pois ele é menor que 0 e não passou na condição */
 
 
-// // EXERCÍCIOS DE LÓGICA DE PROGRAMAÇÃO // //
+// //  - - - - - - - EXERCÍCIOS DE LÓGICA DE PROGRAMAÇÃO - - - - - - -  // //
 
 //1
 // /*Usando For, while, arrayfunction */
@@ -71,7 +71,6 @@ Segundo - imprime o array "numero2" que vai ter como valor o mesmo valor da arra
 //     if (element.tipo === "Elétrico") {
 //        return element.tipo
 //     }
-
 // }
 // const poke = pokemons.filter(callback)
 // console.log(poke)
@@ -152,26 +151,25 @@ e invez de dar resultado dentro do console log, faltou criar uma const result qu
 // const resultado = numeros(30, 15)
 
 
-//EXERCÍCIOS DE FUNÇÕES
+// - - - - - - - EXERCÍCIOS DE FUNÇÕES
 
 //1
-// const numeros = [20, 10, 7, 5, 13]
-// function verificaArray(arrayDeNumeros) {
-//     for (let elemento of arrayDeNumeros) {
-//         if (numeros.length > elemento) {
-//             console.log(elemento)
+// let numeros = [20, 10, 7, 5, 13]
+
+// function verificaArray() {
+//     for (let i = 0; i < numeros.length; i++) {
+//         const elemento = numeros[i]
+//         if (elemento > maiorNumero) {
+//             maiorNumero = elemento
 //         }
-
+//         if (elemento < menorNumero) {
+//             menorNumero = elemento
+//         }
 //     }
-
-//     return arrayDeNumeros
+//     console.log(maiorNumero)
+//     console.log(menorNumero)
 // }
-
-
-
-// const resultado1 = verificaArray(numeros)
-
-// console.log(resultado1)
+// const sla = verificaArray()
 
 // //2
 // // const mensagem = function(){
@@ -180,10 +178,11 @@ e invez de dar resultado dentro do console log, faltou criar uma const result qu
 // // const tela = mensagem()
 
 
-// EXERCÍCIOS DE OBJETOS 
+// - - - - - - - EXERCÍCIOS DE OBJETOS 
 
 //1 - Arrays são listas onde guardamos coisas, porem listas pequenas que podemos gurdar coisas mas não tantas.
 // Agora Objetos podem ser considerados listas mas são usados para guardar mais coisas e mais organizadamente.
+
 
 //2
 // function criaRetangulo(lado1, lado2) {
@@ -198,14 +197,16 @@ e invez de dar resultado dentro do console log, faltou criar uma const result qu
 // const result = criaRetangulo(2, 4)
 // console.log(result)
 
+
 //3
 // const arrayFilmes = {
 //     titulo: "Kimi no na wa",
 //     ano: 2017,
 //     diretor: "Makoto Shinkai",
-//     atoresAtrizes: ["Taki", "Mitsuha"]
+//     atoresAtrizes: ["Taki", " Mitsuha"]
 // }
-// console.log(`Venha assistir ao filme ${arrayFilmes.titulo}, de ${arrayFilmes.ano}, dirigido por ${arrayFilmes.diretor} e estrelados por ${arrayFilmes.atoresAtrizes[0]} e ${arrayFilmes.atoresAtrizes[1]} (personagens de anime).`)
+// console.log(`Venha assistir ao filme ${arrayFilmes.titulo}, de ${arrayFilmes.ano}, dirigido por ${arrayFilmes.diretor} e estrelados por ${arrayFilmes.atoresAtrizes}(personagens de anime).`)
+
 
 //4
 // const pessoa = {
@@ -219,11 +220,11 @@ e invez de dar resultado dentro do console log, faltou criar uma const result qu
 //     ...pessoa,
 //     nome:"anonimo"
 // }
-
 // console.log(anonimizarPessoa)
 
 
-//EXERCÍCIOS DE FUNÇÔES DE ARRAY
+
+// - - - - - - - EXERCÍCIOS DE FUNÇÔES DE ARRAY
 
 //a
 // const array = [
@@ -238,10 +239,9 @@ e invez de dar resultado dentro do console log, faltou criar uma const result qu
 //         return true
 //     }
 // }
-
 // const novoArray = array.filter(callback)
-
 // console.log(novoArray)
+
 
 //b
 // const array = [
@@ -256,23 +256,107 @@ e invez de dar resultado dentro do console log, faltou criar uma const result qu
 //         return true
 //     }
 // }
-
 // const novoArray = array.filter(callback)
+// console.log(novoArray)
+
+
+//2
+//a
+// const array = [1, 2, 3, 4, 5, 6]
+
+// function verificar() {
+//     const mapArray = array.map(item => item * 2)
+//     return mapArray
+// }
+// const nvArray = verificar()
+// console.log(nvArray)
+
+
+//b
+// const array = [1, 2, 3, 4, 5, 6]
+
+// const novoArray = array.map((elementoDoArray) => {
+//     if (elementoDoArray) {
+//         return `${elementoDoArray * 2}`
+//     }
+// })
+// console.log(novoArray)
+
+//c
+//const numeros = [2, 3, 15, 22, 10]
+
+// const novoArray = numeros.map((elementoDoArray, indexDoArray, arrayEmSi) => {
+//     if (elementoDoArray % 2 === 0) {
+//         return `O número ${elementoDoArray} é par`
+//     }
+//     else {
+//         return `O número ${elementoDoArray} é ímpar`
+//     }
+// })
 
 // console.log(novoArray)
 
-//2
+
+//3
+//a
+// const pessoas = [
+//     { nome: "Paula", idade: 12, altura: 1.8 },
+//     { nome: "João", idade: 20, altura: 1.3 },
+//     { nome: "Pedro", idade: 15, altura: 1.9 },
+//     { nome: "Luciano", idade: 22, altura: 1.8 },
+//     { nome: "Artur", idade: 10, altura: 1.2 },
+//     { nome: "Soter", idade: 70, altura: 1.9 }
+// ]
+// const permitido = pessoas.filter((element) => {
+//     if (element.idade >= 14 && element.altura >= 1.5) {
+//         return true
+//     }
+// })
+// console.log(permitido)
+
+//b
+// const naoPermitido = pessoas.filter((element) => {
+//     if (element.idade < 14 || element.altura < 1.5) {
+//         return true
+//     }
+// })
+// console.log(naoPermitido)
 
 
-function numeros() {
-    const arrayNumeros = [1, 2, 3, 4, 5, 6]
-    let i = 0
-    while (i < arrayNumeros.length) {
-        const result = i * 2
-        //console.log(result)
-        i++
-        return i
+//4
+const consultas = [
+    { nome: "João", genero: "masculino", cancelada: true, dataDaConsulta: "01/10/2019" },
+    { nome: "Pedro", genero: "masculino", cancelada: false, dataDaConsulta: "02/10/2019" },
+    { nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
+    { nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
+]
+
+const email = consultas.map((element) => {
+    
+    let lembrar = "Lembrá-la"
+
+
+    if (element.cancelada === false) {
+        if (element.genero === "masculino") {
+           let init = "Sr."
+            lembrar = "Lembrá-lo"
+            return confirm
+        }
+        else {
+            return confirm
+        }
     }
-}
-const num = numeros()
-console.log(num)
+    if (element.cancelada === true) {
+        if (element.genero === "masculino") {
+            init = "Sr."
+            lembrar = "Lembrá-lo"
+            return cancela
+        }return cancela
+    }
+
+    const confirm = `Olá, ${init}. ${element.nome}. Estamos enviando esta mensagem para ${lembrar} da sua consulta no dia ${element.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
+    const cancela = `Olá, ${init}. ${element.nome}. Infelizmente, sua consulta marcada para o dia ${element.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la`
+
+})
+
+console.log(email)
