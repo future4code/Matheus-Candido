@@ -330,15 +330,19 @@ const consultas = [
     { nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
     { nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
 ]
+const generos = [
 
+]
 const email = consultas.map((element) => {
-    
+    let init = "Sr."
     let lembrar = "Lembrá-la"
-
+    const confirm = ""
+    const cancela = ""
 
     if (element.cancelada === false) {
         if (element.genero === "masculino") {
-           let init = "Sr."
+
+            init = "Sra."
             lembrar = "Lembrá-lo"
             return confirm
         }
@@ -351,11 +355,10 @@ const email = consultas.map((element) => {
             init = "Sr."
             lembrar = "Lembrá-lo"
             return cancela
-        }return cancela
+        } return cancela
     }
-
-    const confirm = `Olá, ${init}. ${element.nome}. Estamos enviando esta mensagem para ${lembrar} da sua consulta no dia ${element.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
-    const cancela = `Olá, ${init}. ${element.nome}. Infelizmente, sua consulta marcada para o dia ${element.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la`
+    confirm = `Olá, ${init} ${element.nome}. Estamos enviando esta mensagem para ${lembrar} da sua consulta no dia ${element.dataDaConsulta}. Por favor, acuse o recebimento deste e-mail.`
+    cancela = `Olá, ${init} ${element.nome}. Infelizmente, sua consulta marcada para o dia ${element.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco para remarcá-la`
 
 })
 
