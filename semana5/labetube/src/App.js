@@ -11,6 +11,17 @@ function App() {
   const close = require('./close.png')
   const logo = require('./labetube.png')
   const searchLogo = require('./search.png')
+  const logoHome = require('./home.png')
+  const logoHot = require('./hot.png')
+  const logoSubs = require('./subs.png')
+  const logoLibrary = require('./library.png')
+  const logoTime = require('./time.png')
+  const logoVideo = require('./video.png')
+  const logoGrade = require('./grade.png')
+  const logoAlarm = require('./alarm.png')
+  const logoRegistered = require('./registered.png')
+  const logoYt = require('./yt.png')
+  const logoTm = require('./tm.png')
   const imagemLogo1 = 'https://picsum.photos/400/400?a=1'
   const imagemLogo2 = 'https://picsum.photos/400/400?a=2'
   const imagemLogo3 = 'https://picsum.photos/400/400?a=3'
@@ -28,35 +39,38 @@ function App() {
   return (
     <div>
       <div className="tela-inteira">
-        <div>
-          <input type="checkbox" id="check" />
-          <label id="icone" for="check"><img src={menu} /></label>
+        <input type="checkbox" id="check" />
+        <label id="icone" for="check">
+          <img src={menu} id="btn" />
+          <img src={close} id="cancel" />
+        </label>
+
+        <div className="sidebar">
+          <header><img src={logo} id="logo-nav" /></header>
+          <ul>
+            <li><a href="#"><h4><img src={logoHome} />Início</h4></a></li>
+            <li><a href="#"><h4><img src={logoHot} />Em alta</h4></a></li>
+            <li><a href="#"><h4><img src={logoSubs} />Inscrições</h4></a></li>
+            <li><a href="#"><h4><img src={logoLibrary} />Originais</h4></a></li>
+            <li><a href="#"><h4><img src={logoTime} />Histórico</h4></a></li>
+          </ul>
         </div>
+
         <header>
-
           <img src={logo} alt="" id="logotube" />
-
-
           <div>
             <input type="text" placeholder="Busca" id="campoDeBusca" />
             <button id="pesquisar"><img src={searchLogo} id="search" /></button>
           </div>
-          <img src={imagemLogo1} className="imagemlogo" />
+          <div>
+            <img src={logoVideo} className="imagemlogo"/>
+            <img src={logoGrade} className="imagemlogo"/>
+            <img src={logoAlarm} className="imagemlogo"/>
+            <img src={imagemLogo1} className="imagemlogo" />
+          </div>
         </header>
 
         <main>
-          <div className="barra">
-            <nav className="menu-vertical">
-              <ul>
-                <li className="botoes-meunu-vertical">Início</li>
-                <li className="botoes-meunu-vertical">Em alta</li>
-                <li className="botoes-meunu-vertical">Inscrições</li>
-                <hr />
-                <li className="botoes-meunu-vertical">Originais</li>
-                <li className="botoes-meunu-vertical">Histórico</li>
-              </ul>
-            </nav>
-          </div>
           <section className="painel-de-videos">
             <div className="box-pagina-principal media1" onClick={reproduzVideo}>
               <img src={imagemLogo1} alt="" />
@@ -94,7 +108,17 @@ function App() {
         </main>
 
         <footer>
-          <h4>Oi! Eu moro no footer!</h4>
+          <div>
+            <h4>Oi! Eu moro no footer!</h4>
+
+
+          </div>
+          <div id="img-footer">
+            <img src={logoRegistered} />
+            <img src={logoYt} />
+            <img src={logoTm} />
+          </div>
+          <div><h4>Oi! Continuo morando aqui</h4></div>
         </footer>
       </div>
     </div>
