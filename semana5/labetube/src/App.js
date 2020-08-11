@@ -1,8 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { slide as Menu } from 'react-burger-menu';
-
 
 
 function App() {
@@ -63,9 +60,9 @@ function App() {
             <button id="pesquisar"><img src={searchLogo} id="search" /></button>
           </div>
           <div>
-            <img src={logoVideo} className="imagemlogo"/>
-            <img src={logoGrade} className="imagemlogo"/>
-            <img src={logoAlarm} className="imagemlogo"/>
+            <img src={logoVideo} className="imagemlogo" />
+            <img src={logoGrade} className="imagemlogo" />
+            <img src={logoAlarm} className="imagemlogo" />
             <img src={imagemLogo1} className="imagemlogo" />
           </div>
         </header>
@@ -110,15 +107,17 @@ function App() {
         <footer>
           <div>
             <h4>Oi! Eu moro no footer!</h4>
-
-
           </div>
+
           <div id="img-footer">
             <img src={logoRegistered} />
             <img src={logoYt} />
             <img src={logoTm} />
           </div>
-          <div><h4>Oi! Continuo morando aqui</h4></div>
+
+          <div>
+            <h4>Oi! Continuo morando aqui</h4>
+          </div>
         </footer>
       </div>
     </div>
