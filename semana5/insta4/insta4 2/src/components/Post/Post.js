@@ -8,8 +8,7 @@ import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import { SecaoComentario } from '../SecaoComentario/SecaoComentario'
 
-import { IconeMark } from '../IconeMark/IconeMark'
-import IconeMarke from '../../img/mark.svg'
+import iconeMarke from '../../img/mark.svg'
 import iconeUnMark from '../../img/unmark.svg'
 
 class Post extends React.Component {
@@ -18,39 +17,28 @@ class Post extends React.Component {
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
-    marcado: false,
+    marcado: true,
   }
 
   onClickCurtida = () => {
     console.log('Curtiu!')
     if (this.state.curtido = true) {
       this.setState({
-        curtido: this.state.curtido = true,
+        curtido: this.state.curtido,
         numeroCurtidas: this.state.numeroCurtidas + 1
       })
     } if (this.state.numeroCurtidas === 1) {
       this.setState({
-        curtido: this.state.curtido = false,
+        curtido: !this.state.curtido,
         numeroCurtidas: this.state.numeroCurtidas - 1
       })
     }
   }
 
-  onClickMark = () => {
-    console.log('marcou')
-    if (this.state.marcado = true) {
-      this.setState({
-        marcado: this.state.marcado = true,
-      })
-
-    } if (this.state.marcado = false) {
-      this.setState({
-        marcado: this.state.marcado = false,
-      })
-    }
+  onClickMarked = () => {
+    console.log('Marcado')
+    this.setState({ marcado: !this.state.marcado })
   }
-  
-
 
   onClickComentario = () => {
     this.setState({
@@ -72,11 +60,11 @@ class Post extends React.Component {
       iconeCurtida = iconeCoracaoPreto
     } else {
       iconeCurtida = iconeCoracaoBranco
-    }
+    };
     let iconeMarked
 
     if (this.state.marcado) {
-      iconeMarked = IconeMarke
+      iconeMarked = iconeMarke
     } else {
       iconeMarked = iconeUnMark
     }
@@ -103,9 +91,9 @@ class Post extends React.Component {
           valorContador={this.state.numeroCurtidas}
         />
 
-        <IconeMark
-          icon={iconeMarked}
-          onClickMark={this.OnClickMark}
+        <IconeComContador
+          icone={iconeMarked}
+          onClickIcone={this.onClickMarked}
         />
 
         <IconeComContador
