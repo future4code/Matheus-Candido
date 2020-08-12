@@ -22,7 +22,7 @@ function App() {
         <CardGrande
           imagem={perfil}
           nome="Matheus Martins"
-          descricao="Olá, eu sou o Matheus. Tenho 21 anos e nasci em Curitipa - Paraná. Amo escutar música, tocar violão e comer pão de queijo. Atualmente sou estudante da Labenu, estou fazendo o curso de desenvolvimento fullstack."
+          descricao="Olá, eu sou o Matheus. Tenho 21 anos e nasci em Curitiba - Paraná. Amo escutar música, tocar violão e comer pão de queijo. Atualmente sou estudante da Labenu, estou fazendo o curso de desenvolvimento fullstack."
         />
 
         <ImagemButton
