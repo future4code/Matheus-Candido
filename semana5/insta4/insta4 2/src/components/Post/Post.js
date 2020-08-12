@@ -20,24 +20,37 @@ class Post extends React.Component {
     marcado: true,
   }
 
+  // onClickCurtida = () => {
+  //   console.log('Curtiu!')
+  //   if (this.state.curtido = true) {
+  //     this.setState({
+  //       curtido: this.state.curtido,
+  //       numeroCurtidas: this.state.numeroCurtidas + 1
+  //     })
+  //   } if (this.state.numeroCurtidas === 1) {
+  //     this.setState({
+  //       curtido: !this.state.curtido,
+  //       numeroCurtidas: this.state.numeroCurtidas - 1
+  //     })
+  //   }
+  // }
+
   onClickCurtida = () => {
     console.log('Curtiu!')
-    if (this.state.curtido = true) {
-      this.setState({
-        curtido: this.state.curtido,
-        numeroCurtidas: this.state.numeroCurtidas + 1
-      })
-    } if (this.state.numeroCurtidas === 1) {
-      this.setState({
-        curtido: !this.state.curtido,
-        numeroCurtidas: this.state.numeroCurtidas - 1
-      })
-    }
+
+    this.setState({
+      curtido: !this.state.curtido,
+      numeroCurtidas: +1
+    })
+
   }
+
 
   onClickMarked = () => {
     console.log('Marcado')
-    this.setState({ marcado: !this.state.marcado })
+    this.setState({
+      marcado: !this.state.marcado,
+    })
   }
 
   onClickComentario = () => {
@@ -60,6 +73,7 @@ class Post extends React.Component {
       iconeCurtida = iconeCoracaoPreto
     } else {
       iconeCurtida = iconeCoracaoBranco
+      this.state.numeroCurtidas = 0
     };
     let iconeMarked
 
@@ -68,7 +82,6 @@ class Post extends React.Component {
     } else {
       iconeMarked = iconeUnMark
     }
-
 
     let componenteComentario
 
