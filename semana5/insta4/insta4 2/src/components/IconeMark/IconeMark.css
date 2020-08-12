@@ -1,0 +1,8 @@
+.ico-container {
+    display: flex;
+}
+
+.ico-container img {
+    margin-right: 5px;
+    width: 24px;
+}
