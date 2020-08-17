@@ -6,8 +6,14 @@ font-family:sans-serif;
 text-align:center;
 `
 const Lista = styled.div`
-margin:16px 0;
+margin: 16px 0;
 padding:0;
+`
+const Input = styled.input`
+width: 200px;
+height: 25px;
+border: 2px black solid;
+border-radius:10px;
 `
 
 class PerguntaAberta extends React.Component {
@@ -19,7 +25,7 @@ class PerguntaAberta extends React.Component {
             <AppContainer>
                 <Lista>
                     <h4>{this.props.pergunta}</h4>
-                    <input type="text" />
+                    <Input type="text" />
                 </Lista>
             </AppContainer>
         )

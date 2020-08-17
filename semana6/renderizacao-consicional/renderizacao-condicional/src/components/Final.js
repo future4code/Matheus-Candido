@@ -14,9 +14,7 @@ class Final extends React.Component {
                 <p>Muito Obrigado por Participar! Entraremos em contato</p>
             </AppContainer>
         )
-
     };
-
 }
 
 export default Final

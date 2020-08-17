@@ -5,12 +5,8 @@ import PerguntaFechada from './PerguntaFechada'
 
 
 const AppContainer = styled.div`
-font-family:sans-serif;
-text-align:center;
-`
-const Lista = styled.div`
-margin:16px 0;
-padding:0;
+font-family: sans-serif;
+text-align: center;
 `
 
 class Etapa1 extends React.Component {

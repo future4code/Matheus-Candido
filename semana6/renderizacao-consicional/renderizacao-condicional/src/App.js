@@ -8,48 +8,56 @@ import Final from './components/Final';
 
 const AppContainer = styled.div`
 font-family:sans-serif;
+background-color: darkcyan;
+text-align:center;
 `
-const Botao = styled.div`
-display:flex;
-justify-content:center;
+const Bottao = styled.button`
+height: 30px;
+font-weight: bold;
+border: 2px black solid;
+border-radius: 10px;
+background-color: brown;
 `
-
 
 class App extends React.Component {
   state = {
-    etapa: 3
+    etapa: 1
   }
 
-  irParaAproximaEtapa = () => {
-    switch (this.props.select) {
-      case "Ensino médio incompleto":
-        
-        return this.setState({
-          etapa: 3
-        });
-    
-      default:
-        break;
-    }
+  //TENTATIVA DO DESAFIO 2
+  // pularEtapas = () => {
+  //   switch (this.props.select) {
+  //     case "Ensino médio incompleto":
+
+  //       return this.setState({ etapa: this.state.etapa = 3 });
+  //     case "Ensino médio completo":
+
+  //       return this.setState({ etapa: 3 });
+  //     case "Ensino superior incompleto":
+
+  //       return this.setState({ etapa: 2 });
+  //     case "Ensino superior completo":
+
+  //       return this.setState({ etapa: 2 });
+  //     default:
+  //       break;
+
+  //   }
+  //   return console.log(this.pularEtapas)
+  // }
+
+
+  proximo = () => {
+    this.setState({
+      etapa: this.state.etapa + 1
+    })
   }
 
   render() {
-    const pularEtapas = () => {
-      switch (this.props.select) {
-        case "Ensino médio incompleto":
-          
-          return this.setState({
-            etapa:this.state.etapa = 3
-          });
-      
-        default:
-          break;
-      }
-    }
+
     const renderizarEtapa = () => {
       switch (this.state.etapa) {
         case 1:
-
           return <Etapa1 />;
         case 2:
           return <Etapa2 />;
@@ -63,10 +71,10 @@ class App extends React.Component {
     }
     return (
       <AppContainer>
+
         {renderizarEtapa()}
-        {this.state.etapa < 4 ? <Botao><button onClick={this.irParaAproximaEtapa}>Próxima etapa</button></Botao>: <div></div>}
 
-
+        {this.state.etapa < 4 ? <Bottao onClick={this.proximo}>Próxima etapa</Bottao> : <div></div>}
       </AppContainer>
 
     );
