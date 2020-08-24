@@ -46,7 +46,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name= Toss a Coin to Your Witcher - Radio",
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name= Toss a Coin to Your Witcher - lalala",
 					"protocol": "https",
 					"host": [
 						"us-central1-labenu-apis",
@@ -61,7 +61,7 @@
 					"query": [
 						{
 							"key": "name",
-							"value": " Toss a Coin to Your Witcher - Radio"
+							"value": " Toss a Coin to Your Witcher - lalala"
 						}
 					]
 				},
@@ -81,7 +81,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/ea5d48d1-7f70-4429-ba1d-e3ad1d4466b9/tracks",
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/tracks",
 					"protocol": "https",
 					"host": [
 						"us-central1-labenu-apis",
@@ -91,7 +91,6 @@
 					"path": [
 						"labefy",
 						"playlists",
-						"ea5d48d1-7f70-4429-ba1d-e3ad1d4466b9",
 						"tracks"
 					]
 				},
@@ -195,7 +194,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Higher\",\n    \"artist\": \"The Score\",\n    \"url\": \"https://open.spotify.com/track/0sJ4NbFdEhgLOtInlbRmFl?si=aEZ88HqFQo-Zgk4MEH-AIQ\"\n}",
+					"raw": "{\n    \"name\": \"Believer\",\n    \"artist\": \"Imagine Dragons\",\n    \"url\": \"https://open.spotify.com/track/0pqnGHJpmpxLKifKRmU6WP?si=mQ5B_IgWTu6AzqstEhMKtA\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -262,7 +261,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/5c0a6058-1d10-40a8-8b0c-17da1380da7a/tracks/0bd33a89-f01f-465f-9475-b7cf7e554d9e",
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/ea5d48d1-7f70-4429-ba1d-e3ad1d4466b9/tracks/0703c76e-b1cf-4399-b753-63ahuasf3d57b0",
 					"protocol": "https",
 					"host": [
 						"us-central1-labenu-apis",
@@ -272,9 +271,9 @@
 					"path": [
 						"labefy",
 						"playlists",
-						"5c0a6058-1d10-40a8-8b0c-17da1380da7a",
+						"ea5d48d1-7f70-4429-ba1d-e3ad1d4466b9",
 						"tracks",
-						"0bd33a89-f01f-465f-9475-b7cf7e554d9e"
+						"0703c76e-b1cf-4399-b753-63ahuasf3d57b0"
 					]
 				},
 				"description": "### Descrição:\nEsta requisição serve para deletar alguma música de alguma playlist\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Params**\n<br/>`playlistId`: id da playlist (obrigatório)\n<br/>`trackId`: id da música (obrigatório)\n"
