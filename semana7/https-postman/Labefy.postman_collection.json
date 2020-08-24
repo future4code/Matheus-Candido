@@ -46,7 +46,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name= Barman de Iogurte - Radio",
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name= Toss a Coin to Your Witcher - Radio",
 					"protocol": "https",
 					"host": [
 						"us-central1-labenu-apis",
@@ -61,7 +61,7 @@
 					"query": [
 						{
 							"key": "name",
-							"value": " Barman de Iogurte - Radio"
+							"value": " Toss a Coin to Your Witcher - Radio"
 						}
 					]
 				},
@@ -81,7 +81,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/5c0a6058-1d10-40a8-8b0c-17da1380da7a/tracks",
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/ea5d48d1-7f70-4429-ba1d-e3ad1d4466b9/tracks",
 					"protocol": "https",
 					"host": [
 						"us-central1-labenu-apis",
@@ -91,7 +91,7 @@
 					"path": [
 						"labefy",
 						"playlists",
-						"5c0a6058-1d10-40a8-8b0c-17da1380da7a",
+						"ea5d48d1-7f70-4429-ba1d-e3ad1d4466b9",
 						"tracks"
 					]
 				},
@@ -115,7 +115,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\n\t{\n\t\t\"name\": \"Higher - Radio\"\n\t}\n\t",
+					"raw": "\n\t{\n\t\t\"name\": \"Pirates Of the Caribbean - Radio\"\n\t}\n\t",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -195,7 +195,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Higher\",\n    \"artist\": \"The Score\",\n    \"url\": \"https://open.spotify.com/track/0sJ4NbFdEhgLOtInlbRmFl?si=-eTbNGzQTHuT4ouBbzLrpA\"\n}",
+					"raw": "{\n    \"name\": \"Higher\",\n    \"artist\": \"The Score\",\n    \"url\": \"https://open.spotify.com/track/0sJ4NbFdEhgLOtInlbRmFl?si=aEZ88HqFQo-Zgk4MEH-AIQ\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -203,7 +203,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/d5346ed3-31bf-4466-8086-5e986837922c/tracks",
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/ea5d48d1-7f70-4429-ba1d-e3ad1d4466b9/tracks",
 					"protocol": "https",
 					"host": [
 						"us-central1-labenu-apis",
@@ -213,7 +213,7 @@
 					"path": [
 						"labefy",
 						"playlists",
-						"d5346ed3-31bf-4466-8086-5e986837922c",
+						"ea5d48d1-7f70-4429-ba1d-e3ad1d4466b9",
 						"tracks"
 					]
 				},
@@ -233,7 +233,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/a1bae3eb-ce49-4058-a064-9a6dfdee60c8",
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/15fe63ec-73e6-402c-98ee-ca1e55b97a48",
 					"protocol": "https",
 					"host": [
 						"us-central1-labenu-apis",
@@ -243,7 +243,7 @@
 					"path": [
 						"labefy",
 						"playlists",
-						"a1bae3eb-ce49-4058-a064-9a6dfdee60c8"
+						"15fe63ec-73e6-402c-98ee-ca1e55b97a48"
 					]
 				},
 				"description": "### Descrição:\nEsta requisição serve para deletar alguma playlist.\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n"
