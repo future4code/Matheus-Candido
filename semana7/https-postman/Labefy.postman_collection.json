@@ -46,7 +46,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name= Toss a Coin to Your Witcher - lalala",
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name= lalala",
 					"protocol": "https",
 					"host": [
 						"us-central1-labenu-apis",
@@ -61,7 +61,7 @@
 					"query": [
 						{
 							"key": "name",
-							"value": " Toss a Coin to Your Witcher - lalala"
+							"value": " lalala"
 						}
 					]
 				},
@@ -81,7 +81,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/tracks",
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/ea5d48d1-7f70-4429-ba1d-e3ad1d4466b9/tracks",
 					"protocol": "https",
 					"host": [
 						"us-central1-labenu-apis",
@@ -91,6 +91,7 @@
 					"path": [
 						"labefy",
 						"playlists",
+						"ea5d48d1-7f70-4429-ba1d-e3ad1d4466b9",
 						"tracks"
 					]
 				},
@@ -114,7 +115,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\n\t{\n\t\t\"name\": \"Pirates Of the Caribbean - Radio\"\n\t}\n\t",
+					"raw": "\n\t{\n\t\t\"name\": \n\t}\n\t",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -232,7 +233,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/15fe63ec-73e6-402c-98ee-ca1e55b97a48",
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/ea5d48d1-7f70-4429-ba1d-e3ad1d4466b9",
 					"protocol": "https",
 					"host": [
 						"us-central1-labenu-apis",
@@ -242,7 +243,7 @@
 					"path": [
 						"labefy",
 						"playlists",
-						"15fe63ec-73e6-402c-98ee-ca1e55b97a48"
+						"ea5d48d1-7f70-4429-ba1d-e3ad1d4466b9"
 					]
 				},
 				"description": "### Descrição:\nEsta requisição serve para deletar alguma playlist.\n\n### Input:\n**Headers**\n<br/>`Authorization`: token de autenticação da API\n```\n\tAuthorization: \"nome-sobrenome-turma\"\n```\n\n**Path Param**\n<br/>`playlistId`: id da playlist (obrigatório)\n\n"
