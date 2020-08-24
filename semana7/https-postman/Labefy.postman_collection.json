@@ -13,7 +13,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Math",
+						"value": "matheus-candido-jackson",
 						"type": "text"
 					}
 				],
@@ -42,7 +42,7 @@
 					{
 						"key": "Authorization",
 						"type": "text",
-						"value": "Math"
+						"value": "matheus-candido-jackson"
 					}
 				],
 				"url": {
@@ -77,11 +77,11 @@
 					{
 						"key": "Authorization",
 						"type": "text",
-						"value": "Math"
+						"value": "matheus-candido-jackson"
 					}
 				],
 				"url": {
-					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/d5346ed3-31bf-4466-8086-5e986837922c/tracks",
+					"raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/5c0a6058-1d10-40a8-8b0c-17da1380da7a/tracks",
 					"protocol": "https",
 					"host": [
 						"us-central1-labenu-apis",
@@ -91,7 +91,7 @@
 					"path": [
 						"labefy",
 						"playlists",
-						"d5346ed3-31bf-4466-8086-5e986837922c",
+						"5c0a6058-1d10-40a8-8b0c-17da1380da7a",
 						"tracks"
 					]
 				},
@@ -109,7 +109,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Math",
+						"value": "matheus-candido-jackson",
 						"type": "text"
 					}
 				],
@@ -190,7 +190,7 @@
 					{
 						"key": "Authorization",
 						"type": "text",
-						"value": "Math"
+						"value": "matheus-candido-jackson"
 					}
 				],
 				"body": {
@@ -229,7 +229,7 @@
 					{
 						"key": "Authorization",
 						"type": "text",
-						"value": "Math"
+						"value": "matheus-candido-jackson"
 					}
 				],
 				"url": {
@@ -258,7 +258,7 @@
 					{
 						"key": "Authorization",
 						"type": "text",
-						"value": "Math"
+						"value": "matheus-candido-jackson"
 					}
 				],
 				"url": {
