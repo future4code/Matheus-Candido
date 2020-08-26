@@ -4,7 +4,7 @@ import './App.css';
 import axios from "axios"
 import styled from 'styled-components'
 import SingUp from './Components/SingUp/SingUp';
-import Users from './Components/Users/Users';
+import UsersList from './Components/Users/UsersList';
 
 const Del = styled.b`
 font-size: 20px;
@@ -17,7 +17,7 @@ export default class App extends React.Component {
     click: false
   };
 
-  onClickUsers = () => {
+  onClickUsersList = () => {
     this.setState({
       click: false
     });
@@ -32,7 +32,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        {this.state.click ? <Users funcaoUsuario={this.onClickUsers} /> : <SingUp funcaoCadastro={this.onClickCadastrar} />}
+        {this.state.click ? <UsersList funcaoUsuario={this.onClickUsersList} /> : <SingUp funcaoCadastro={this.onClickCadastrar} />}
       </div>
     )
   }

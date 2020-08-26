@@ -5,6 +5,10 @@ import styled from 'styled-components'
 import bgi from '../img/bg.jpg'
 import Button from '@material-ui/core/Button'
 
+const Listas = styled.ol`
+
+`
+
 const UListas = styled.li`
 font-size: 20px;
 list-style: upper-roman;
@@ -49,73 +53,11 @@ export default class Users extends React.Component {
         id: ""
     }
 
-    listarUsers = () => {
-
-        const request = axios.get(
-            `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users`,
-
-            {
-                headers: {
-                    Authorization: "matheus-candido-jackson"
-                }
-            }
-        )
-
-        request
-            .then((resposta) => {
-
-                this.setState({ listUser: resposta.data })
-                console.log(resposta.data)
-                this.listarUsers()
-            })
-            .catch((error) => {
-                alert("lista errada")
-            })
-
-
-    }
-
-
-    deleteUser = (id) => {
-        const request = axios.delete(
-            `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`,
-            {
-                headers: {
-                    Authorization: "matheus-candido-jackson"
-                }
-            }
-        )
-        console.log(request)
-        request
-            .then((resposta) => {
-                console.log(`User Deletado `)
-                alert(`Deleted user `)
-                console.log(id)
-            })
-            .catch((error) => {
-                console.log(error.response)
-            })
-    }
-
-    componentDidMount() {
-        this.listarUsers()
-    }
 
     render() {
         return (
             <Principal className="App" >
-                <header>
-                    <Button onClick={this.props.funcaoUsuario} variant="contained" color="secondary">SingUp page &gt;</Button>
-                </header>
-                <h1>Users:</h1>
-                {this.state.listUser.map((item) => {
-                    console.log(item.id)
-                    return (
-                        <div>
-                            <UListas key={item.id}>{""}{item.name} {""}<Del onClick={() => this.deleteUser(item.id)}>X</Del></UListas>
-                        </div>
-                    )
-                })}
+
             </Principal>
         )
     }

@@ -2,7 +2,20 @@ import React from 'react';
 import '../../App.css';
 import axios from "axios"
 import styled from 'styled-components'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles/';
 import Button from '@material-ui/core/Button'
+
+const theme = createMuiTheme({
+    overrides: {
+        // Style sheet name ⚛️
+        MuiButton: {
+            // Name of the rule
+            text: {
+                color: 'white',
+            },
+        },
+    },
+});
 
 const UserPage = styled.button`
 margin-top: 10px;
@@ -50,6 +63,8 @@ export default class SingUp extends React.Component {
         Iemail: ""
     }
 
+
+
     newUser = (nome, email) => {
         const body = {
             name: nome,
@@ -71,8 +86,7 @@ export default class SingUp extends React.Component {
                 this.setState({ iName: "", iEmail: "" })
             })
             .catch((error) => {
-                console.log(error)
-                alert("error lul!!")
+                alert(error)
             })
 
     }
@@ -89,20 +103,23 @@ export default class SingUp extends React.Component {
         const addOnList = () => {
             this.newUser(this.state.iName, this.state.iEmail)
         }
+
         return (
             <div className="App" >
-                <header>
+                {/* <header> */}
+                <ThemeProvider theme={theme}>
                     <Button onClick={this.props.funcaoCadastro} variant="contained" color="secondary">&lt; Users page</Button>
-                </header>
+                </ThemeProvider>
+                {/* </header> */}
                 <h1>Sing Up</h1>
                 <Forme>
-                <div>
-                    <Inputs value={this.state.iName} onChange={(e) => this.onChangeName(e)} placeholder="Name"/>
-                    <Inputs value={this.state.iEmail} onChange={(e) => this.onChangeEmail(e)} placeholder="Email"/>
-                    <Button onClick={addOnList} variant= "contained" color="primary">SingUp</Button>
-                </div>
+                    <div>
+                        <Inputs value={this.state.iName} onChange={(e) => this.onChangeName(e)} placeholder="Name" />
+                        <Inputs value={this.state.iEmail} onChange={(e) => this.onChangeEmail(e)} placeholder="Email" />
+                        <Button onClick={addOnList} variant="contained" color="primary">SingUp</Button>
+                    </div>
                 </Forme>
-                
+
             </div>
         )
     }
