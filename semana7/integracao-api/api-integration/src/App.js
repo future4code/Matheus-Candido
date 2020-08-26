@@ -5,6 +5,7 @@ import axios from "axios"
 import styled from 'styled-components'
 import SingUp from './Components/SingUp/SingUp';
 import UsersList from './Components/Users/UsersList';
+import Users from './Components/Users/Users'
 
 const Del = styled.b`
 font-size: 20px;
@@ -14,25 +15,50 @@ cursor: pointer;
 
 export default class App extends React.Component {
   state = {
-    click: false
+    click: "cadastro",
+    id: ""
   };
 
   onClickUsersList = () => {
     this.setState({
-      click: false
+      click: "lista",
     });
   };
 
   onClickCadastrar = () => {
     this.setState({
-      click: true
+      click: "cadastro"
     });
   };
+  onClickUsers = () => {
+    this.setState({
+      click: "users"
+    });
 
+  };
   render() {
+    console.log(this.state.click)
+    const pagina = () => {
+      switch (this.state.click) {
+        case "cadastro":
+          return <SingUp  funcaoUserList={this.onClickUsersList}/>
+
+        case "lista":
+          return <UsersList funcaoCadastro={this.onClickCadastrar} funcaoUser={this.onClickUsers} />
+
+        case "users":
+          return <Users funcaoUserList={this.onClickUsersList} id={this.state.id}/>
+
+        default:
+          break;
+      }
+    }
     return (
       <div>
-        {this.state.click ? <UsersList funcaoUsuario={this.onClickUsersList} /> : <SingUp funcaoCadastro={this.onClickCadastrar} />}
+        {pagina()}
+        {/* 
+        {this.state.click ? <UsersList funcaoUserList={this.onClickUsersList} funcaoUser={this.onClickUsers} /> : <SingUp funcaoCadastro={this.onClickCadastrar} />}
+        {this.state.users && <Users />} */}
       </div>
     )
   }

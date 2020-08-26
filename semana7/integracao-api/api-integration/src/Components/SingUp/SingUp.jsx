@@ -79,7 +79,6 @@ export default class SingUp extends React.Component {
                 }
             }
         )
-        console.log(request)
         request
             .then((resposta) => {
                 alert(`Success user ${this.state.iName} as create!!`)
@@ -108,7 +107,7 @@ export default class SingUp extends React.Component {
             <div className="App" >
                 {/* <header> */}
                 <ThemeProvider theme={theme}>
-                    <Button onClick={this.props.funcaoCadastro} variant="contained" color="secondary">&lt; Users page</Button>
+                    <Button onClick={this.props.funcaoUserList} variant="contained" color="secondary">&lt; Users page</Button>
                 </ThemeProvider>
                 {/* </header> */}
                 <h1>Sing Up</h1>

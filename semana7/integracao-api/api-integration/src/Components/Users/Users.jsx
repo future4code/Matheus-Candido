@@ -4,6 +4,7 @@ import axios from "axios"
 import styled from 'styled-components'
 import bgi from '../img/bg.jpg'
 import Button from '@material-ui/core/Button'
+import UserList from '../Users/UsersList'
 
 const Listas = styled.ol`
 
@@ -53,11 +54,19 @@ export default class Users extends React.Component {
         id: ""
     }
 
+    componentDidMount (){
+axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${this.props.id}`)
+    }
 
     render() {
         return (
             <Principal className="App" >
-
+                <Button onClick={this.props.funcaoUserList} variant="contained" color="Link">Voltar</Button>
+                {this.state.listUser.map((item) => {
+                    return (
+                        <b>aaaaaaa{item.id}</b>
+                    )
+                })}
             </Principal>
         )
     }

@@ -5,7 +5,8 @@ import styled from 'styled-components'
 import bgi from '../img/bg.jpg'
 import Button from '@material-ui/core/Button'
 
-const Listas = styled.ol`
+const UserC = styled.b`
+cursor: crosshair;
 `
 
 const UListas = styled.li`
@@ -40,14 +41,9 @@ export default class Users extends React.Component {
         name: "",
         listUser: [],
         id: "",
-        users: false
     }
 
-    onClickUsers = () => {
-        this.setState({
-            users: false
-        });
-    };
+
 
 
     listarUsers = () => {
@@ -63,7 +59,6 @@ export default class Users extends React.Component {
         request
             .then((resposta) => {
                 this.setState({ listUser: resposta.data })
-                console.log(resposta.data)
                 this.listarUsers()
             })
             .catch((error) => {
@@ -80,7 +75,6 @@ export default class Users extends React.Component {
                 }
             }
         )
-        console.log(request)
         request
             .then((resposta) => {
                 alert(`Deleted user`)
@@ -98,13 +92,12 @@ export default class Users extends React.Component {
         return (
             <Principal className="App" >
                 <header>
-                    <Button onClick={this.props.funcaoUsuario} variant="contained" color="secondary">SingUp page &gt;</Button>
+                    <Button onClick={this.props.funcaoCadastro} variant="contained" color="secondary">Sing Up page &gt;</Button>
                 </header>
                 <h1>Users:</h1>
                 {this.state.listUser.map((item) => {
-                    console.log(item.id)
                     return (
-                        <UListas key={item.id}>{""}<span>{item.name}</span> {""}<Del onClick={() => (window.confirm('ok?')) ? this.deleteUser(item.id) : null}>X</Del></UListas>
+                        <UListas key={item.id}>{""}<UserC onClick={this.props.funcaoUser}>{item.name}</UserC> {""}<Del onClick={() => (window.confirm('ok?')) ? this.deleteUser(item.id) : null}>X</Del></UListas>
                     )
                 })}
             </Principal>
