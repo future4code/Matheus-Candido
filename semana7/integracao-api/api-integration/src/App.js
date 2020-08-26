@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import axios from "axios"
 import styled from 'styled-components'
-import Cadastro from './Components/Cadastro/Cadastro';
-import Usuario from './Components/Usuario/Usuario';
+import SingUp from './Components/SingUp/SingUp';
+import Users from './Components/Users/Users';
 
 const Del = styled.b`
 font-size: 20px;
@@ -32,7 +32,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        {this.state.click ? <Usuario funcaoUsuario={this.onClickUsers} /> : <Cadastro funcaoCadastro={this.onClickCadastrar} />}
+        {this.state.click ? <Users funcaoUsuario={this.onClickUsers} /> : <SingUp funcaoCadastro={this.onClickCadastrar} />}
       </div>
     )
   }

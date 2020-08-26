@@ -2,17 +2,51 @@ import React from 'react';
 import '../../App.css';
 import axios from "axios"
 import styled from 'styled-components'
+import bgi from '../img/bg.jpg'
+import Button from '@material-ui/core/Button'
+
+const UListas = styled.li`
+font-size: 20px;
+list-style: upper-roman;
+
+li.numbered {
+    counter-increment: num;
+}
+`;
+
+
+
+const Principal = styled.div`
+background-image: ${bgi};
+height: 100vh;
+font-family: 'Roboto', sans-serif;
+`;
+
+
+const SingUpPage = styled.button`
+margin-top: 10px;
+width: 7%;
+height: 25px;
+font-size: 15px;
+border: 2px solid black;
+font-family: 'Roboto', sans-serif;
+font-weight: bold;
+`;
+
 
 const Del = styled.b`
 font-size: 20px;
 color: red;
 cursor: pointer;
+font-family: 'Roboto', sans-serif;
+
 `
 
-export default class Usuario extends React.Component {
+export default class Users extends React.Component {
     state = {
         name: "",
-        listUser: []
+        listUser: [],
+        id: ""
     }
 
     listarUsers = () => {
@@ -32,16 +66,17 @@ export default class Usuario extends React.Component {
 
                 this.setState({ listUser: resposta.data })
                 console.log(resposta.data)
+                this.listarUsers()
             })
             .catch((error) => {
                 alert("lista errada")
             })
 
-            
-    }
-    
 
-    DeleteUser = (id) => {
+    }
+
+
+    deleteUser = (id) => {
         const request = axios.delete(
             `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`,
             {
@@ -53,12 +88,12 @@ export default class Usuario extends React.Component {
         console.log(request)
         request
             .then((resposta) => {
-                console.log(`lalalalalala ${resposta}`)
-                // alert(`lalala ${resposta}`)
+                console.log(`User Deletado `)
+                alert(`Deleted user `)
+                console.log(id)
             })
             .catch((error) => {
-                console.log(error)
-                // alert(`error lul!! ${error}`)
+                console.log(error.response)
             })
     }
 
@@ -68,19 +103,20 @@ export default class Usuario extends React.Component {
 
     render() {
         return (
-            <div className="App" >
+            <Principal className="App" >
                 <header>
-                    <button onClick={this.props.funcaoUsuario}>Ir para Cadastro</button>
+                    <Button onClick={this.props.funcaoUsuario} variant="contained" color="secondary">SingUp page &gt;</Button>
                 </header>
-                <h2>Users</h2>
+                <h1>Users:</h1>
                 {this.state.listUser.map((item) => {
+                    console.log(item.id)
                     return (
                         <div>
-                            <p key={item.id}>{item.name} <Del onClick={() => this.DeleteUser(item.id)}>X</Del></p>
+                            <UListas key={item.id}>{""}{item.name} {""}<Del onClick={() => this.deleteUser(item.id)}>X</Del></UListas>
                         </div>
                     )
                 })}
-            </div>
+            </Principal>
         )
     }
 }
