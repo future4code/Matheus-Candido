@@ -41,6 +41,12 @@ export default class SingUp extends React.Component {
         iEmail: ""
     }
 
+    onClickEnter = (event) =>{
+        if (event.key==="Enter") {
+            this.newUser()
+        }
+    }
+
     newUser = async () => {
         const body = {
             name: this.state.iName,
@@ -74,10 +80,10 @@ export default class SingUp extends React.Component {
                 <Forme>
                     <div>
                         <InputN>
-                            <ColorButton id="outlined-basic" label="Name" variant="outlined" value={this.state.iName} onChange={(e) => this.onChangeName(e)} />
+                            <ColorButton id="outlined-basic" label="Name" variant="outlined" value={this.state.iName} onChange={(e) => this.onChangeName(e)} onKeyPress={this.onClickEnter}/>
                         </InputN>
                         <InputN>
-                            <ColorButton id="outlined-basic" label="Email" variant="outlined" value={this.state.iEmail} onChange={(e) => this.onChangeEmail(e)} />
+                            <ColorButton id="outlined-basic" label="Email" variant="outlined" value={this.state.iEmail} onChange={(e) => this.onChangeEmail(e)} onKeyPress={this.onClickEnter}/>
                         </InputN>
                         <Button onClick={this.newUser} variant="contained" color="primary">Sing Up</Button>
                     </div>
