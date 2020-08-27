@@ -2,42 +2,18 @@ import React from 'react';
 import '../../App.css';
 import axios from "axios"
 import styled from 'styled-components'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles/';
+import { ThemeProvider } from '@material-ui/core/styles/';
 import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
+import { red, grey } from '@material-ui/core/colors';
+import { Url, Config } from '../../Constants/axiosconstants'
 
-const theme = createMuiTheme({
-    overrides: {
-        // Style sheet name ⚛️
-        MuiButton: {
-            // Name of the rule
-            text: {
-                color: 'white',
-            },
-        },
-    },
-});
-
-const UserPage = styled.button`
-margin-top: 10px;
-width: 7%;
-height: 25px;
-font-size: 15px;
-border: 2px solid black;
-font-family: 'Roboto', sans-serif;
-font-weight: bold;
-`;
-
-
-const Inputs = styled.input`
-height: 25%;
+const InputN = styled.div`
 display: flex;
 flex-direction: column;
 margin-bottom: 10px;
-border: black solid 3px;
-font-family: 'Roboto', sans-serif;
-
 `;
-
 
 const Forme = styled.div`
 width: 100%;
@@ -46,76 +22,64 @@ justify-content: center;
 font-family: 'Roboto', sans-serif;
 `;
 
-const Buton = styled.button`
-width: 100%;
-height: 30%;
-font-size: 15px;
-color: black;
-cursor: pointer;
-border: 2px solid black;
-font-family: 'Roboto', sans-serif;
-font-weight: bold;
-`
+// lib de input
+const ColorButton = withStyles((theme) => ({
+    root: {
+        color: theme.palette.getContrastText(red[500]),
+        backgroundColor: grey[100],
+        color: grey[900],
+        borderRadius: '4px',
+        '&:hover': {
+            backgroundColor: grey[400]
+        }
+    }
+}))(TextField);
 
 export default class SingUp extends React.Component {
     state = {
-        Iname: "",
-        Iemail: ""
+        iName: "",
+        iEmail: ""
     }
 
-
-
-    newUser = (nome, email) => {
+    newUser = async () => {
         const body = {
-            name: nome,
-            email: email
+            name: this.state.iName,
+            email: this.state.iEmail
         }
-
-        const request = axios.post(
-            `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users`, body,
-            {
-                headers: {
-                    Authorization: "matheus-candido-jackson"
-                }
-            }
-        )
-        request
-            .then((resposta) => {
-                alert(`Success user ${this.state.iName} as create!!`)
-                this.setState({ iName: "", iEmail: "" })
-            })
-            .catch((error) => {
-                alert(error)
-            })
-
+        try {
+            const request = await axios.post(Url, body, Config)
+            alert(`Success!! User ${this.state.iName} has been created!!`)
+            this.setState({ iName: "", iEmail: "" })
+        }
+        catch (error) {
+            alert(error)
+        }
     }
 
+    // input controlado
     onChangeName = (e) => {
         this.setState({ iName: e.target.value })
     }
     onChangeEmail = (e) => {
         this.setState({ iEmail: e.target.value })
-
     }
 
     render() {
-        const addOnList = () => {
-            this.newUser(this.state.iName, this.state.iEmail)
-        }
-
         return (
             <div className="App" >
-                {/* <header> */}
-                <ThemeProvider theme={theme}>
-                    <Button onClick={this.props.funcaoUserList} variant="contained" color="secondary">&lt; Users page</Button>
+                <ThemeProvider >
+                    <Button onClick={this.props.funcaoUserList} variant="contained" color="secondary">Users page &gt;</Button>
                 </ThemeProvider>
-                {/* </header> */}
                 <h1>Sing Up</h1>
                 <Forme>
                     <div>
-                        <Inputs value={this.state.iName} onChange={(e) => this.onChangeName(e)} placeholder="Name" />
-                        <Inputs value={this.state.iEmail} onChange={(e) => this.onChangeEmail(e)} placeholder="Email" />
-                        <Button onClick={addOnList} variant="contained" color="primary">SingUp</Button>
+                        <InputN>
+                            <ColorButton id="outlined-basic" label="Name" variant="outlined" value={this.state.iName} onChange={(e) => this.onChangeName(e)} />
+                        </InputN>
+                        <InputN>
+                            <ColorButton id="outlined-basic" label="Email" variant="outlined" value={this.state.iEmail} onChange={(e) => this.onChangeEmail(e)} />
+                        </InputN>
+                        <Button onClick={this.newUser} variant="contained" color="primary">Sing Up</Button>
                     </div>
                 </Forme>
 

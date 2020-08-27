@@ -4,29 +4,13 @@ import axios from "axios"
 import styled from 'styled-components'
 import bgi from '../img/bg.jpg'
 import Button from '@material-ui/core/Button'
-import UserList from '../Users/UsersList'
-
-const Listas = styled.ol`
-
-`
-
-const UListas = styled.li`
-font-size: 20px;
-list-style: upper-roman;
-
-li.numbered {
-    counter-increment: num;
-}
-`;
-
-
+import { Url, Config } from '../../Constants/axiosconstants'
 
 const Principal = styled.div`
 background-image: ${bgi};
 height: 100vh;
 font-family: 'Roboto', sans-serif;
 `;
-
 
 const SingUpPage = styled.button`
 margin-top: 10px;
@@ -38,13 +22,11 @@ font-family: 'Roboto', sans-serif;
 font-weight: bold;
 `;
 
-
 const Del = styled.b`
 font-size: 20px;
 color: red;
 cursor: pointer;
 font-family: 'Roboto', sans-serif;
-
 `
 
 export default class Users extends React.Component {
@@ -54,17 +36,28 @@ export default class Users extends React.Component {
         id: ""
     }
 
-    componentDidMount (){
-axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${this.props.id}`)
+    componentDidMount() {
+        const lalala = async () => {
+            try {
+                const request = await axios.get(`${Url}/${this.state.id}`, { Config })
+                console.log(request.data)
+            }
+            catch (error) {
+                console.log(error)
+            }
+        }
     }
+
 
     render() {
         return (
             <Principal className="App" >
                 <Button onClick={this.props.funcaoUserList} variant="contained" color="Link">Voltar</Button>
+                <h2> Sem user ;-;</h2>
+                <h2>Cod error: Fail :(</h2>
                 {this.state.listUser.map((item) => {
                     return (
-                        <b>aaaaaaa{item.id}</b>
+                        <b>{item.id}</b>
                     )
                 })}
             </Principal>
