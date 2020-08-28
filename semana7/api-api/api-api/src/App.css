@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255,255,255,0.2)), url(img/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-Repeat: no-repeat;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -14,7 +19,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgba(34, 34, 34, 0.9);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
