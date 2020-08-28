@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap');
-
 .App {
   text-align: center;
+  color: whitesmoke;
   /* font-family: 'Roboto', sans-serif; */
   font-weight: bold;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255,255,255,0.2)), url(./Components/img/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-Repeat: no-repeat;
+  /* background: linear-gradient(90deg, rgba(40,44,52,0.5) 0%, rgba(9,9,121,0.9) 0%, rgba(0,212,255,01) 100%); */
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -18,7 +24,10 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: url(./Components/img/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-Repeat: no-repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,7 +43,7 @@
 
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(360deg);
   }
   to {
     transform: rotate(360deg);
