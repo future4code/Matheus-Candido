@@ -8,7 +8,7 @@ import Users from './Components/Users/Users'
 export default class App extends React.Component {
   state = {
     click: "cadastro",
-    idUser: ""
+    idUsers: ""
   };
 
   onClickUsersList = () => {
@@ -22,9 +22,10 @@ export default class App extends React.Component {
       click: "cadastro"
     });
   };
-  onClickUsers = () => {
+  onClickUsers = (idU) => {
     this.setState({
-      click: "users"
+      click: "users",
+      idUsers: idU
     });
 
   };
@@ -39,7 +40,7 @@ export default class App extends React.Component {
           return <UsersList funcaoCadastro={this.onClickCadastrar} funcaoUser={this.onClickUsers} />
 
         case "users":
-          return <Users funcaoUserList={this.onClickUsersList} idUser={this.state.idUser} />
+          return <Users funcaoUserList={this.onClickUsersList} idUser={this.state.idUsers} />
 
         default:
           break;

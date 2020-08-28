@@ -12,54 +12,50 @@ height: 100vh;
 font-family: 'Roboto', sans-serif;
 `;
 
-const SingUpPage = styled.button`
-margin-top: 10px;
-width: 7%;
-height: 25px;
-font-size: 15px;
-border: 2px solid black;
-font-family: 'Roboto', sans-serif;
-font-weight: bold;
+const Texto = styled.b`
+font-size: 30px;
+  background: linear-gradient(90deg, rgba(245,13,87,0.9) 100%, rgba(255,205,212,0.9) 0%, rgba(9,9,121,0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 10px 10px;
+list-style-type: none;
 `;
 
-const Del = styled.b`
-font-size: 20px;
-color: red;
-cursor: pointer;
-font-family: 'Roboto', sans-serif;
-`
+const Titulo = styled.b`
+font-size: 30px;
+color: white;
+`;
 
 export default class Users extends React.Component {
     state = {
-        name: "",
-        listUser: [],
-        id: ""
+        user: "",
     }
 
     componentDidMount() {
-        const lalala = async () => {
-            try {
-                const request = await axios.get(`${Url}/${this.state.id}`, { Config })
-                console.log(request.data)
-            }
-            catch (error) {
+        const request = axios.get(`${Url}/${this.props.idUser}`, Config)
+        request
+            .then((response) => {
+                console.log("lalalalalla")
+                this.setState({
+                    user: response.data,
+                })
+                console.log(this.state.user)
+            })
+            .catch((error) => {
                 console.log(error)
-            }
-        }
+            })
     }
-
 
     render() {
         return (
             <Principal className="App" >
                 <Button onClick={this.props.funcaoUserList} variant="contained" color="Link">Voltar</Button>
-                <h2> Sem user ;-;</h2>
-                <h2>Cod error: Fail :(</h2>
-                {this.state.listUser.map((item) => {
-                    return (
-                        <b>{item.id}</b>
-                    )
-                })}
+                <div>
+                    <p>
+                        <Titulo>Nome: </Titulo><Texto>{this.state.user.name}</Texto>
+                    </p>
+                    <p><Titulo>Email: </Titulo> <Texto>{this.state.user.email} </Texto></p>
+                </div>
             </Principal>
         )
     }

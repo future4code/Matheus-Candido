@@ -55,25 +55,26 @@ export default class Users extends React.Component {
         id: "",
     }
 
-    listarUsers = async () => {
-        try {
-            const request = await axios.get(Url, Config)
-            this.setState({ listUser: request.data })
-            this.listarUsers()
-        }
-        catch (error) {
-            alert("Error in list")
-        }
+    listarUsers = () => {
+        const request = axios.get(Url,Config)
+        request.then((response) => {
+            this.setState({ listUser: response.data })
+        }).catch((erro) => {
+            console.log(erro)
+        })
     }
 
-    deleteUser = async (id) => {
-        try {
-            const request = await axios.delete(`${Url}/${id}`, Config)
-            alert(`Deleted user`)
-        }
-        catch (error) {
-            alert(error)
-        }
+    deleteUser = (id) => {
+        const request = axios.delete(`${Url}/${id}`, Config)
+        alert(`Deleted user`)
+
+        request.then((response) => {
+            console.log(response)
+            this.listarUsers()
+        })
+            .catch((erro) => {
+                alert(erro)
+            })
     }
 
     componentDidMount() {
@@ -92,10 +93,10 @@ export default class Users extends React.Component {
                     return (
                         <div className={() => this.useStyles()}>
                             <UListas key={item.id}>{""}<UserC onClick={() => this.props.funcaoUser(item.id)}>{item.name}{""}</UserC> {""}
-                                <ColorButton aria-label="delete" onClick={() => (window.confirm('Deseja mesmo excluir esse nome magnífic???')) ? this.deleteUser(item.id) : null}><DeleteIcon /></ColorButton>
+                                <ColorButton aria-label="delete" onClick={() => (window.confirm('Deseja mesmo excluir esse nome magnífic???')) ? this.deleteUser(item.id) : null}><DeleteIcon />
+                                </ColorButton>
                             </UListas>
                         </div>
-
                     )
                 })}
             </Principal>
