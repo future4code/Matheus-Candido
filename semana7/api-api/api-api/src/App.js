@@ -27,7 +27,7 @@ display: flex;
 flex-direction: column;
 margin-top: 20px;
 
-@media screen and (max-width:375px) {
+@media screen and (max-width:400px) {
   padding: 30px 0px;
 }
 `;
@@ -59,7 +59,7 @@ h3{
     padding: 20px 0;
   }
 
-@media screen and (max-width:375px) {
+@media screen and (max-width:400px) {
   height: 70vh;
   width: 70vw;
   padding: 0 30px;
