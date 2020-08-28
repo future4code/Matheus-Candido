@@ -26,7 +26,7 @@ const Conteudo = styled.div`
 display: flex;
 flex-direction: column;
 margin-top: 20px;
-
+min-height: 100%;
 @media screen and (max-width:400px) {
   padding: 30px 0px;
 }
@@ -60,9 +60,9 @@ h3{
   }
 
 @media screen and (max-width:400px) {
-  height: 70vh;
+  height: 100%;
   width: 70vw;
-  padding: 0 30px;
+  padding: 0 20px;
   
 }
 `;
