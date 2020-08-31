@@ -1,31 +1,10 @@
 import React from 'react'
 import axios from 'axios'
-import styled from 'styled-components'
 import Button from '@material-ui/core/Button'
 import { ThemeProvider } from '@material-ui/core/styles/';
-import { Url, Config } from './axiosConstants'
-
-const Principal = styled.div`
-display: flex;
-justify-content: center;
-flex-direction: column;
-`;
-
-const Conteudo = styled.div`
-b,button{
-    cursor: pointer;
-    :hover {
-        color: red;
-    }
-}
-`;
-
-const Criar = styled.div`
-display:flex;
-justify-content: center;
-margin: 20px 0px;
-`;
-
+import { Url, Config } from '../axiosConfigs/axiosConstants'
+import { App, Criar, Conteudo, Cancel } from '../../assets/Styles/Styles'
+import cancel from './img/cancel.png'
 
 export default class Playlists extends React.Component {
     state = {
@@ -62,23 +41,26 @@ export default class Playlists extends React.Component {
     }
     render() {
         return (
-            <Principal className="App">
+            <App className="App">
                 <ThemeProvider>
                     <Button onClick={this.props.funcaoCriarPlaylists} variant="contained" color="Link">Voltar</Button>
                 </ThemeProvider>
                 {this.state.playLists.map((item) => {
                     return (
-                        <Conteudo>
+                        <div>
                             <div>
                                 <Criar key={item.id} >
                                     <b onClick={() => this.props.funcaoPlayList(item.id)}>{item.name}</b>
-                                    <button onClick={() => (window.confirm('Deseja mesmo excluir essa playlist???')) ? this.deletePlayList(item.id) : null}>X</button>
+                                    <Cancel src={cancel} onClick={() => (window.confirm('Deseja mesmo excluir essa playlist???')) ?
+                                        (window.confirm('Você está me dizendo que tens a absoluta certeza???')) ?
+                                            (window.confirm('Você diz que tem certeza, depois não reclama... certeza disso???')) ?
+                                                this.deletePlayList(item.id) : null : null : null} />
                                 </Criar>
                             </div>
-                        </Conteudo>
+                        </div>
                     )
                 })}
-            </Principal>
+            </App>
         )
     }
 }

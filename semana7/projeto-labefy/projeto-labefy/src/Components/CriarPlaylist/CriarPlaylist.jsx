@@ -1,18 +1,9 @@
 import React from 'react'
 import axios from 'axios'
-import styled from 'styled-components'
 import { ThemeProvider } from '@material-ui/core/styles/';
 import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField';
-import { withStyles } from '@material-ui/core/styles';
-import { red, grey } from '@material-ui/core/colors';
-import { Url, Config } from './axiosConstants'
-import {Principal, ColorButton} from './Styles'
-
-
-
-// lib de input
-
+import { Url, Config } from '../axiosConfigs/axiosConstants'
+import {App, ColorButton, Criar, Conteudo} from '../../assets/Styles/Styles'
 
 export default class CriarPlaylist extends React.Component {
     state = {
@@ -33,7 +24,7 @@ export default class CriarPlaylist extends React.Component {
         request
             .then((response) => {
                 this.setState({ NamePlaylist: "" })
-                console.log("aeee")
+                alert(`Playlist Criada!!!`)
             })
             .catch((error) => {
                 console.log(error)
@@ -46,11 +37,11 @@ export default class CriarPlaylist extends React.Component {
 
     render() {
         return (
-            <Principal className="App">
+            <App className="App">
                 <ThemeProvider >
                     <Button onClick={this.props.funcaoPlaylists} variant="contained" color="secondary">All Playlists &gt;</Button>
                 </ThemeProvider>
-                <Conteudo>
+                <div>
                     <div>
                         <Criar>
                             <ColorButton id="outlined-basic" label="Playlist" variant="outlined" value={this.state.NamePlaylist} onChange={(e) => this.onChangePlaylist(e)} onKeyPress={this.onEnter} />
@@ -59,8 +50,8 @@ export default class CriarPlaylist extends React.Component {
                             <Button onClick={this.NewPlaylists} variant="contained" color="primary">Criar Playlist</Button>
                         </Criar>
                     </div>
-                </Conteudo>
-            </Principal>
+                </div>
+            </App>
         )
     }
 }

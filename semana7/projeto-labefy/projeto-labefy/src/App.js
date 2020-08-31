@@ -1,15 +1,16 @@
 import React from 'react'
-import CriarPlaylist from './Components/CriarPlaylist'
-import Playlists from './Components/Playlists'
-import Playlist from './Components/Playlist'
+import CriarPlaylist from './Components/CriarPlaylist/CriarPlaylist'
+import Playlists from './Components/Playlists/Playlists'
+import Playlist from './Components/Playlist/Playlist'
 
 
 export default class App extends React.Component {
   state = {
     click: "Criar Playlist",
-    idPlayList: ""
+    idPL: ""
   }
 
+  //Inputs
   onClickCriarPlaylist = () => {
 this.setState({click: "Criar Playlist"})
   }
@@ -20,10 +21,11 @@ this.setState({click: "Criar Playlist"})
 
   onClickPlayList = (idL) => {
     this.setState({click: "Playlist",
-    idPlayList: idL})
+    idPL: idL})
   }
 
   render() {
+    //Lógica de trocar de página
     const paginaAtual = () => {
       switch (this.state.click) {
         case "Criar Playlist":
@@ -33,7 +35,7 @@ this.setState({click: "Criar Playlist"})
           return <Playlists funcaoCriarPlaylists={this.onClickCriarPlaylist} funcaoPlayList={this.onClickPlayList} />
 
         case "Playlist":
-          return <Playlist funcaoPlaylists={this.onClickPlaylists} idPList={this.state.idPlayList} />
+          return <Playlist funcaoPlaylists={this.onClickPlaylists} idPlayList={this.state.idPL} />
 
         default:
           break;
