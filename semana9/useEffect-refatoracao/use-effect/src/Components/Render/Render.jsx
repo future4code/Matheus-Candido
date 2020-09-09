@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import PokeCard from '../PokeCard/PokeCard'
 
-export default function Render(props) {
+export default function Render() {
     const [pokeList, setPokeList] = useState([])
     const [pokeName, setPokeName] = useState()
 
