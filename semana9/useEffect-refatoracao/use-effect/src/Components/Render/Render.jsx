@@ -7,7 +7,7 @@ export default function Render() {
     const [pokeName, setPokeName] = useState()
 
     const getPokemons = () => {
-        axios.get("https://pokeapi.co/api/v2/pokemon/?limit=151")
+        axios.get("https://pokeapi.co/api/v2/pokemon/?limit=1000")
             .then(r => {
                 setPokeList(r.data.results)
             }).catch(e => {
