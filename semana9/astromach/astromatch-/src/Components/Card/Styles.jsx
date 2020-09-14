@@ -9,6 +9,9 @@ export const Main = styled.main`
     min-height: 100vh;
     background-color: #4158D0;
     background-image: linear-gradient(190deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    @media screen and (max-width: 400px){
+        width: 100%;
+    }
 `;
 
 // Div que contem o primeiro Card da tela onde ele recebe dentro dele o componente NavBar, ProfilesP e Matches.
@@ -21,6 +24,10 @@ export const Card = styled.div`
     font-size: 15px;
     background-color: #4158D0;
     background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    @media screen and (max-width: 400px){
+        width: 60%;
+        min-height: 380px;
+    }
 `;
 
 // Style que edita o tamanho do componente NavBar recebido dentro do Card.
@@ -39,6 +46,9 @@ export const Center = styled.div`
     display: flex;
     flex-direction: column;
     height: 86.5%;
+    @media screen and (max-width: 400px){
+        height: 100%;
+    }
 `;
 
 // Style que edita o tamanho do botão de clean que está presente fora do Card.

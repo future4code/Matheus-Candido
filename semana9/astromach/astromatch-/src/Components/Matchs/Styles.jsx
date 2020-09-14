@@ -12,6 +12,7 @@ export const Div = styled.div`
         pointer-events: none;
         background-color: rgb(254,60,114);
     }
+    
 `;
 
 // Style que editaas fotos dos profiles de matches.

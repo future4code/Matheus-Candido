@@ -25,7 +25,6 @@ export  const Cards = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    ;
 `;
 
 // Há algumas interações com o hover e background, mudança do cursor, escala do card.
@@ -44,7 +43,7 @@ export const Card2 = styled.article`
         background-color: transparent;
         cursor: pointer;
         div {
-            background-color: transparent;
+            background-color: rgb(254,60,114);
         }
     }
 `;
@@ -59,6 +58,10 @@ export  const Card_Img = styled.div`
     height: 360px;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
+    @media screen and (max-width: 400px){
+        width: 100%;
+        height: 210px;
+    }
 `;
 
 // Há algumas interações com o hover e background de fundo.
@@ -75,9 +78,14 @@ export const Card_Img_Hover = styled.div`
     border-top-right-radius: 12px;
     top: 0;
     :hover {
-        background-color: transparent;
+        background-color: rgb(254,60,114);
         height: 100%;
         opacity: 0.5;
+    }
+    @media screen and (max-width: 400px){
+        width: 100%;
+        height: 210px;
+        ;
     }
 `;
 // ------------------ Fim (Style da parte da imagem dentro do card do Componente ProfileP) Fim ------------------------ //
@@ -92,6 +100,7 @@ export const Card_Info = styled.div`
     height: 10%;
     cursor: help;
     :hover {
+        height: 15%;
         position: relative;    
         h4{
             display: flex;
@@ -111,6 +120,9 @@ export const Card_Title = styled.h2`
         font-size: 10px;
         margin: 0px;
         padding: 0px;
+    }
+    @media screen and (max-width: 400px){
+            font-size: 11px;
     }
 `;
 

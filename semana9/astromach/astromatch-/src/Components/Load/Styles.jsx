@@ -12,6 +12,10 @@ export const Main = styled.main`
     img {
         width: 40vmin;
     }
+    @media screen and (max-width: 400px){
+        width: 100%;
+        height: 100%;
+    }
 `;
 
 // Div que contem a animação da logo do 'Tinder' em svg.
@@ -34,6 +38,9 @@ export const AnimateSvgLogo = styled.div`
             }
         }  
     }
+    @media screen and (max-width: 400px){
+        width: 15%;
+    }
 `;
 
 // Div que contem animação do titulo do 'Astromatch' em svg.
@@ -55,5 +62,10 @@ export const AnimateSvgTitle = styled.div`
                 100% {stroke-dashoffset: 0; fill: orangered;}
             }
         }
+    }
+    @media screen and (max-width: 400px){
+        width: 70%;
+        ;
+        
     }
 `;
