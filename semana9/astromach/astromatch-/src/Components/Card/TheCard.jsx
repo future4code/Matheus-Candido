@@ -1,153 +1,52 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
-import { Choose_Person, Profile_To_Choose, Clear } from '../../Axios/Axios'
-import styled from "styled-components";
 import NavBar from '../NavBar/NavBar';
 import ProfilesP from '../ProfilesP/ProfilesP'
 import Matches from '../Matchs/Matches';
-// import NavButtom from '../ProfilesP/NavButtom/NavButtom';
+import { clear } from '../../Axios/Axios'
+import reset from '../ProfilesP/imgs/reset.png'
+import { Main, Card, Nav, Center, Reset } from './Styles'
 
-const Icon = styled.div`
-display: flex;
-justify-items: ${props => !props.currentPage ? 'left' : 'right'};
-align-content: ${props => !props.currentPage ? 'left' : 'right'};
-`;
+export default function TheCard() {
+    const [currentPage, setCurrentPage] = useState('Profiles') //Estado que verifica a página atual e alterna entre o componentes Matches e ProfilesP.
+    const [profiles, setProfiles] = useState([]) //Array que recebe os dados da Api.
 
-
-// const Bottom = styled.div`
-// height: 10%;
-
-// `;
-
-const ImgIcon = styled.img`
-
-`
-
-const Center = styled.div`
-padding: 20px 20px 0px;
-display: flex;
-flex-direction: column;
-flex: 1 1 0%;
-justify-content: flex-end;
-
-`;
-
-
-const Nav = styled.div`
-display: flex;
-background-color: red;
-height: 15%;
-border-bottom: 1px solid black;
-border-radius: 8px 8px 0 0;
-
-`;
-
-
-const Main = styled.main`
-/* display: flex;
-justify-content: center;
-align-items: center; */
-height: 100vh;
-background-color: rgba(255, 0, 0, 0.5);
-`;
-
-
-const Card = styled.div`
-width: 350px;
-height: 500px;
-border: 3px solid black;
-border-radius: 10px;
-box-shadow: 15px 15px 20px 1px black;
-font-size: 15px;
-background-color: rgba(255, 0, 0, 0.1);
-/* justify-content: ${props => props.inputColor || "palevioletred"}; */
-position: fixed;
-top: 0%;
-left: 50%;
-transform: translate(-50%, 50%);
-`;
-
-export default function TheCard(props) {
-    // const [profiles, setProfiles] = useState([])
-    const [currentPage, setCurrentPage] = useState(true)
-    const [profiles, setProfiles] = useState([])
-
-
-    // const getProfile = () => {
-    //     axios.get(Profile_To_Choose)
-    //         .then(r => {
-    //             setProfiles(r.data.profile)
-    //             console.log(r.data.profile)
-    //         }).catch(e => {
-    //             console.log(e)
-    //         })
-    // }
-
-    // const postProfile = (id, choice) => {
-    //     const body = {
-    //         id: profiles.id,
-    //         choice: true
-    //     }
-    //     axios.post(Choose_Person, body)
-    //         .then(r => {
-
-    //             console.log(r)
-    //         }).catch(e => {
-    //             console.log(e)
-    //         })
-    // }
-
-    // const Choose = (option) => {
-    //     if (option === 'dislike') {
-    //         getProfile()
-    //     }
-    //     if (option === 'like') {
-    //         postProfile()
-    //         getProfile()
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     getProfile()
-    // }, [])
-    const onClick = () => {
-        setCurrentPage(!currentPage)
+    // Função de clicks para alternar entre os componetes Matches e ProfilesP dentro do Card principal.
+    const onClickProfiles = () => {
+        setCurrentPage('Profiles')
     }
+    const onClickMatches = () => {
+        setCurrentPage('Matches')
+    }
+    // ------------------------------------------ //
 
-
-
-    
+    // Função que executa o clean da api no array dos card com o axios put.
     const clean = () => {
         const body = {
             id: profiles.id
         }
-        axios.put(Clear, body)
+        axios.put(clear, body)
             .then(r => {
                 console.log(r)
             }).catch(e => {
                 console.log(e)
             })
     }
+
     return (
         <Main>
             <Card>
                 <Nav>
-                    <Icon >
-
-                        <ImgIcon src={currentPage ? 'URL' : 'url'} currentPage={currentPage} onClick={() => onClick()} />
-
-                    </Icon>
-
-                    <NavBar />
+                    {/* Envia em forma de props o estado de página atual e as funções de alternar alternar as páginas. */}
+                    <NavBar currentPage={currentPage} pageProfiles={onClickProfiles} pageMatches={onClickMatches} />
                 </Nav>
-                <Center>
-                    {currentPage ? <ProfilesP /> : <Matches />}
-                </Center>
-                {/* <Bottom>
-                    <NavButtom />
-                </Bottom> */}
+                {profiles ?
+                    <Center>
+                        {/* Ternário que altera o componente atual dentro do Card. */}
+                        {currentPage === 'Profiles' ? <ProfilesP /> : <Matches />}
+                        <Reset><img src={reset} onClick={clean} /></Reset>
+                    </Center> : null}
             </Card>
-            <button onClick={clean}>Clean</button>
-        </Main>
+        </Main >
     )
 }
