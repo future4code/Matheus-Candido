@@ -7,14 +7,14 @@ export default function ListTripsPage() {
     const goToback = () => {
         history.goBack()
     }
-    const goToForm = () => {
-        history.push("/application-form")
+    const goToDetails = () => {
+        history.push("/trips/details")
     }
     return (
         <div>
             <h2>ListTripsPage</h2>
             <button onClick={goToback}>Voltar</button>
-            <button onClick={goToForm}>Candidatar-se</button>
+            <button onClick={goToDetails}>Detalhes</button>
         </div>
     )
 }

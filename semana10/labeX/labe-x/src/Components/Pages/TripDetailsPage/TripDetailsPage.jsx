@@ -4,17 +4,18 @@ import { useHistory } from 'react-router-dom'
 
 export default function TripDetailsPage() {
     const history = useHistory()
-    const goToLogin = () => {
-        history.push("/adm/signin")
-    }
+    
     const goToback = () => {
         history.goBack()
+    }
+    const goToForm = () => {
+        history.push("/application-form")
     }
     return (
         <div>
             <h2>TripDetailsPage</h2>
-            <button></button>
             <button onClick={goToback}>Voltar</button>
+            <button onClick={goToForm}>Ser um candidato</button>
         </div>
     )
 }
