@@ -1,6 +1,9 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
+
 
 export default function ApplicationForm() {
+    const history = useHistory()
     const goToback = () => {
         history.goBack()
     }
