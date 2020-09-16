@@ -9,7 +9,6 @@ import TripDetailsPage from '../Pages/TripDetailsPage/TripDetailsPage'
 import CreateTripPage from '../Pages/CreateTripPage/CreateTripPage'
 import ApplicationForm from '../Pages/ApplicationForm/ApplicationForm'
 
-
 export default function Router() {
     return (
         <BrowserRouter>
