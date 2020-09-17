@@ -50,7 +50,7 @@ export default function SignIn() {
                     name="email"
                     value={form.email}
                     onChange={handleInputChange}
-                    pattern="[A-Za-z]{3,}"
+                    // pattern="[A-Za-z]{3,}"
                     title= "No mínimo tres letras"
                     required
                 />
@@ -59,7 +59,7 @@ export default function SignIn() {
                     name="password"
                     value={form.password}
                     onChange={handleInputChange}
-                    pattern=""
+                    // pattern=""
                     required
                 />
                 <button >Logar</button>
