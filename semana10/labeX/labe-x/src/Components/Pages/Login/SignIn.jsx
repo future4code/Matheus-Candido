@@ -1,11 +1,11 @@
 import axios from 'axios'
 import React from 'react'
+import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-
+import useForm from '../../Hooks/useForm'
 
 export default function SignIn() {
-    const [emailValue, setEmail] = React.useState()
-    const [passwordValue, setPassword] = React.useState()
+    const { form, onChange, resetState } = useForm({ email: "", password: "" })
 
     const history = useHistory()
     const goToback = () => {
@@ -14,10 +14,10 @@ export default function SignIn() {
     const goToSignUp = () => {
         history.push("/adm/signup")
     }
-    const DoSignIn = () => {
+    const doSignIn = () => {
         const body = {
-            email: emailValue,
-            password: passwordValue
+            email: form.email,
+            password: form.password
         }
         axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-jackson/login", body)
             .then(r => {
@@ -30,19 +30,42 @@ export default function SignIn() {
                 console.log(e)
             })
     }
-    
-    const inputEmail = (e) => {
-        setEmail(e.target.value)
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        doSignIn()
+        console.log(form.email)
+        resetState()
     }
-    const inputPassword = (e) => {
-        setPassword(e.target.value)
+    const handleInputChange = (event) => {
+        const { name, value } = event.target
+        onChange(name, value)
     }
+
     return (
         <div>
             <h2>SignIn</h2>
-            <input type="email" value={emailValue} onChange={inputEmail} />
-            <input type="password" value={passwordValue} onChange={inputPassword} />
-            <button onClick={DoSignIn}>Logar</button>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleInputChange}
+                    pattern="[A-Za-z]{3,}"
+                    title= "No mínimo tres letras"
+                    required
+                />
+                <input
+                    type="password"
+                    name="password"
+                    value={form.password}
+                    onChange={handleInputChange}
+                    pattern=""
+                    required
+                />
+                <button >Logar</button>
+            </form>
+
+
             <button onClick={goToSignUp}>Cadastre-se</button>
             <button onClick={goToback}>Voltar</button>
         </div>

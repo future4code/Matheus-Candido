@@ -1,36 +1,22 @@
 import axios from 'axios'
 import React from 'react'
+import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 // import { DoSignIn, DoSignUp } from '../../ConfigAxios/ConfigAxios'
+import useForm from '../../Hooks/useForm'
 
 export default function SignUp() {
-    const [emailValue, setEmail] = React.useState()
-    const [passwordValue, setPassword] = React.useState()
+    const { form, onChange, resetState } = useForm({ email: "", password: "" })
 
     const history = useHistory()
     const goToback = () => {
         history.goBack("/adm/signin")
     }
-    const DoSignUp = () => {
+
+    const doSignIn = () => {
         const body = {
-            email: emailValue,
-            password: passwordValue
-        }
-        axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-jackson/signup", body)
-            .then(r => {
-                if (r.status) {
-                    history.push("/adm/trips/create")
-                }
-                console.log("cadastro feito")
-            }).catch(e => {
-                alert("Registro não efetuado")
-                console.log(e)
-            })
-    }
-    const DoSignIn = () => {
-        const body = {
-            email: emailValue,
-            password: passwordValue
+            email: form.email,
+            password: form.password
         }
         axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-jackson/login", body)
             .then(r => {
@@ -43,22 +29,54 @@ export default function SignUp() {
                 console.log(e)
             })
     }
-    const cad = () => {
-        DoSignUp()
-        DoSignIn()
+    const doSignUp = () => {
+        const body = {
+            email: form.email,
+            password: form.password
+        }
+        axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-jackson/signup", body)
+            .then(r => {
+                if (r.status) {
+                    doSignIn()
+                    history.push("/adm/trips/create")
+                }
+                console.log("cadastro feito")
+            }).catch(e => {
+                alert("Registro não efetuado")
+                console.log(e)
+            })
     }
-    const inputEmail = (e) => {
-        setEmail(e.target.value)
+    const handleClick = (event) => {
+        event.preventDefault()
+        doSignUp()
+        console.log(form.email)
+        resetState()
     }
-    const inputPassword = (e) => {
-        setPassword(e.target.value)
+    const handleInputChange = (event) => {
+        const { name, value } = event.target
+        onChange(name, value)
     }
+
     return (
         <div>
             <h2>SignUp</h2>
-            <input type="email" value={emailValue} onChange={inputEmail} />
-            <input type="password" value={passwordValue} onChange={inputPassword} />
-            <button onClick={cad}>Cadastrar</button>
+            <form onSubmit={handleClick}>
+                <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleInputChange}
+                />
+                <input
+                    type="password"
+                    name="password"
+                    pattern="\d{3,}"
+                    value={form.password}
+                    onChange={handleInputChange}
+                />
+                <button >Cadastrar</button>
+            </form>
+
             <button onClick={goToback}>Voltar</button>
         </div>
     )

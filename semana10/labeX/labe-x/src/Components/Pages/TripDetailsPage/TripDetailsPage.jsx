@@ -3,7 +3,8 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useProtectTripDetailsPage } from '../../ProtectedRoute/ProtectTripDetailsPage'
 
-export default function TripDetailsPage() {
+export default function TripDetailsPage(props) {
+    const [id, setId] = React.useState()
     const history = useHistory()
 
     const goToForm = () => {
@@ -13,8 +14,8 @@ export default function TripDetailsPage() {
         history.push("/")
     }
     const token = window.localStorage.getItem("token")
-    const getTripDetail = () => {
-        axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-jackson/trip/BqsDXx1bjpo5ujlWNWJz", {
+    const getTripDetail = (id) => {
+        axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-jackson/trip/${props => props.id}`, {
             headers: {
                 auth: localStorage.getItem("token")
             }

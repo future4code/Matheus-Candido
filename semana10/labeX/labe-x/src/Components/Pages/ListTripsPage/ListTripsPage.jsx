@@ -37,13 +37,13 @@ export default function ListTripsPage() {
     return (
         <div>
             <h2>ListTripsPage</h2>
-            <button onClick={goToback}>Voltar</button>
+            <button onClick={goToback} >Voltar</button>
             <button onClick={goToDetailsTrip}>Detalhes</button>
             <button onClick={goToHome}>Home</button>
             {trips.map(t => {
                 return (
                     <div key={t.id}>
-                        <li> {t.name}</li>
+                        <li id={t.id}> {t.name}</li>
                     </div>
                 )
             })}
