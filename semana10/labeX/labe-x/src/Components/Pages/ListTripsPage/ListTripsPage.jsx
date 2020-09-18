@@ -13,13 +13,12 @@ export default function ListTripsPage() {
     const goToHome = () => {
         history.push("/")
     }
-    const goToDetailsTrip = () => {
-        if (token) {
-            history.push("/trips/details")
-        } else {
-            // alert("Área restrita")
-            history.push("/adm/signin")
-        }
+    const goToDetailsTrip = (history, id) => {
+        history.push(`/trips/details/${id}`)
+    }
+    const goToApplicationForm = (history, id) => {
+        history.push(`/application-form/${id}`)
+        console.log(id)
     }
 
     const getTrips = () => {
@@ -38,12 +37,11 @@ export default function ListTripsPage() {
         <div>
             <h2>ListTripsPage</h2>
             <button onClick={goToback} >Voltar</button>
-            <button onClick={goToDetailsTrip}>Detalhes</button>
             <button onClick={goToHome}>Home</button>
             {trips.map(t => {
                 return (
                     <div key={t.id}>
-                        <li id={t.id}> {t.name}</li>
+                        <li id={t.id} > {t.name}</li>{token ? <button onClick={() => goToDetailsTrip(history, t.id)}>Detalhes</button> : <button onClick={() => goToApplicationForm(history, t.id)}>Me inscrever</button>}
                     </div>
                 )
             })}

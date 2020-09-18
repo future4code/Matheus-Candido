@@ -66,13 +66,18 @@ export default function SignUp() {
                     name="email"
                     value={form.email}
                     onChange={handleInputChange}
+                    required
                 />
                 <input
-                    type="password"
+                    type="text"
                     name="password"
                     pattern="\d{3,}"
                     value={form.password}
                     onChange={handleInputChange}
+                    placeholder="Password"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\1)){8,}"
+                    title="A senha precisa conter 1 dígito, 1 letra maiúscula, 1 letra minúscula, 1 caractere especial e conter no mínimo 8 dos caracteres mensionados!"
+                    required
                 />
                 <button >Cadastrar</button>
             </form>

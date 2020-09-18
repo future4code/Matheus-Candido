@@ -59,7 +59,6 @@ export default function ApplicationForm() {
         <div>
             <h2>ApplicationForm</h2>
             <button onClick={goToback}>Voltar</button>
-            <button onClick={goToList}>Candidatar-se</button>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"

@@ -59,7 +59,7 @@ export default function SignIn() {
                     name="password"
                     value={form.password}
                     onChange={handleInputChange}
-                    // pattern=""
+                    // pattern={"/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/"}
                     required
                 />
                 <button >Logar</button>

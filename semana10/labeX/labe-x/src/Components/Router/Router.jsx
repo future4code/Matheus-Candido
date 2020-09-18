@@ -28,10 +28,10 @@ export default function Router() {
                 <Route exact path="/trips/list">
                     <ListTripsPage />
                 </Route>
-                <Route exact path="/trips/details">
+                <Route exact path="/trips/details/:id">
                     <TripDetailsPage />
                 </Route>
-                <Route exact path="/application-form">
+                <Route exact path="/application-form/:id">
                     <ApplicationForm />
                 </Route>
                 <Route >

@@ -80,6 +80,8 @@ export default function CreateTripPage() {
                     value={form.name}
                     onChange={handleInputChange}
                     placeholder="Name"
+                    // pattern="(\D{5,}\s*)"
+                    required
                 />
                 <select
                     type="planet"
@@ -92,7 +94,7 @@ export default function CreateTripPage() {
                     {selectPlanets.map((p) => {
                         if (p.isPlanet === true) {
                             return (
-                                <option value={p.name}>{p.name}</option>
+                                <option key={p.name}>{p.name}</option>
                             )
                         }
                     })}
@@ -103,6 +105,8 @@ export default function CreateTripPage() {
                     value={form.date}
                     onChange={handleInputChange}
                     placeholder="Date"
+                    pattern={"/ (d{2})/d{2}/d{2021,}"}
+                    required
                 />
                 <input
                     type="description"
@@ -110,6 +114,7 @@ export default function CreateTripPage() {
                     value={form.description}
                     onChange={handleInputChange}
                     placeholder="Description"
+                    pattern="(\D{5,}\s*)"
                     required
                 />
                 <input
@@ -118,6 +123,7 @@ export default function CreateTripPage() {
                     value={form.durationInDays}
                     onChange={handleInputChange}
                     placeholder="Duration"
+                    min={0}
                     required
                 />
                 <button>Criar</button>
