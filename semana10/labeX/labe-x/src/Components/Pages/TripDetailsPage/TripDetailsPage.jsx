@@ -4,18 +4,22 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { useProtectTripDetailsPage } from '../../ProtectedRoute/ProtectTripDetailsPage'
+import styled from "styled-components";
+const Main = styled.div`
+/* min-height: 100vh; */
+h2{
+    margin: 0;
+    padding: 20px 0;
+}
+`;
+
 
 export default function TripDetailsPage() {
     const pathParams = useParams()
-    // const [id, setid] = useState([])
-    // const [planet, setplanet] = useState([])
-    // const [durationInDays, setdurationInDays] = useState(Number(""))
-    // const [date, setdate] = useState([])
-    // const [name, setname] = useState([])
-    // const [description, setdescription] = useState([])
-    // const [candidates, setcandidates] = useState([])
+
 
     const [trip, setTrip] = useState([])
+    const [candidates, setCandidates] = useState([])
 
     const history = useHistory()
 
@@ -33,17 +37,7 @@ export default function TripDetailsPage() {
             }
         }).then(r => {
             setTrip(r.data.trip)
-
-            //     setid(r.data.trip.id)
-            //     setplanet(r.data.trip.planet)
-            //     setdurationInDays(r.data.trip)
-            //     setdate(r.data.trip.date)
-            //     setname(r.data.trip.name)
-            //     setdescription(r.data.trip.description)
-            //     setcandidates(r.data.trip.candidates)
-
-            // console.log(r.data.trip)
-            // console.log(details)
+            // setCandidates(r.data.trip.candidates)
         }).catch(e => {
             console.log(e)
 
@@ -58,6 +52,7 @@ export default function TripDetailsPage() {
         } else { history.goBack() }
 
     }
+    // const trips = trip.candidates
 
     useEffect(() => {
         getTripDetail()
@@ -67,22 +62,24 @@ export default function TripDetailsPage() {
 
     return (
 
-        <div>
+        <Main>
             <h2>TripDetailsPage</h2>
             <button onClick={verifica}>Voltar</button>
-            <button onClick={goToForm}>Ser um candidato</button>
             <button onClick={goToHome}>Home</button>
             <div >
-                {trip.name}
 
-                {/* {trip.candidates{candidates.map((c) => {
+                <li>Name: {trip.name}</li>
+                <li>Planet: {trip.planet}</li>
+                <li>Duration: {trip.durationInDays}</li>
+                <li>Description: {trip.description}</li>
+                {candidates.map((c) => {
                     return (
                         <div>
-                            {c.name}
+                            <li>{trip.name}</li>
                         </div>
                     )
-                })}} */}
+                })}
             </div>
-        </div>
+        </Main>
     )
 }

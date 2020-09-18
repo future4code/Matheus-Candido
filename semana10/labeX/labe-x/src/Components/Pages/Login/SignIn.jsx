@@ -3,6 +3,13 @@ import React from 'react'
 import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import useForm from '../../Hooks/useForm'
+import styled from "styled-components";
+const Main = styled.div`
+h2{
+    margin: 0;
+    padding: 20px 0;
+}`;
+
 
 export default function SignIn() {
     const { form, onChange, resetState } = useForm({ email: "", password: "" })
@@ -42,7 +49,7 @@ export default function SignIn() {
     }
 
     return (
-        <div>
+        <Main>
             <h2>SignIn</h2>
             <form onSubmit={handleSubmit}>
                 <input
@@ -68,6 +75,6 @@ export default function SignIn() {
 
             <button onClick={goToSignUp}>Cadastre-se</button>
             <button onClick={goToback}>Voltar</button>
-        </div>
+        </Main>
     )
 }

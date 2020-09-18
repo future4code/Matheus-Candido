@@ -5,6 +5,14 @@ import { useProtectCreateTripPage } from '../../ProtectedRoute/ProtectCreateTrip
 import useForm from '../../Hooks/useForm'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import styled from "styled-components";
+const Main = styled.div`
+h2{
+    margin: 0;
+    padding: 20px 0;
+}
+`;
+
 
 export default function CreateTripPage() {
     const { form, onChange, resetState } = useForm({ name: "", planet: "", date: "", description: "", durationInDays: "" })
@@ -61,13 +69,20 @@ export default function CreateTripPage() {
     const handleInputChange = (event) => {
         const { name, value } = event.target
         onChange(name, value)
+
+        console.log(form.name,
+            form.planet,
+            form.date,
+            form.description,
+            form.durationInDays)
+
     }
     useEffect(() => {
         getPlanets()
     }, [])
     useProtectCreateTripPage()
     return (
-        <div>
+        <Main>
             <h2>CreateTripPage</h2>
             <button onClick={goToList}>Criar Viajem</button>
             <button onClick={verifica}>Voltar</button>
@@ -129,6 +144,6 @@ export default function CreateTripPage() {
                 <button>Criar</button>
             </form>
 
-        </div>
+        </Main>
     )
 }

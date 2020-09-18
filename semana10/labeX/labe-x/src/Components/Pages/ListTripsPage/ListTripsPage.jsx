@@ -1,6 +1,16 @@
 import axios from 'axios'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
+import styled from "styled-components";
+const Main = styled.div`
+min-height: 100vh;
+padding: 20px 0px;
+h2{
+    margin: 0;
+    padding: 20px 0;
+}
+`;
+
 
 export default function ListTripsPage() {
     const [trips, setTrips] = React.useState([])
@@ -34,7 +44,7 @@ export default function ListTripsPage() {
     }, [])
 
     return (
-        <div>
+        <Main>
             <h2>ListTripsPage</h2>
             <button onClick={goToback} >Voltar</button>
             <button onClick={goToHome}>Home</button>
@@ -45,6 +55,6 @@ export default function ListTripsPage() {
                     </div>
                 )
             })}
-        </div>
+        </Main>
     )
 }

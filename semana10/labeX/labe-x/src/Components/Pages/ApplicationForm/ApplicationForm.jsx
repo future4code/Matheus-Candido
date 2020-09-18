@@ -2,13 +2,16 @@ import axios from 'axios'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import useForm from '../../Hooks/useForm'
 
 
 export default function ApplicationForm() {
     const { form, onChange, resetState } = useForm({ name: "", age: "", applicationText: "", profession: "", country: "" })
     const [selectCountry, setSelectCountry] = useState([])
+    const pathParams = useParams()
+
+
     const history = useHistory()
     const goToback = () => {
         history.goBack()
@@ -25,7 +28,7 @@ export default function ApplicationForm() {
             profession: form.profession,
             country: form.country,
         }
-        axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-jackson/trips/5kFEwLTbmSrczYw7ppTA/apply", body)
+        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-jackson/trips/${pathParams.id}/apply`, body)
             .then((r) => {
                 console.log(r)
             }).catch((e) => {

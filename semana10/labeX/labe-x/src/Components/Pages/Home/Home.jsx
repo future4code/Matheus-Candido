@@ -1,6 +1,16 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import styled from "styled-components";
+
+const Main = styled.div`
+/* height: 100vh; */
+h2{
+    margin: 0;
+    padding: 20px 0;
+}
+`
+
 
 export default function Home() {
     const history = useHistory()
@@ -22,11 +32,11 @@ export default function Home() {
         history.push("/adm/signin")
     }
     return (
-        <div>
+        <Main>
             <h2>Home</h2>
             {token && <button onClick={verifica}>usuario</button>}
             {token ? <button onClick={logout}>logout</button> : <button onClick={verifica}>Login</button>}
             <button onClick={goToList}>Viagens</button>
-        </div>
+        </Main>
     )
 }

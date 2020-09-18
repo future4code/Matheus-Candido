@@ -4,6 +4,14 @@ import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 // import { DoSignIn, DoSignUp } from '../../ConfigAxios/ConfigAxios'
 import useForm from '../../Hooks/useForm'
+import styled from "styled-components";
+const Main = styled.div`
+h2{
+    margin: 0;
+    padding: 20px 0;
+}
+`;
+
 
 export default function SignUp() {
     const { form, onChange, resetState } = useForm({ email: "", password: "" })
@@ -58,7 +66,7 @@ export default function SignUp() {
     }
 
     return (
-        <div>
+        <Main>
             <h2>SignUp</h2>
             <form onSubmit={handleClick}>
                 <input
@@ -83,6 +91,6 @@ export default function SignUp() {
             </form>
 
             <button onClick={goToback}>Voltar</button>
-        </div>
+        </Main>
     )
 }
