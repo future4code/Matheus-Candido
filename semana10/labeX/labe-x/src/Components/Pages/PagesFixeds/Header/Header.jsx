@@ -5,11 +5,9 @@ import icon from '../../../../imgs/icon-space.jpg'
 import { useEffect } from 'react';
 
 
-
-
 export default function Header() {
     const history = useHistory()
-
+console.log(history)
     function usePageViews() {
         let location = useLocation()
         React.useEffect(() => {
@@ -33,6 +31,7 @@ export default function Header() {
         <Main>
             <Logo>
                 <img src={icon} alt="" /> <h2>Future &#x2716;space</h2>
+                {history.location.pathname === "/" ? <div></div>: <div></div>}
             </Logo>
         </Main>
     )

@@ -15,6 +15,16 @@ export const Main = styled.div`
         left: 45%;
         font-weight: bold;
     }
+    @media screen and (max-width: 400px){
+        min-height: 80vh;
+        h1{
+            margin: 0;
+            font-size: 20px;
+        }
+        span{
+            font-size: 20px;
+        }
+    }
 `
 
 export const ButtonMenu = styled.button`
@@ -32,15 +42,23 @@ export const ButtonMenu = styled.button`
     :hover{
         border: 1px black solid;
     }
+    @media screen and (max-width: 400px){
+        font-size: 5px;
+        padding: 3px 6px;
+        top: -30px;
+        left: 35%;
+    }
 `
 
 export const DivCarousel = styled.div`
-padding: 100px 100px;
-/* height: 70%; */
+    padding: 100px 100px;
+    @media screen and (max-width: 400px){
+        padding: 70px 10px;
+    }
 `
 
 export const DivMap = styled.div`
-    background:  url(${props => props.imagem });
+    background:  url(${props => props.imagem});
     background-size: cover;
 /* background-color: rgba(12, 12, 12, 0.7); */
     border-radius: 7px;
@@ -64,4 +82,9 @@ export const DivMap = styled.div`
     display: relative; 
     left: 50%;
     top: 50%;
+    @media screen and (max-width: 400px){
+        h2{
+            padding: 30px 0;
+        }
+    }
 `;

@@ -12,33 +12,33 @@ import Header from '../Pages/PagesFixeds/Header/Header'
 
 export default function Router() {
     return (
-        <BrowserRouter>
-            <Switch>
-                <Route exact path="/">
-                    <Home />
-                </Route>
-                <Route exact path="/adm/signin">
-                    <SignIn />
-                </Route>
-                <Route exact path="/adm/signup">
-                    <SignUp />
-                </Route>
-                <Route exact path="/adm/trips/create">
-                    <CreateTripPage />
-                </Route>
-                <Route exact path="/trips/list">
-                    <ListTripsPage />
-                </Route>
-                <Route exact path="/trips/details/:id">
-                    <TripDetailsPage />
-                </Route>
-                <Route exact path="/application-form/:id">
-                    <ApplicationForm />
-                </Route>
-                <Route >
-                    <NotFound />
-                </Route>
-            </Switch>
-        </BrowserRouter>
+            <div>
+                <Switch>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route exact path="/adm/signin">
+                        <SignIn />
+                    </Route>
+                    <Route exact path="/adm/signup">
+                        <SignUp />
+                    </Route>
+                    <Route exact path="/adm/trips/create">
+                        <CreateTripPage />
+                    </Route>
+                    <Route exact path="/trips/list">
+                        <ListTripsPage />
+                    </Route>
+                    <Route exact path="/trips/details/:id">
+                        <TripDetailsPage />
+                    </Route>
+                    <Route exact path="/application-form/:id">
+                        <ApplicationForm />
+                    </Route>
+                    <Route >
+                        <NotFound />
+                    </Route>
+                </Switch>
+            </div>
     )
 }

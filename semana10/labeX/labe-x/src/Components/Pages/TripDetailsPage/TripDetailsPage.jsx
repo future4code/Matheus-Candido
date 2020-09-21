@@ -9,7 +9,6 @@ import { Main, Div, Buttons } from './styles'
 import Candidates from './Candidates/Candidates'
 
 export default function TripDetailsPage() {
-    // const trips = useTripList()
     const pathParams = useParams()
     const [trip, setTrip] = useState([])
     const history = useHistory()
@@ -18,7 +17,7 @@ export default function TripDetailsPage() {
         history.push("/")
     }
     const goToBack = () => {
-        history.back()
+        history.goBack()
     }
     const getTripDetail = () => {
         axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-jackson/trip/${pathParams.id}`, {
@@ -27,8 +26,23 @@ export default function TripDetailsPage() {
             }
         }).then(r => {
             setTrip(r.data.trip)
+            // console.log(r.data.trip.candidates)
         }).catch(e => {
             console.log(e)
+        })
+    }
+
+    const decideCandidate = (approve, candidateId) => {
+        const body = {
+            approve: approve
+        }
+
+        axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-jackson/trips/${pathParams.id}/candidates/${candidateId}/decide`, body, {
+            headers: {
+                auth: window.localStorage.getItem('token')
+            }
+        }).then(() => {
+            getTripDetail()
         })
     }
     useEffect(() => {
@@ -42,14 +56,18 @@ export default function TripDetailsPage() {
                 <Div>
                     <Buttons onClick={goToBack}>Voltar</Buttons>
                     <Buttons onClick={goToHome}>Home</Buttons>
-                    <p><b>Nome:</b> {trip.name}</p>
+                    <p><b>Nome da viajem:</b> {trip.name}</p>
                     <p><b>Planeta:</b> {trip.planet}</p>
                     <p><b>Duração:</b> {trip.durationInDays} dias</p>
                     <p><b>Descrição:</b> {trip.description}</p>
                 </Div>
-                <div>
-                    <Candidates />
-                </div>
+                {trip ?
+                    <div>
+                        <Candidates candidates={trip.candidates} 
+                        decideCandidate={decideCandidate}
+                        />
+                    </div>
+                    : <div>Carregando..</div>}
             </div>
         </Main>
     )

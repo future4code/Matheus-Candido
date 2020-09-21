@@ -34,6 +34,13 @@ export const Div = styled.div`
         font-size: 20px;
         padding-right: 10px;
     }
+    div{
+        padding: 5px 0;
+    }
+    h2{
+            margin: 0;
+            padding: 10px;
+        }
 `;
 
 export const Buttons = styled.button`
@@ -56,4 +63,23 @@ export const Buttons = styled.button`
     :active {
         top: -30px;
     }
+`;
+
+export const DivMap = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    strong {
+        padding: 5px 7px;
+        pointer-events: none;
+    }
+    img{
+        margin-left: 10px;
+        width: 25px;
+        border: solid transparent 1px;
+    :hover{
+        transform: scale(1.2);
+        cursor: pointer;
+    }
+}
 `;

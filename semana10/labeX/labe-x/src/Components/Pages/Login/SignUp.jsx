@@ -62,7 +62,6 @@ export default function SignUp() {
                 alert("cadastro efetuado!")
             }).catch(e => {
                 alert("Registro não efetuado")
-                console.log(e)
             })
     }
     const handleClick = (event) => {

@@ -27,10 +27,9 @@ export default function SignIn() {
                 window.localStorage.setItem("token", r.data.token)
                 alert("Login feito")
                 history.push("/adm/trips/create")
-                console.log(r)
+                
             }).catch(e => {
                 alert("Login invalido")
-                console.log(e)
             })
     }
     const handleSubmit = (event) => {

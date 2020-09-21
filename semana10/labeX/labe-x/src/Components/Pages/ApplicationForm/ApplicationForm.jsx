@@ -31,9 +31,9 @@ export default function ApplicationForm() {
         }
         axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-jackson/trips/${pathParams.id}/apply`, body)
             .then((r) => {
-                console.log(r)
+                alert("Registro efetuado com sucesso!")
             }).catch((e) => {
-                console.log(e)
+                alert("Registro não efetuado!")
             })
     }
 

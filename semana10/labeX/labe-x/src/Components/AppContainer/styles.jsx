@@ -11,6 +11,9 @@ export const Main = styled.main`
     height: 100vmin;
     display: flex;
     flex-direction: column;
+    @media screen and (max-width: 400px){
+        min-height: 100vh;
+    }
 `;
 
 export const Nav = styled.header`

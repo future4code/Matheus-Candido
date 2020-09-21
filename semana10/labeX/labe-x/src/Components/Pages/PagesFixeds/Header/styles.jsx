@@ -13,6 +13,12 @@ export const Main = styled.header`
         top: 1%;
         left: 13%;
     }
+    @media screen and (max-width: 400px){
+        h2{
+            font-size: 15px;
+            left: 15%;
+        }
+    }
 `;
 
 export const Logo = styled.div`
