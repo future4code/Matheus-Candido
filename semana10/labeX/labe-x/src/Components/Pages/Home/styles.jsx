@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import background from '../../../imgs/1876.jpg'
 
 export const Main = styled.div`
-    height: 100%;
+    height: 83vmin;
     background-image: url(${background});
     background-size: cover;
     span{
@@ -16,7 +16,7 @@ export const Main = styled.div`
         font-weight: bold;
     }
     @media screen and (max-width: 400px){
-        min-height: 80vh;
+        height: 70vh;
         h1{
             margin: 0;
             font-size: 20px;
