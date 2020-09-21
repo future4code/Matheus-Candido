@@ -1,0 +1,67 @@
+import styled from 'styled-components'
+import background from '../../../imgs/1876.jpg'
+
+export const Main = styled.div`
+    height: 100%;
+    background-image: url(${background});
+    background-size: cover;
+    span{
+        margin: 0;
+        font-size: 40px;
+        font-weight: 900;
+        color: #fff;
+        position: absolute;
+        top: 4%;
+        left: 45%;
+        font-weight: bold;
+    }
+`
+
+export const ButtonMenu = styled.button`
+    position: relative;
+    top: -40px;
+    left: 42%;
+    color: #fff;
+    background-color: blueviolet;
+    outline: none;
+    border: 1px transparent solid;;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    :hover{
+        border: 1px black solid;
+    }
+`
+
+export const DivCarousel = styled.div`
+padding: 100px 100px;
+/* height: 70%; */
+`
+
+export const DivMap = styled.div`
+    background:  url(${props => props.imagem });
+    background-size: cover;
+/* background-color: rgba(12, 12, 12, 0.7); */
+    border-radius: 7px;
+    margin: 20px 20px;
+    font-weight: 400;
+    text-align: center;
+    padding: 20px 10px;
+    border-bottom: 3px rgb(0, 255, 170) solid;
+    border-radius: 0 0 5px 5px;
+    h1,h2 {
+        margin: 0;
+        padding: 150px 0;
+        width: 100%;
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 1.25rem;
+        text-shadow: 4px 4px 3px rgb(12, 12, 12);
+        pointer-events: stroke;
+        cursor: help;
+    }
+    display: relative; 
+    left: 50%;
+    top: 50%;
+`;

@@ -8,6 +8,7 @@ import ListTripsPage from '../Pages/ListTripsPage/ListTripsPage'
 import TripDetailsPage from '../Pages/TripDetailsPage/TripDetailsPage'
 import CreateTripPage from '../Pages/CreateTripPage/CreateTripPage'
 import ApplicationForm from '../Pages/ApplicationForm/ApplicationForm'
+import Header from '../Pages/PagesFixeds/Header/Header'
 
 export default function Router() {
     return (

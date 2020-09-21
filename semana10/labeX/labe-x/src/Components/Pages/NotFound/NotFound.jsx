@@ -1,23 +1,31 @@
 import React from 'react'
-import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
 import notFound from './img/404.gif'
+import { Container, Content, Main } from './styles'
 
-const Main = styled.main`
-min-height: 100vh;
-display: flex;
-justify-content: flex-end;
-align-items: center;
-flex-direction: column;
-`;
+export default function NotFound(props) {
+    const [mouseMove, setMouseMove] = React.useState({ x: 0, y: 0 })
+    const history = useHistory()
 
-
-export default function NotFound() {
+    const goToHome = () => {
+        history.push("/")
+    }
+    const container = (e) => {
+        setMouseMove({
+            x: - e.clientX/5,
+            y: - e.clientY/5
+        })
+    }
     return (
         <Main>
-            <h2>Page Not Found FI DA RAPARIGA!!! 404 aaaaaaaaa</h2>
-            <div><img src={notFound} alt="" /></div>
-            
-            
+            <Container onMouseMove={container} move={mouseMove}>
+                <Content>
+                    <h2>404</h2>
+                    <h4>Opps! Página não encontrada</h4>
+                    <p>A página que você está procurando não existe. Talvez o endereço ou a página tenha sido movida.</p>
+                    <a onClick={goToHome}>Ir Para a página inicial</a>
+                </Content>
+            </Container>
         </Main>
     )
 }

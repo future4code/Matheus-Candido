@@ -1,22 +1,34 @@
 import axios from 'axios'
 import React from 'react'
-import { useEffect } from 'react'
+import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
-// import { DoSignIn, DoSignUp } from '../../ConfigAxios/ConfigAxios'
 import useForm from '../../Hooks/useForm'
-import styled from "styled-components";
-const Main = styled.div`
-h2{
-    margin: 0;
-    padding: 20px 0;
-}
-`;
+import { ButtonLogin, InputContainer, Main, TextCenter } from './styles'
 
+export const ButtonsMenu = styled.button`
+    position: relative;
+    top: -258px;
+    right: -800px;
+    color: #fff;
+    background-color: blueviolet;
+    outline: none;
+    border: 1px transparent solid;;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    :hover{
+        border: 1px black solid;
+    }
+`;
 
 export default function SignUp() {
     const { form, onChange, resetState } = useForm({ email: "", password: "" })
 
     const history = useHistory()
+    const goToHome = () => {
+        history.push("/")
+    }
     const goToback = () => {
         history.goBack("/adm/signin")
     }
@@ -48,7 +60,7 @@ export default function SignUp() {
                     doSignIn()
                     history.push("/adm/trips/create")
                 }
-                console.log("cadastro feito")
+                alert("cadastro efetuado!")
             }).catch(e => {
                 alert("Registro não efetuado")
                 console.log(e)
@@ -57,7 +69,6 @@ export default function SignUp() {
     const handleClick = (event) => {
         event.preventDefault()
         doSignUp()
-        console.log(form.email)
         resetState()
     }
     const handleInputChange = (event) => {
@@ -67,30 +78,39 @@ export default function SignUp() {
 
     return (
         <Main>
-            <h2>SignUp</h2>
+            <div>
+                <ButtonsMenu onClick={goToback}>Voltar</ButtonsMenu>
+                <ButtonsMenu onClick={goToHome}>Home</ButtonsMenu>
+            </div>
             <form onSubmit={handleClick}>
-                <input
-                    type="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleInputChange}
-                    required
-                />
-                <input
-                    type="text"
-                    name="password"
-                    pattern="\d{3,}"
-                    value={form.password}
-                    onChange={handleInputChange}
-                    placeholder="Password"
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\1)){8,}"
-                    title="A senha precisa conter 1 dígito, 1 letra maiúscula, 1 letra minúscula, 1 caractere especial e conter no mínimo 8 dos caracteres mensionados!"
-                    required
-                />
-                <button >Cadastrar</button>
+                <TextCenter>SignUp</TextCenter>
+                <InputContainer>
+                    <input
+                        type="text"
+                        name="email"
+                        value={form.email}
+                        onChange={handleInputChange}
+                        pattern="[A-Za-z]{3,}"
+                        title="No mínimo tres letras"
+                        required
+                    />
+                    <label htmlFor="email">Email</label>
+                </InputContainer>
+                <InputContainer>
+                    <input
+                        type="password"
+                        name="password"
+                        // pattern="\d{3,}"
+                        value={form.password}
+                        onChange={handleInputChange}
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]){8,}"
+                        title="A senha precisa conter 1 dígito, 1 letra maiúscula, 1 letra minúscula, 1 caractere especial e conter no mínimo 8 dos caracteres mensionados!"
+                        required
+                    />
+                    <label htmlFor="password">Senha</label>
+                </InputContainer>
+                <ButtonLogin >Cadastrar</ButtonLogin>
             </form>
-
-            <button onClick={goToback}>Voltar</button>
         </Main>
     )
 }

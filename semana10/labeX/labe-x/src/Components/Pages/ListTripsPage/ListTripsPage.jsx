@@ -1,19 +1,14 @@
-import axios from 'axios'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import styled from "styled-components";
-const Main = styled.div`
-min-height: 100vh;
-padding: 20px 0px;
-h2{
-    margin: 0;
-    padding: 20px 0;
-}
-`;
-
+import { useTripList } from '../../Hooks/useTripsList';
+import './styles.scss'
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+import { Main, DivMenu, DivMap, Buttons, ButtonsMenu } from './styles'
 
 export default function ListTripsPage() {
-    const [trips, setTrips] = React.useState([])
+    const trips = useTripList()
+
     const history = useHistory()
     const token = window.localStorage.getItem("token")
 
@@ -25,36 +20,65 @@ export default function ListTripsPage() {
     }
     const goToDetailsTrip = (history, id) => {
         history.push(`/trips/details/${id}`)
+        console.log(id)
     }
     const goToApplicationForm = (history, id) => {
         history.push(`/application-form/${id}`)
         console.log(id)
     }
 
-    const getTrips = () => {
-        axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-jackson/trips")
-            .then(r => {
-                console.log(r.data.trips)
-                setTrips(r.data.trips)
-            })
+    const responsive = {
+        superLargeDesktop: {
+            breakpoint: { max: 4000, min: 3000 },
+            items: 5
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 3,
+            paritialVisibilityGutter: 60
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2,
+            paritialVisibilityGutter: 50
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1,
+            paritialVisibilityGutter: 30
+        }
+    };
+    const settings = {
+        infinite: true,
+        autoPlay: true
     }
-
-    React.useEffect(() => {
-        getTrips()
-    }, [])
-
     return (
         <Main>
-            <h2>ListTripsPage</h2>
-            <button onClick={goToback} >Voltar</button>
-            <button onClick={goToHome}>Home</button>
-            {trips.map(t => {
-                return (
-                    <div key={t.id}>
-                        <li id={t.id} > {t.name}</li>{token ? <button onClick={() => goToDetailsTrip(history, t.id)}>Detalhes</button> : <button onClick={() => goToApplicationForm(history, t.id)}>Me inscrever</button>}
-                    </div>
-                )
-            })}
-        </Main>
+            <DivMenu>
+                <span>ListTripsPage</span>
+                <ButtonsMenu onClick={goToback} >Voltar</ButtonsMenu>
+                <ButtonsMenu onClick={goToHome}>Home</ButtonsMenu>
+            </DivMenu>
+            <div>
+                <Carousel
+                    responsive={responsive}
+                    {...settings}
+                >
+                    {trips.map(t => {
+                        return (
+                            <DivMap key={t.id}>
+                                <h1>{t.name}</h1>
+                                <h2>Planeta: {t.planet}</h2>
+                                {
+                                    token ?
+                                        <Buttons onClick={() => goToDetailsTrip(history, t.id)}>Detalhes</Buttons> :
+                                        <Buttons onClick={() => goToApplicationForm(history, t.id)}>Me inscrever</Buttons>
+                                }
+                            </DivMap>
+                        )
+                    })}
+                </Carousel>
+            </div>
+        </Main >
     )
 }

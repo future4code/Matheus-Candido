@@ -1,20 +1,16 @@
 import axios from 'axios'
 import React from 'react'
-import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import useForm from '../../Hooks/useForm'
-import styled from "styled-components";
-const Main = styled.div`
-h2{
-    margin: 0;
-    padding: 20px 0;
-}`;
-
+import { Main, TextCenter, InputContainer, ButtonLogin, SpanSignUp, ButtonsMenu } from './styles'
 
 export default function SignIn() {
     const { form, onChange, resetState } = useForm({ email: "", password: "" })
-
     const history = useHistory()
+
+    const goToHome = () => {
+        history.push("/")
+    }
     const goToback = () => {
         history.goBack()
     }
@@ -50,31 +46,38 @@ export default function SignIn() {
 
     return (
         <Main>
-            <h2>SignIn</h2>
+            <div>
+                <ButtonsMenu onClick={goToback}>Voltar</ButtonsMenu>
+                <ButtonsMenu onClick={goToHome}>Home</ButtonsMenu>
+            </div>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleInputChange}
-                    // pattern="[A-Za-z]{3,}"
-                    title= "No mínimo tres letras"
-                    required
-                />
-                <input
-                    type="password"
-                    name="password"
-                    value={form.password}
-                    onChange={handleInputChange}
-                    // pattern={"/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/"}
-                    required
-                />
-                <button >Logar</button>
+                <TextCenter>SignIn</TextCenter>
+                <InputContainer>
+                    <input
+                        type="text"
+                        name="email"
+                        value={form.email}
+                        onChange={handleInputChange}
+                        // pattern="[A-Za-z]{3,}"
+                        // title="No mínimo tres letras"
+                        required
+                    />
+                    <label htmlFor="email">Email</label>
+                </InputContainer>
+
+                <InputContainer>
+                    <input
+                        type="password"
+                        name="password"
+                        value={form.password}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <label htmlFor="password">Senha</label>
+                </InputContainer>
+                <ButtonLogin >Logar</ButtonLogin>
             </form>
-
-
-            <button onClick={goToSignUp}>Cadastre-se</button>
-            <button onClick={goToback}>Voltar</button>
+            <SpanSignUp onClick={goToSignUp}>Não é cadastrado? </SpanSignUp>
         </Main>
     )
 }

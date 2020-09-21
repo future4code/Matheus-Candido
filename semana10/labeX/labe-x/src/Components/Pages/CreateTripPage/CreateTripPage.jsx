@@ -5,18 +5,12 @@ import { useProtectCreateTripPage } from '../../ProtectedRoute/ProtectCreateTrip
 import useForm from '../../Hooks/useForm'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import styled from "styled-components";
-const Main = styled.div`
-h2{
-    margin: 0;
-    padding: 20px 0;
-}
-`;
-
+import { ButtonLogin, InputContainer, Main, FormContainer, TextCenter, ButtonMenu } from './styles'
 
 export default function CreateTripPage() {
     const { form, onChange, resetState } = useForm({ name: "", planet: "", date: "", description: "", durationInDays: "" })
     const [selectPlanets, setSelectPlanets] = useState([])
+    const date = new Date("2021")
 
     const history = useHistory()
     const token = window.localStorage.getItem("token")
@@ -70,12 +64,6 @@ export default function CreateTripPage() {
         const { name, value } = event.target
         onChange(name, value)
 
-        console.log(form.name,
-            form.planet,
-            form.date,
-            form.description,
-            form.durationInDays)
-
     }
     useEffect(() => {
         getPlanets()
@@ -83,66 +71,87 @@ export default function CreateTripPage() {
     useProtectCreateTripPage()
     return (
         <Main>
-            <h2>CreateTripPage</h2>
-            <button onClick={goToList}>Criar Viajem</button>
-            <button onClick={verifica}>Voltar</button>
-            <button onClick={goToHome}>Home</button>
+            <div>
+                <FormContainer>
+                    <ButtonMenu onClick={goToList}>Viajens existentes</ButtonMenu>
+                    <ButtonMenu onClick={verifica}>Voltar</ButtonMenu>
+                    <ButtonMenu onClick={goToHome}>Home</ButtonMenu>
+                    <form onSubmit={handleSubmit}>
+                        <TextCenter>Create Trip Page</TextCenter>
+                        <InputContainer>
+                            <input
+                                type="name"
+                                name="name"
+                                value={form.name}
+                                onChange={handleInputChange}
+                                pattern="(\D{5,}\s*)"
+                                required
+                            />
+                            <label htmlFor="name">Nome da viajem</label>
+                        </InputContainer>
+                        <InputContainer>
+                            <select
+                                type="planet"
+                                name="planet"
+                                value={form.planet}
+                                onChange={handleInputChange}
+                                required
+                            >
+                                <option value={undefined} key={undefined}>Selecione um país</option>
+                                {selectPlanets.map((p) => {
+                                    if (p.isPlanet === true) {
+                                        return (
+                                            <option key={p.name}>{p.name}</option>
+                                        )
+                                    }
+                                })}
+                            </select>
+                        </InputContainer>
+                        <InputContainer>
+                            <input
+                                type="date"
+                                name="date"
+                                value={form.date}
+                                onChange={handleInputChange}
+                                pattern="dd/mm/yyyy"
+                                min="01/12/2021"
+                                required
+                            />
+                            <label htmlFor="date">Data</label>
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="name"
-                    name="name"
-                    value={form.name}
-                    onChange={handleInputChange}
-                    placeholder="Name"
-                    // pattern="(\D{5,}\s*)"
-                    required
-                />
-                <select
-                    type="planet"
-                    name="planet"
-                    value={form.planet}
-                    onChange={handleInputChange}
-                    placeholder="Planet"
-                    required
-                >
-                    {selectPlanets.map((p) => {
-                        if (p.isPlanet === true) {
-                            return (
-                                <option key={p.name}>{p.name}</option>
-                            )
-                        }
-                    })}
-                </select>
-                <input
-                    type="date"
-                    name="date"
-                    value={form.date}
-                    onChange={handleInputChange}
-                    placeholder="Date"
-                    pattern={"/ (d{2})/d{2}/d{2021,}"}
-                    required
-                />
-                <input
-                    type="description"
-                    name="description"
-                    value={form.description}
-                    onChange={handleInputChange}
-                    placeholder="Description"
-                    pattern="(\D{5,}\s*)"
-                    required
-                />
-                <input
-                    type="number"
-                    name="durationInDays"
-                    value={form.durationInDays}
-                    onChange={handleInputChange}
-                    placeholder="Duration"
-                    min={0}
-                    required
-                />
-                <button>Criar</button>
-            </form>
+                        </InputContainer>
+                        <InputContainer>
+                            <input
+                                type="description"
+                                name="description"
+                                value={form.description}
+                                onChange={handleInputChange}
+                                // pattern="(\D{5,}\s*)"
+                                title="lala"
+                                required
+                            />
+                            <label htmlFor="description">Description</label>
+
+                        </InputContainer>
+                        <InputContainer>
+                            <input
+                                type="number"
+                                name="durationInDays"
+                                value={form.durationInDays}
+                                onChange={handleInputChange}
+                                min={0}
+                                required
+                            />
+                            <label htmlFor="number">Duration</label>
+
+                        </InputContainer>
+
+                        <ButtonLogin>Criar</ButtonLogin>
+                    </form>
+                </FormContainer>
+            </div>
+
+
 
         </Main>
     )
