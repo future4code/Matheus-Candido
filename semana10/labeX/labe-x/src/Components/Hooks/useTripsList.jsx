@@ -7,7 +7,6 @@ export const useTripList = () => {
         axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-jackson/trips/')
             .then((r) => {
                 setTrip(r.data.trips)
-                console.log(r.data.trips)
             }).catch((e)=>{
                 console.log(e)
             })

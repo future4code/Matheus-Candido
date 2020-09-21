@@ -21,10 +21,8 @@ export default function CreateTripPage() {
     const goToList = () => {
         history.push("/trips/list")
     }
-    const verifica = () => {
-        if (token) {
-            alert("Voce já esta logado")
-        } else { history.goBack() }
+    const goToBack = () => {
+        history.goBack()
     }
 
     const createTrip = () => {
@@ -68,13 +66,13 @@ export default function CreateTripPage() {
     useEffect(() => {
         getPlanets()
     }, [])
-    useProtectCreateTripPage()
+    useProtectCreateTripPage(token)
     return (
         <Main>
             <div>
                 <FormContainer>
                     <ButtonMenu onClick={goToList}>Viajens existentes</ButtonMenu>
-                    <ButtonMenu onClick={verifica}>Voltar</ButtonMenu>
+                    <ButtonMenu onClick={goToBack}>Voltar</ButtonMenu>
                     <ButtonMenu onClick={goToHome}>Home</ButtonMenu>
                     <form onSubmit={handleSubmit}>
                         <TextCenter>Create Trip Page</TextCenter>

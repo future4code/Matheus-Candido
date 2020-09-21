@@ -41,7 +41,6 @@ export default function ApplicationForm() {
         axios.get("https://restcountries.eu/rest/v2/all")
             .then((r) => {
                 setSelectCountry(r.data)
-                console.log(r.data)
             }).catch((e) => {
                 console.log(e)
             })

@@ -36,7 +36,6 @@ export default function SignIn() {
     const handleSubmit = (event) => {
         event.preventDefault()
         doSignIn()
-        console.log(form.email)
         resetState()
     }
     const handleInputChange = (event) => {

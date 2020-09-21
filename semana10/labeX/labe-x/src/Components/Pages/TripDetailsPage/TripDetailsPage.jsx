@@ -4,22 +4,9 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { useProtectTripDetailsPage } from '../../ProtectedRoute/ProtectTripDetailsPage'
-import styled from "styled-components";
-import { useTripList } from '../../Hooks/useTripsList'
-import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Main, Div, Buttons } from './styles'
 import Candidates from './Candidates/Candidates'
-
-// const Main = styled.div`
-// /* min-height: 100vh; */
-// color: white;
-// h2{
-//     margin: 0;
-//     padding: 20px 0;
-// }
-// `;
-
 
 export default function TripDetailsPage() {
     // const trips = useTripList()

@@ -44,7 +44,6 @@ export default function SignUp() {
                 if (r.status) {
                     history.push("/adm/trips/create")
                 }
-                console.log("login feito")
             }).catch(e => {
                 console.log(e)
             })

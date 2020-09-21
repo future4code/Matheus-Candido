@@ -20,11 +20,9 @@ export default function ListTripsPage() {
     }
     const goToDetailsTrip = (history, id) => {
         history.push(`/trips/details/${id}`)
-        console.log(id)
     }
     const goToApplicationForm = (history, id) => {
         history.push(`/application-form/${id}`)
-        console.log(id)
     }
 
     const responsive = {

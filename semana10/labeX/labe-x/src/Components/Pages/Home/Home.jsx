@@ -14,7 +14,6 @@ export default function Home() {
     const history = useHistory()
     let token = window.localStorage.getItem("token")
 
-
     const goToList = () => {
         history.push("/trips/list")
     }
@@ -79,7 +78,6 @@ export default function Home() {
                     {...settings}
                 >
                     {images.map(i => {
-                        console.log(i.image)
                         return (
                             <DivMap key={i.image} imagem={i.image}>
                                 <h2>Fotos reais!!!</h2>
