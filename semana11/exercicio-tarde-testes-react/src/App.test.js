@@ -1,13 +1,7 @@
 import React from "react";
 import { render, fireEvent, getByText, getByRole, getByPlaceholderText, getByDisplayValue } from "@testing-library/react";
 import App from "./App";
-import { Post } from "./components/Post";
 
-const post = () => {
-    return (
-        <Post />
-    )
-}
 
 test("Testando o input que eu irei fracassar segundo o notion", () => {
     //preparação
