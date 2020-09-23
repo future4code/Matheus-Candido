@@ -6,14 +6,24 @@ export const Main = styled.div`
     background: url(${background});
     background-size: cover;
     h2{
+        position: fixed;
+        top: 5px;
+        left: 820px;
+        color: white;
+        font-weight: 900;
         margin:0;
         padding: 20px 0;
+    }
+    @media screen and (max-width: 1700px){
+        h2 {
+            left: 675px;
+        }
     }
 `;
 
 export const ButtonMenu = styled.button`
     position: relative;
-    top: 13px;
+    top: 83px;
     color: #fff;
     background-color: blueviolet;
     outline: none;
@@ -24,6 +34,10 @@ export const ButtonMenu = styled.button`
     cursor: pointer;
     :hover{
         border: 1px black solid;
+    }
+    @media screen and (max-width: 1700px){
+        top: 15px;
+        
     }
 `
 

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { useProtectCreateTripPage } from '../../ProtectedRoute/ProtectCreateTripPage'
+import { useProtect } from '../../ProtectedRoute/useProtect'
 import useForm from '../../Hooks/useForm'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -66,7 +66,7 @@ export default function CreateTripPage() {
     useEffect(() => {
         getPlanets()
     }, [])
-    useProtectCreateTripPage(token)
+    useProtect()
     return (
         <Main>
             <div>
@@ -148,9 +148,6 @@ export default function CreateTripPage() {
                     </form>
                 </FormContainer>
             </div>
-
-
-
         </Main>
     )
 }

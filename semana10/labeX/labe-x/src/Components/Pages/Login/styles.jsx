@@ -23,8 +23,8 @@ export const TextCenter = styled.span`
 
 export const ButtonsMenu = styled.button`
     position: relative;
-    top: -248px;
-    right: -800px;
+    top: -247px;
+    right: -871px;
     color: #fff;
     background-color: blueviolet;
     outline: none;
@@ -35,6 +35,31 @@ export const ButtonsMenu = styled.button`
     cursor: pointer;
     :hover{
         border: 1px black solid;
+    }
+    @media screen and (max-width: 1700px){
+        top: -180px;
+        right: -720px;
+    }
+`;
+
+export const ButtonsMenuSignUp = styled.button`
+    position: relative;
+    top: -258px;
+    right: -871px;
+    color: #fff;
+    background-color: blueviolet;
+    outline: none;
+    border: 1px transparent solid;;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    :hover{
+        border: 1px black solid;
+    }
+    @media screen and (max-width: 1700px){
+        top: -190px;
+        right: -720px;
     }
 `;
 

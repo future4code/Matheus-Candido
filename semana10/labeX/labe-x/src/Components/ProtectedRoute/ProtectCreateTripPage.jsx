@@ -6,10 +6,8 @@ export const useProtectCreateTripPage = (parametro) => {
 
     useEffect(() => {
         const token = window.localStorage.getItem("token");
-        if (token) {
-            history.push("/adm/trips/create");
-        } else {
+        if (!token) {
             history.push("/adm/signin");
-        }
+        } 
     }, [history, parametro]);
 };

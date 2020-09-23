@@ -3,15 +3,15 @@ import { Div, DivMap } from '../styles'
 import ButtonsDecide from './ButtonsDecide'
 
 export default function Candidates(props) {
+    console.log(props.candidates)
     return (
         <div>
             <Div>
-                {props.candidates ?
+                {props.candidates  ?
                     <div >
                         {props.candidates.map((candidate) => {
                             return (
                                 <div >
-                                    {candidate ? <div>
                                         <h2>Candidatos</h2>
                                         <DivMap>
                                             <strong>{candidate.name}</strong>
@@ -21,8 +21,6 @@ export default function Candidates(props) {
                                             />
                                         </DivMap>
                                     </div>
-                                        : <h2>sem candidatos</h2>}
-                                </div>
                             )
                         })}
                     </div>

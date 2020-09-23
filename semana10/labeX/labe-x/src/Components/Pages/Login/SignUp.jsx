@@ -3,24 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import useForm from '../../Hooks/useForm'
-import { ButtonLogin, InputContainer, Main, TextCenter } from './styles'
-
-export const ButtonsMenu = styled.button`
-    position: relative;
-    top: -258px;
-    right: -800px;
-    color: #fff;
-    background-color: blueviolet;
-    outline: none;
-    border: 1px transparent solid;;
-    padding: 10px 20px;
-    text-transform: uppercase;
-    border-radius: 2px;
-    cursor: pointer;
-    :hover{
-        border: 1px black solid;
-    }
-`;
+import { ButtonLogin, InputContainer, Main, TextCenter, ButtonsMenuSignUp } from './styles'
 
 export default function SignUp() {
     const { form, onChange, resetState } = useForm({ email: "", password: "" })
@@ -77,8 +60,8 @@ export default function SignUp() {
     return (
         <Main>
             <div>
-                <ButtonsMenu onClick={goToback}>Voltar</ButtonsMenu>
-                <ButtonsMenu onClick={goToHome}>Home</ButtonsMenu>
+                <ButtonsMenuSignUp onClick={goToback}>Voltar</ButtonsMenuSignUp>
+                <ButtonsMenuSignUp onClick={goToHome}>Home</ButtonsMenuSignUp>
             </div>
             <form onSubmit={handleClick}>
                 <TextCenter>SignUp</TextCenter>

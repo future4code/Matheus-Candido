@@ -27,7 +27,7 @@ export const DivMenu = styled.div`
 export const ButtonsMenu = styled.button`
     position: relative;
     top: -240px;
-    left: 91%;
+    left: 92.8%;
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
@@ -43,6 +43,11 @@ export const ButtonsMenu = styled.button`
     }
     :active {
         top: -245px;
+    }
+    @media screen and (max-width: 1700px){
+        top: -178px;
+        left: 91.4%;
+
     }
 `;
 

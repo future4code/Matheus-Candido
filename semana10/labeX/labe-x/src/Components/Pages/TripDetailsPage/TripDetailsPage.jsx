@@ -3,7 +3,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { useProtectTripDetailsPage } from '../../ProtectedRoute/ProtectTripDetailsPage'
+import { useProtect } from '../../ProtectedRoute/useProtect'
 import 'react-multi-carousel/lib/styles.css';
 import { Main, Div, Buttons } from './styles'
 import Candidates from './Candidates/Candidates'
@@ -25,8 +25,7 @@ export default function TripDetailsPage() {
                 auth: localStorage.getItem("token")
             }
         }).then(r => {
-            setTrip(r.data.trip)
-            // console.log(r.data.trip.candidates)
+            setTrip(r.data.trip.candidates)
         }).catch(e => {
             console.log(e)
         })
@@ -48,7 +47,7 @@ export default function TripDetailsPage() {
     useEffect(() => {
         getTripDetail()
     }, [])
-    useProtectTripDetailsPage(getTripDetail)
+    useProtect()
     return (
         <Main>
             <span>TripDetailsPage</span>

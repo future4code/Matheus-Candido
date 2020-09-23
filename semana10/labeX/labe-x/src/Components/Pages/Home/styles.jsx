@@ -12,7 +12,7 @@ export const Main = styled.div`
         color: #fff;
         position: absolute;
         top: 4%;
-        left: 45%;
+        left: 47%;
         font-weight: bold;
     }
     @media screen and (max-width: 400px){
@@ -30,7 +30,7 @@ export const Main = styled.div`
 export const ButtonMenu = styled.button`
     position: relative;
     top: -40px;
-    left: 42%;
+    left: 42.5%;
     color: #fff;
     background-color: blueviolet;
     outline: none;
@@ -42,6 +42,9 @@ export const ButtonMenu = styled.button`
     :hover{
         border: 1px black solid;
     }
+    @media screen and (max-width: 1700px){
+        left: 40.6%;
+    }
     @media screen and (max-width: 400px){
         font-size: 5px;
         padding: 3px 6px;
@@ -52,6 +55,9 @@ export const ButtonMenu = styled.button`
 
 export const DivCarousel = styled.div`
     padding: 100px 100px;
+    @media screen and (max-width: 1700px){
+        padding: 40px 10px;
+    }
     @media screen and (max-width: 400px){
         padding: 70px 10px;
     }
