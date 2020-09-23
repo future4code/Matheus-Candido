@@ -5,18 +5,19 @@ import App from "./App";
 
 test("Testando o input que eu irei fracassar segundo o notion", () => {
     //preparação
-    const { getByRole, getByPlaceholderText } = render(<App />)
+    const { getByRole, getByPlaceholderText, getByText } = render(<App />)
 
-    let postInput = getByRole('textbox', {name: /Novo Post/i})
-    fireEvent.change(postInput)
-    expect(postInput).toEqual(true)
+    let postInput = getByPlaceholderText(/Novo Post/i)
+    const botaoAdicionar = getByText(/Adicionar/i)
 
-    // const botaoAdicionar = getByText(/Adicionar/i)
+    // execução
+    fireEvent.change(postInput, { target: { value: "teste" } })
+    fireEvent.click(botaoAdicionar)
 
-    //execução
-    // fireEvent.click(botaoAdicionar)
-    // const novoPost = getByText(post)
-    // expect(botaoAdicionar).toContainElement(novoPost)
-    //verificação
+    //verifica se o campo tem o valor
+    expect(getByText(/teste/i)).toBeInTheDocument()
+    
+    //verifica se o campo tem um valor vazio
+    // expect(postInput).toHaveValue("")
 
 })
