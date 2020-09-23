@@ -3,7 +3,7 @@ import { render, fireEvent, getByText, getByRole, getByPlaceholderText, getByDis
 import App from "./App";
 
 
-test("Testando o input que eu irei fracassar segundo o notion", () => {
+test("Testando o input que eu irei fracassar segundo o notion ' Ele acertou :( ' ", () => {
     //preparação
     const { getByRole, getByPlaceholderText, getByText } = render(<App />)
 
@@ -16,7 +16,7 @@ test("Testando o input que eu irei fracassar segundo o notion", () => {
 
     //verifica se o campo tem o valor
     expect(getByText(/teste/i)).toBeInTheDocument()
-    
+
     //verifica se o campo tem um valor vazio
     // expect(postInput).toHaveValue("")
 
