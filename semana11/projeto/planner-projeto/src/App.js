@@ -1,15 +1,16 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import { useAxiosConfigs } from './AxiosConfigs/AxiosConfigs';
 import Planner from './Componentes/Planner/Planner'
 
 function App() {
-  const { getTasks, tasks, deletTask,putEdit } = useAxiosConfigs()
+  // Recebe as funções e estado que estão no custom hook.
+  const { getTasks, tasks, deletTask } = useAxiosConfigs()
 
   return (
     <main className="App">
-      <Planner getTasks={getTasks} tasks={tasks} deleteEdit={deletTask} putEdit={putEdit} />
+      {/* Enviado as funções e estado recebidos acima em forma de props para o componente que esta sendo chamado abaixo. */}
+      <Planner getTasks={getTasks} tasks={tasks} deletTask={deletTask} />
     </main>
   );
 }

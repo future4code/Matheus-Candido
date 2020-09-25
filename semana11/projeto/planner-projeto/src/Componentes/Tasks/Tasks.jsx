@@ -1,8 +1,5 @@
-import axios from 'axios'
 import React from 'react'
-import { useEffect, useState } from 'react'
 import styled from "styled-components";
-import { useAxiosConfigs } from '../../AxiosConfigs/AxiosConfigs';
 
 const Main = styled.main`
 display: flex;
@@ -16,35 +13,11 @@ b{
 `;
 
 export default function Tasks(props) {
-    const { putEdit, deletTask } = useAxiosConfigs()
-    const [riscar, setRiscar] = useState(false)
-    const [segunda, setSegunda] = useState("")
-
-    const riscado = () => {
-        setRiscar(!riscar)
-    }
-
-    const edit = (id) => {
-        putEdit(id)
-    }
-
-    const delet = (id) => {
-        deletTask(id)
-    }
-
-
-    // {
-    //     tasks.map((list) => {
-
-    //             setSegunda(list.text)
-
-    //     })
-    // }
-
     return (
         <Main>
-            {/* {segunda} */}
-
+            {/* É feito um map para cada dia da semana. */}
+            {/* Dentro de cada map, dentro de seu return, é feito uma lógica de curto cicurto, 
+            onde se o dia pego no map recebido da lista é igual ao dia correspondente ele mapea todas as tarefas daquele dia. */}
             <div>
                 <h3>Segunda</h3>
                 {/* Map das tasks */}
@@ -53,10 +26,9 @@ export default function Tasks(props) {
                         <>
                             {
                                 list.day === "Segunda" &&
-                                <Div key={list.id} riscado={riscar} id={list.id} >
+                                <Div key={list.id} id={list.id} >
                                     <b>{list.text}</b>
-                                    <button onClick={() => delet(list.id)} >Deletar</button>
-                                    <button onClick={() => edit(list.id)}>Editar</button>
+                                    <button onClick={() => props.deletTask(list.id)}>Deletar</button>
                                 </Div>
                             }
                         </>
@@ -72,9 +44,9 @@ export default function Tasks(props) {
                         <>
                             {
                                 list.day === "Terça" &&
-                                <Div key={list.id} riscado={riscar} id={list.id}>
+                                <Div key={list.id} id={list.id}>
                                     <b>{list.text}</b>
-                                    {/* <button onClick={() => delet(list.id)} >Deletar</button> */}
+                                    <button onClick={() => props.deletTask(list.id)}>Deletar</button>
                                 </Div>
                             }
                         </>
@@ -90,9 +62,9 @@ export default function Tasks(props) {
                         <>
                             {
                                 list.day === "Quarta" &&
-                                <Div key={list.id} riscado={riscar} id={list.id}>
-                                    <b >{list.text}</b>
-                                    {/* <button onClick={() => delet(list.id)} >Deletar</button> */}
+                                <Div key={list.id} id={list.id}>
+                                    <b>{list.text}</b>
+                                    <button onClick={() => props.deletTask(list.id)}>Deletar</button>
                                 </Div>
                             }
                         </>
@@ -108,9 +80,9 @@ export default function Tasks(props) {
                         <>
                             {
                                 list.day === "Quinta" &&
-                                <Div key={list.id} riscado={riscar} id={list.id}>
-                                    <b >{list.text}</b>
-                                    {/* <button onClick={() => delet(list.id)} >Deletar</button> */}
+                                <Div key={list.id} id={list.id}>
+                                    <b>{list.text}</b>
+                                    <button onClick={() => props.deletTask(list.id)}>Deletar</button>
                                 </Div>
                             }
                         </>
@@ -126,9 +98,9 @@ export default function Tasks(props) {
                         <>
                             {
                                 list.day === "Sexta" &&
-                                <Div key={list.id} riscado={riscar} id={list.id}>
-                                    <b >{list.text}</b>
-                                    {/* <button onClick={() => delet(list.id)} >Deletar</button> */}
+                                <Div key={list.id} id={list.id}>
+                                    <b>{list.text}</b>
+                                    <button onClick={() => props.deletTask(list.id)}>Deletar</button>
                                 </Div>
                             }
                         </>
@@ -144,9 +116,9 @@ export default function Tasks(props) {
                         <>
                             {
                                 list.day === "Sábado" &&
-                                <Div key={list.id} riscado={riscar} id={list.id}>
-                                    <b >{list.text}</b>
-                                    <button onClick={() => delet(list.id)} >Deletar</button>
+                                <Div key={list.id} id={list.id}>
+                                    <b>{list.text}</b>
+                                    <button onClick={() => props.deletTask(list.id)}>Deletar</button>
                                 </Div>
                             }
                         </>
@@ -163,15 +135,14 @@ export default function Tasks(props) {
                         <>
                             {
                                 list.day === "Domingo" &&
-                                <Div key={list.id} riscado={riscar} id={list.id}>
-                                    <b >{list.text}</b>
-                                    <button onClick={() => delet(list.id)} >Deletar</button>
+                                <Div key={list.id} id={list.id}>
+                                    <b>{list.text}</b>
+                                    <button onClick={() => props.deletTask(list.id)}>Deletar</button>
                                 </Div>
                             }
                         </>
                     )
                 })}
-                {/* <button onClick={() => delet()} >Deletar</button> */}
             </div>
         </Main>
     )
