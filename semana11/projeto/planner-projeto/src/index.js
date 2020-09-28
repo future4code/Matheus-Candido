@@ -6,7 +6,7 @@ import Loader from './Assets/Loader/Loader';
 import { act } from '@testing-library/react';
 
 act(() => {
-  ReactDOM.render(<Loader />, container)
+  ReactDOM.render(<Loader />)
 })
 
 ReactDOM.render(
