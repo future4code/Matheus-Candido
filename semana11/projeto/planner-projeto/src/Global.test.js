@@ -2,7 +2,7 @@ import React from 'react'
 import { fireEvent, render, wait } from '@testing-library/react'
 import axios from 'axios'
 import userEvent from '@testing-library/user-event'
-import App from '../../App'
+import App from './App'
 
 //Define o mock de dados do get.
 axios.get = jest.fn().mockResolvedValue({
@@ -13,8 +13,8 @@ axios.post = jest.fn().mockResolvedValue()
 //Define o mock do delete.
 axios.delete = jest.fn().mockResolvedValue()
 
-describe('Receber e Criar tarefas', () => {
-    test('Testando a renderizando inicial', async () => {
+describe('Get & Create tasks', () => {
+    test('initial rendering', async () => {
         //Define o mock de dados do get.
         axios.get = jest.fn().mockResolvedValue({
             data: [{
@@ -33,27 +33,27 @@ describe('Receber e Criar tarefas', () => {
         expect(axios.get).toHaveBeenCalledWith('https://us-central1-labenu-apis.cloudfunctions.net/generic/planner-jackson-Matheus-Candido')
     })
 
-    test('Testando existencia do input', () => {
+    test('input existence', () => {
         //Defino em qual componente vou procurar aquio que quero testar.
         const { getByPlaceholderText } = render(<App />)
         //Procura pelo input presente no compoente a partir de seu placeholder.
-        const input = getByPlaceholderText(/digite sua task/i)
+        const input = getByPlaceholderText(/Digite a tarefa/i)
         //Espera encontrar esse input no documento.
         expect(input).toBeInTheDocument()
     })
 
-    test('Testando se o input funciona', () => {
+    test('if input works', () => {
         //Defino em qual componente vou procurar aquio que quero testar.
         const { getByPlaceholderText } = render(<App />)
         //Procura pelo input presente no compoente a partir de seu placeholder.
-        const input = getByPlaceholderText(/digite sua task/i)
+        const input = getByPlaceholderText(/Digite a tarefa/i)
         //Cria digita e seleciona valores fantasias no input e select.
         fireEvent.change(input, { target: { value: 'bananinha' } })
         //Espera que no input tenha esse valor criado acima.
         expect(input).toHaveValue('bananinha')
     })
 
-    test('Testando existencia do select', () => {
+    test('select existence', () => {
         //Defino em qual componente vou procurar aquio que quero testar.
         const { getByTestId } = render(<App />)
         //Constante que acessa o select apartir do id presente dentro da tag de abertura no jsx.
@@ -62,7 +62,7 @@ describe('Receber e Criar tarefas', () => {
         expect(select).toBeInTheDocument()
     })
 
-    test('Testando se o select funciona', () => {
+    test('if select works', () => {
         //Defino em qual componente vou procurar aquio que quero testar.
         const { getByTestId } = render(<App />)
         //Constante que acessa o select apartir do id presente dentro da tag de abertura no jsx.
@@ -76,7 +76,7 @@ describe('Receber e Criar tarefas', () => {
         expect(select).toHaveValue('Segunda')
     })
 
-    test('Testando se cria uma tarefa', async () => {
+    test('if tasks are created', async () => {
         //Define o mock de dados do post.
         axios.post = jest.fn().mockResolvedValue()
         //Define o mock de dados do get.
@@ -86,7 +86,7 @@ describe('Receber e Criar tarefas', () => {
         //Defino em qual componente vou procurar aquio que quero testar.
         const { getByPlaceholderText, getByText, getByTestId } = render(<App />)
         //Procura pelo input presente no compoente a partir de seu placeholder.
-        const input = getByPlaceholderText(/digite sua task/i)
+        const input = getByPlaceholderText(/Digite a tarefa/i)
         //Constante que acessa o select apartir do id presente dentro da tag de abertura no jsx.
         const select = getByTestId('select-day')
         //Procura no componente o botão com o mesmo nome abaixo.
@@ -116,8 +116,8 @@ describe('Receber e Criar tarefas', () => {
     })
 })
 
-describe('Lista de tarefas', () => {
-    test('Se o botão Deletar aparece na tela e se ele funciona', async () => {
+describe('Tasks list', () => {
+    test('if delete button shows in screen & it works ', async () => {
         //Define o mock de dados do delete.
         axios.delete = jest.fn().mockResolvedValue({})
         //Define o mock de dados do get.
@@ -130,7 +130,7 @@ describe('Lista de tarefas', () => {
         })
 
         //Seleciona qual componente ele vai renderizar.
-        const { findByText, getByText } = render(<App />)
+        const { findByText, getByAltText } = render(<App />)
 
         //Procura pelo texto na tela
         const tasks = await findByText(/junio jr/i)
@@ -146,7 +146,7 @@ describe('Lista de tarefas', () => {
         })
 
         //Verifica se o botão está na tela. Obs: Usando apenas '' ele procura exatamente o mesmo nome presente no documento.
-        const button = getByText('Deletar')
+        const button = getByAltText('Deletar tarefa')
         expect(button).toBeInTheDocument()
 
         //Simula o click do usuario no botão delete.

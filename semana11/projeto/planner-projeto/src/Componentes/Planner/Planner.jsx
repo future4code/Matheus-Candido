@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import '../../App.css';
 import { useForm } from '../../Hooks/Hooks';
 import Tasks from '../Tasks/Tasks';
+import { Main } from './styles';
+
 
 export default function Planner(props) {
     // Custom hook chamado para criar o formulário que irá contar no corpo do post.
@@ -45,11 +47,12 @@ export default function Planner(props) {
     })
 
     return (
-        <main className="App">
+        <Main className="App">
+            <h1>Crie uma tarefa</h1>
             {/* Form que irá conter todas as informações a serem enviadas na requisição do axios.post. */}
             <form onSubmit={handleSubimission}>
                 {/* Input contendo as informações necessárias para receber os dados digitados pelo usuário e enviá-los após conclusão desta ação. */}
-                <input name="text" value={form.text} onChange={handleInputChange} type="text" placeholder="Digite sua task" required />
+                <input name="text" value={form.text} onChange={handleInputChange} type="text" placeholder="Digite a tarefa" required />
 
                 {/* Select contendo as informações necessárias para identificar os valores digitados pelo usuário e enviá-los após conclusão desta ação. */}
                 <select
@@ -78,7 +81,7 @@ export default function Planner(props) {
             Nesse caso as duas funções de requisição do axios e um estado contendo a lista com todas as tarefas a ser renderizada na tela no componente Tasks. */}
             <Tasks tasks={props.tasks} deletTask={props.deletTask} putEdit={props.putEdit} />
 
-        </main>
+        </Main>
     );
 }
 
