@@ -8,6 +8,7 @@ describe('Testando a renderização do loading', () => {
         const { container, findByTestId } = render(<Loader />)
         //Pego o meu estado que está no componente Loader.
         const state = done
+        //Verifico se no estado inicial é undefined como eu defini lá no componente.
         expect(state).toEqual(undefined)
         //O que eu procuro.
         const animation = findByTestId(/animation-svg/)
