@@ -5,7 +5,7 @@ import Loader, { done } from './Loader'
 describe('Testando a renderização do loading', () => {
     test('Procurando pelo arquivo de imagem', () => {
         //Em qual componente eu procuro
-        const { container, findByTestId } = render(<Loader />)
+        const { findByTestId } = render(<Loader />)
         //Pego o meu estado que está no componente Loader.
         const state = done
         //Verifico se no estado inicial é undefined como eu defini lá no componente.
