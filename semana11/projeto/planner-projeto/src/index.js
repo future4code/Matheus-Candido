@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Loader from './Assets/Loader/Loader';
+import { act } from '@testing-library/react';
+
+act(() => {
+  ReactDOM.render(<Loader />, container)
+})
 
 ReactDOM.render(
   <React.StrictMode>

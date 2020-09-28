@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, render, wait } from '@testing-library/react'
+import { fireEvent, getByTestId, render, wait } from '@testing-library/react'
 import axios from 'axios'
 import userEvent from '@testing-library/user-event'
 import App from './App'
@@ -23,7 +23,7 @@ describe('Get & Create tasks', () => {
             }]
         })
         //Defino em qual componente vou procurar aquio que quero testar.
-        const { findByText } = render(<App />)
+        const { findByText, getByTestId } = render(<App />)
         //Defino uma constante que irá procurar por um texto descrito abaixo.
         const tasks = await findByText(/Fernanda/)
         //Espero que essa constante está presente no componente.
@@ -31,6 +31,10 @@ describe('Get & Create tasks', () => {
         //Verifica se o caminho da requisição está certo.
         //Verifica se a lista mock é chamada.
         expect(axios.get).toHaveBeenCalledWith('https://us-central1-labenu-apis.cloudfunctions.net/generic/planner-jackson-Matheus-Candido')
+
+        const listExistence = getByTestId('list')
+
+        expect(listExistence).toBeInTheDocument()
     })
 
     test('input existence', () => {
@@ -102,6 +106,8 @@ describe('Get & Create tasks', () => {
 
         //Simula o click do usuario no botão Criar Task.
         userEvent.click(button)
+
+        expect(input).toHaveValue('')
 
         /*Verifica se após o click acima do usuário, 
         o método post fantasia(mock) é executado e enviado corretamente com os valores definidos logo acima pelo user event nas linhas 93/94.*/

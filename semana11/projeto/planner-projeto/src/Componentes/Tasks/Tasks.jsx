@@ -16,7 +16,7 @@ export default function Tasks(props) {
                         <>
                             {
                                 list.day === "Segunda" &&
-                                <Div key={list.id} id={list.id} >
+                                <Div key={list.id} id={list.id} data-testid={'list'}>
                                     <b>{list.text}</b>
                                     <img src={trash} onClick={() => props.deletTask(list.id)} alt="Deletar tarefa"/>
                                 </Div>
