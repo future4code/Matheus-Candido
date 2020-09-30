@@ -2,14 +2,15 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import ErrorPage from '../Components/ErrorPage/ErrorPage'
 import Home from '../Components/Home/Home'
-import LoggedPosts from '../Components/Posts/LoggedPosts/LoggedPosts'
-import NotLoggedPosts from '../Components/Posts/CreatePosts/CreatePosts'
 import Login from '../Components/SignIn/Login/Login'
 import SignUp from '../Components/SignIn/SignUp/SignUp'
+import AllPosts from '../Components/Posts/OnlyPosts/AllPosts/AllPosts'
+import AllComments from '../Components/Posts/OnlyComments/AllComments/AllComments'
+import { useAxios } from '../CustomHooks/AxiosConfigs/useAxios'
 
 
 export default function Router() {
-
+    const { getAllPosts, posts } = useAxios()
     return (
         <>
             <BrowserRouter>
@@ -31,14 +32,14 @@ export default function Router() {
                         <SignUp />
                     </Route>
                     {/* ------------------------------------------- */}
-                    <Route exact path="/loged/posts">
+                    <Route exact path="/posts">
                         {/* Component Posts user */}
-                        <LoggedPosts />
+                        <AllPosts getAllPosts={getAllPosts} posts={posts} />
                     </Route>
                     {/* ------------------------------------------- */}
-                    <Route exact path="notLoged/posts">
+                    <Route exact path="/posts/comments/:id">
                         {/* Component Posts not user */}
-                        <NotLoggedPosts />
+                        <AllComments/>
                     </Route>
                     {/* ------------------------------------------- */}
                     <Route>

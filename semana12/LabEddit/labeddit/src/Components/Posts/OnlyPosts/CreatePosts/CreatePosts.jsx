@@ -1,8 +1,9 @@
 import axios from 'axios'
 import React from 'react'
-import useForm from '../../../CustomHooks/Forms/useForm'
+import { useAxios } from '../../../../CustomHooks/AxiosConfigs/useAxios'
+import useForm from '../../../../CustomHooks/Forms/useForm'
 
-export default function CreatePosts() {
+export default function CreatePosts(props) {
     const { form, onChange, resetState } = useForm({ text: '', title: '' })
 
     const postNewPost = () => {
@@ -17,6 +18,7 @@ export default function CreatePosts() {
         })
             .then((r) => {
                 console.log(r)
+                props.getAllPosts()
             }).catch((e) => {
                 console.log(e)
             })
@@ -32,6 +34,7 @@ export default function CreatePosts() {
         postNewPost()
         resetState()
     }
+
     return (
         <div>
             <form onSubmit={handleSubimition}>
