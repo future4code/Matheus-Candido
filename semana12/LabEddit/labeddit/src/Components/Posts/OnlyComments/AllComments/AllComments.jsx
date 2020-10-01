@@ -8,7 +8,7 @@ import CreateComments from '../CreateComments/CreateComments.jsx'
 export default function AllComments() {
     const [postDetail, setPostDetail] = React.useState([])
     const [comments, setComments] = React.useState([])
-    const [count, setCount] = React.useState()
+    const [count, setCount] = React.useState(0)
 
     const { token } = useAxios()
     const pathParams = useParams()
@@ -28,20 +28,23 @@ export default function AllComments() {
             })
     }
 
-    const countValue = (n) => {
+    const countValue = (n, id) => {
         if (n === 1) {
             setCount(1)
+            commentsVote(id, 1)
         }
         else if (n === -1) {
             setCount(-1)
+            commentsVote(id, -1)
         }
         console.log(count)
     }
 
-    const commentsVote = (id) => {
+    const commentsVote = (id, value) => {
         console.log(token)
+        console.log(value)
         const body = {
-            direction: count
+            direction: value
         }
         axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labEddit/posts/${pathParams.id}/comment/${id}/vote`, body, {
             headers: {
@@ -51,6 +54,7 @@ export default function AllComments() {
             console.log(r)
         }).catch((e) => {
             console.log(e)
+            console.log(count)
         })
     }
 
@@ -81,8 +85,8 @@ export default function AllComments() {
                                         <>
                                             <p>{comments.username}</p>
                                             <p>{comments.text}</p>
-                                            <div onClick={() => vote(1, comments.id)}> &#x1F51D; </div>
-                                            <div onClick={() => vote(-1, comments.id)}> &#x2B07; </div>
+                                            <div onClick={() => countValue(1, comments.id)}> &#x1F51D; </div>
+                                            <div onClick={() => countValue(-1, comments.id)}> &#x2B07; </div>
                                         </>}
                                 </Div>
                             )
