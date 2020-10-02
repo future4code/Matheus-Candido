@@ -2,13 +2,13 @@ import axios from 'axios'
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useAxios } from '../../../../CustomHooks/AxiosConfigs/useAxios'
-import { Container, Create, Div, Main, MapPosts } from '../../styles'
+import LoadingLoged from '../../LoadingLoged'
+import { Container, Create, Div, DivDetail, DivPost, DivVotes, Main, MapPosts } from '../../styles'
 import CreateComments from '../CreateComments/CreateComments.jsx'
 
 export default function AllComments() {
     const [postDetail, setPostDetail] = React.useState([])
     const [comments, setComments] = React.useState([])
-    const [count, setCount] = React.useState(0)
 
     const { token } = useAxios()
     const pathParams = useParams()
@@ -30,17 +30,14 @@ export default function AllComments() {
 
     const countValue = (n, id) => {
         if (n === 1) {
-            setCount(1)
-            commentsVote(id, 1)
+            commentsVote(1, id)
         }
         else if (n === -1) {
-            setCount(-1)
-            commentsVote(id, -1)
+            commentsVote(-1, id)
         }
-        console.log(count)
     }
 
-    const commentsVote = (id, value) => {
+    const commentsVote = (value, id) => {
         console.log(token)
         console.log(value)
         const body = {
@@ -52,16 +49,10 @@ export default function AllComments() {
             }
         }).then((r) => {
             console.log(r)
+            getPostDetail()
         }).catch((e) => {
             console.log(e)
-            console.log(count)
         })
-    }
-
-    const vote = (n, id) => {
-        countValue(n)
-        commentsVote(id)
-
     }
 
     React.useEffect(() => {
@@ -69,35 +60,47 @@ export default function AllComments() {
     }, [])
     return (
         <Main>
-            <Container>
-                <Create>
-                    <CreateComments pathParams={pathParams.id} getPostDetail={getPostDetail} />
-                </Create>
-                <MapPosts>
-                    {comments.length === 0 && <>Sem comentários</>}
-                    {/* {comments.length > 0 ?
-                        (<> */}
-                    {
-                        comments.map((comments) => {
-                            return (
-                                <Div>
-                                    {comments === 0 ? <>Sem comentários</> :
-                                        <>
-                                            <p>{comments.username}</p>
-                                            <p>{comments.text}</p>
-                                            <div onClick={() => countValue(1, comments.id)}> &#x1F51D; </div>
-                                            <div onClick={() => countValue(-1, comments.id)}> &#x2B07; </div>
-                                        </>}
-                                </Div>
-                            )
-                        })
-                    }
-                    {/* </>)
-                        :
-                        (<>Carregando ...</>)
-                    } */}
-                </MapPosts>
-            </Container>
+            {comments.length > 0 ?
+                (<>
+                    <Container>
+                        <DivDetail>
+                            <b>{postDetail.username}</b>
+                            <h2>{postDetail.title}</h2>
+                            <p>{postDetail.text}</p>
+                        </DivDetail>
+                        <Create>
+                            <CreateComments pathParams={pathParams.id} getPostDetail={getPostDetail} />
+                        </Create>
+                        <MapPosts>
+                            {comments.length === 0 && <><LoadingLoged /></>}
+
+                            {
+                                comments.map((comments) => {
+                                    return (
+                                        <Div>
+                                            {comments === 0 ? <>Sem comentários</> :
+                                                <>
+                                                    <DivPost>
+                                                        <h4>{comments.username}</h4>
+                                                        <p>{comments.text}</p>
+                                                    </DivPost>
+                                                    <DivVotes>
+                                                        <div onClick={() => countValue(1, comments.id)}> &#x1F51D; </div>
+                                                        <div>{comments.votesCount}</div>
+                                                        <div onClick={() => countValue(-1, comments.id)}> &#x2B07; </div>
+                                                    </DivVotes>
+                                                </>}
+                                        </Div>
+                                    )
+                                })
+                            }
+
+                        </MapPosts>
+                    </Container>
+                </>)
+                :
+                (<>Carregando ...</>)
+            }
         </Main >
     )
 }
