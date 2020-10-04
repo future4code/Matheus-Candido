@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { useHistory, useParams } from 'react-router-dom'
 
 export const useAxios = () => {
     const [posts, setPosts] = React.useState([])
@@ -21,6 +20,5 @@ export const useAxios = () => {
                 alert('Erro ao carregar as informações, por favor recarregue a página.')
             })
     }
-
     return { getAllPosts, posts, token }
 }

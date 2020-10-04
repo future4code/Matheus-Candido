@@ -87,7 +87,6 @@ export default function Login() {
                         required
                     />
                     <ShowPass onClick={showHide}>{type === 'input' ? <img src={hide} alt="" /> : <img src={show} alt="" />}</ShowPass>
-                    {/* <button> {loading ? 'Login' : <LoadingSignIn />}</button> */}
                     <button> {loading ? <LoadingSignIn /> : 'Login'}</button>
                 </form>
                 <span>

@@ -62,7 +62,6 @@ height: 80%;
 div{
     svg{
         stroke-width: 10px;
-        /* stroke: #003366; */
         stroke-dashoffset: 1500;
         stroke-dasharray: 300;
         path {
@@ -70,7 +69,6 @@ div{
     }
 }
 `;
-
 
 export default function () {
     return (
