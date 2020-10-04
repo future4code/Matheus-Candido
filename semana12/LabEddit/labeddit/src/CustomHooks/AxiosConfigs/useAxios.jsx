@@ -18,10 +18,9 @@ export const useAxios = () => {
                 setPosts(r.data.posts)
             }).catch((e) => {
                 console.log(e.data)
+                alert('Erro ao carregar as informações, por favor recarregue a página.')
             })
     }
-
-
 
     return { getAllPosts, posts, token }
 }

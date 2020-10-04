@@ -1,25 +1,15 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import ErrorPage from '../Components/ErrorPage/ErrorPage'
-import Home from '../Components/Home/Home'
 import Login from '../Components/SignIn/Login/Login'
 import SignUp from '../Components/SignIn/SignUp/SignUp'
 import AllPosts from '../Components/Posts/OnlyPosts/AllPosts/AllPosts'
 import AllComments from '../Components/Posts/OnlyComments/AllComments/AllComments'
-import { useAxios } from '../CustomHooks/AxiosConfigs/useAxios'
 
-
-export default function Router() {
-    const { getAllPosts, posts } = useAxios()
+export default function Router(props) {
     return (
         <>
             <Switch>
-                {/* <Route exact path="/posts">
-                        {/* Componente Home */}
-                {/* <Home /> */}
-                {/* <Home /> */}
-                {/* </Route>  */}
-                {/* ------------------------------------------- */}
                 <Route exact path="/login">
                     {/* Component Login */}
                     <Login />
@@ -31,12 +21,12 @@ export default function Router() {
                 </Route>
                 {/* ------------------------------------------- */}
                 <Route exact path="/">
-                    {/* Component Posts user */}
-                    <AllPosts getAllPosts={getAllPosts} posts={posts} />
+                    {/* Component All Posts */}
+                    <AllPosts getAllPosts={props.getAllPosts} posts={props.posts} />
                 </Route>
                 {/* ------------------------------------------- */}
                 <Route exact path="/posts/comments/:id">
-                    {/* Component Posts not user */}
+                    {/* Component All Comments */}
                     <AllComments />
                 </Route>
                 {/* ------------------------------------------- */}

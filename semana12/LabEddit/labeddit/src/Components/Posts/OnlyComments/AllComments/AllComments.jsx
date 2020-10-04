@@ -3,8 +3,10 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useAxios } from '../../../../CustomHooks/AxiosConfigs/useAxios'
 import LoadingLoged from '../../LoadingLoged'
-import { Container, Create, Div, DivDetail, DivPost, DivVotes, Main, MapPosts } from '../../styles'
+import { Container, Div, DivDetail, DivPost, DivVotes, Main, MapPosts } from '../../styles'
 import CreateComments from '../CreateComments/CreateComments.jsx'
+import up from '../../Imgs/up.png'
+import down from '../../Imgs/down.png'
 
 export default function AllComments() {
     const [postDetail, setPostDetail] = React.useState([])
@@ -60,47 +62,46 @@ export default function AllComments() {
     }, [])
     return (
         <Main>
-            {comments.length > 0 ?
-                (<>
-                    <Container>
-                        <DivDetail>
-                            <b>{postDetail.username}</b>
-                            <h2>{postDetail.title}</h2>
-                            <p>{postDetail.text}</p>
-                        </DivDetail>
-                        <Create>
-                            <CreateComments pathParams={pathParams.id} getPostDetail={getPostDetail} />
-                        </Create>
+
+            <Container>
+                <Div>
+                    <DivDetail>
+                        <b>{postDetail.username}</b>
+                        <h5>{typeof postDetail.title === 'string' && postDetail.title}</h5>
+                        <p>{postDetail.text}</p>
+                    </DivDetail>
+                </Div>
+                <div>
+                    <CreateComments pathParams={pathParams.id} getPostDetail={getPostDetail} />
+                </div>
+                {comments.length > 0 ?
+                    (<>
                         <MapPosts>
-                            {comments.length === 0 && <><LoadingLoged /></>}
-
-                            {
-                                comments.map((comments) => {
-                                    return (
-                                        <Div>
-                                            {comments === 0 ? <>Sem comentários</> :
-                                                <>
-                                                    <DivPost>
-                                                        <h4>{comments.username}</h4>
-                                                        <p>{comments.text}</p>
-                                                    </DivPost>
-                                                    <DivVotes>
-                                                        <div onClick={() => countValue(1, comments.id)}> &#x1F51D; </div>
-                                                        <div>{comments.votesCount}</div>
-                                                        <div onClick={() => countValue(-1, comments.id)}> &#x2B07; </div>
-                                                    </DivVotes>
-                                                </>}
-                                        </Div>
-                                    )
-                                })
-                            }
-
+                            {comments.map((comments) => {
+                                return (
+                                    <Div key={comments.id}>
+                                        {comments === 0 ? <>Sem comentários</> :
+                                            <>
+                                                <DivPost>
+                                                    <h4>{comments.username}</h4>
+                                                    <p>{comments.text}</p>
+                                                </DivPost>
+                                                <DivVotes>
+                                                    <img src={up} alt="" onClick={() => countValue(1, comments.id)} />
+                                                    <div>{comments.votesCount}</div>
+                                                    <img src={down} alt="" onClick={() => countValue(-1, comments.id)} />
+                                                </DivVotes>
+                                            </>}
+                                    </Div>
+                                )
+                            })}
                         </MapPosts>
-                    </Container>
-                </>)
-                :
-                (<>Carregando ...</>)
-            }
+                    </>)
+                    :
+                    (<div><LoadingLoged /></div>)
+                }
+            </Container>
+
         </Main >
     )
 }

@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Caesar+Dressing&family=Meie+Script&family=Sansita+Swashed:wght@500;@700&display=swap;');
+
 .App {
-  text-align: center;
+  /* text-align: center; */
+  font-family: 'Sansita Swashed', cursive;
 }
 
 .App-logo {

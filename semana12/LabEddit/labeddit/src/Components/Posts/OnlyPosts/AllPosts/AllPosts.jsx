@@ -1,30 +1,24 @@
 import React from 'react'
 import { useAxios } from '../../../../CustomHooks/AxiosConfigs/useAxios'
-import styled from "styled-components";
 import CreatePosts from '../CreatePosts/CreatePosts';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import { Container, Create, Div, DivLoading, DivPost, DivVotes, Main, MapPosts } from '../../styles';
+import { Container, Div, DivPost, DivVotes, Main, MapPosts } from '../../styles';
 import { useProtect } from '../../../../CustomHooks/ProtectRoute/useProtect';
 import LoadingLoged from '../../LoadingLoged';
-
-
-
+import up from '../../Imgs/up.png'
+import down from '../../Imgs/down.png'
 
 export default function AllPosts(props) {
-    // const { posts, getAllPosts } = useAxios()
-
     const history = useHistory()
-
     const { token } = useAxios()
-    const pathParams = useParams()
 
     const countValue = (n, id) => {
         if (n === 1) {
-            commentsVote(id, 1)
+            commentsVote(1, id)
         }
         else if (n === -1) {
-            commentsVote(id, -1)
+            commentsVote(-1, id)
         }
     }
 
@@ -40,6 +34,7 @@ export default function AllPosts(props) {
             }
         }).then((r) => {
             console.log(r)
+            props.getAllPosts()
         }).catch((e) => {
             console.log(e)
         })
@@ -59,37 +54,37 @@ export default function AllPosts(props) {
 
         <Main>
             <Container>
-                <Create>
+
+                <div>
                     <CreatePosts getAllPosts={props.getAllPosts} />
-                </Create>
-                <MapPosts>
-                    {props.posts && props.posts.length > 0 ?
-                        (<>
-                            {
-                                props.posts.map((posts) => {
-                                    return (
-                                        <Div>
-                                            <DivPost>
-                                                <h4>{posts.username}</h4>
-                                                <p>{posts.text}</p>
-                                                <button onClick={() => goToComments(history, posts.id)}><span>{posts.commentsCount}</span> Comentarios</button>
-                                            </DivPost>
+                </div>
+                {props.posts && props.posts.length > 0 ?
+                    (<>
+                        <MapPosts>
+                            {props.posts.map((posts) => {
+                                return (
+                                    <Div key={posts.id}>
+                                        <DivPost>
+                                            <h3>{posts.username}</h3>
+                                            <h5>{typeof posts.title === 'string' && posts.title}</h5>
+                                            <p>{posts.text}</p>
+                                            <button onClick={() => goToComments(history, posts.id)}>
+                                                <span>{posts.commentsCount}</span> Comentarios</button>
+                                        </DivPost>
 
-                                            <DivVotes>
-                                                <div onClick={() => countValue(1, posts.id)}> &#x1F51D; </div>
-                                                <div>{posts.votesCount}</div>
-                                                <div onClick={() => countValue(-1, posts.id)}> &#x2B07; </div>
-                                            </DivVotes>
-                                        </Div>
-                                    )
-                                })
-                            }
-                        </>)
-                        :
-                        (<DivLoading><LoadingLoged /></DivLoading>)
-                    }
-
-                </MapPosts>
+                                        <DivVotes>
+                                            <img src={up} alt="" onClick={() => countValue(1, posts.id)} />
+                                            <div>{posts.votesCount}</div>
+                                            <img src={down} alt="" onClick={() => countValue(-1, posts.id)} />
+                                        </DivVotes>
+                                    </Div>
+                                )
+                            })}
+                        </MapPosts>
+                    </>)
+                    :
+                    (<div><LoadingLoged /></div>)
+                }
             </Container>
         </Main >
     )
