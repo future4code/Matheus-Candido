@@ -2,11 +2,14 @@
   "name": "ex2",
   "version": "2.0.0",
   "description": "Exercicio 2",
-  "main": "Ex2.js",
+  "main": "ex2.js",
   "scripts": {
     "test": "jest",
-    "start": "ex2.js"
+    "start": "node ex2.js"
   },
   "author": "Matheus",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
 }
