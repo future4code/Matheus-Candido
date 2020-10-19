@@ -1,0 +1,12 @@
+{
+  "name": "ex2",
+  "version": "2.0.0",
+  "description": "Exercicio 2",
+  "main": "Ex2.js",
+  "scripts": {
+    "test": "jest",
+    "start": "ex2.js"
+  },
+  "author": "Matheus",
+  "license": "ISC"
+}

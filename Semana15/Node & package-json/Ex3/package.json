@@ -1,0 +1,15 @@
+{
+  "name": "ex3",
+  "version": "3.0.0",
+  "description": "Exercicio 3",
+  "main": "Ex3.js",
+  "scripts": {
+    "test": "jest",
+    "start": "Ex3.js"
+  },
+  "author": "Matheus",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
