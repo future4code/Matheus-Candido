@@ -2,11 +2,14 @@
   "name": "ex1",
   "version": "1.0.0",
   "description": "Exercicio 1",
-  "main": "Ex1.js",
+  "main": "ex1.js",
   "scripts": {
     "test": "jest",
-    "start": "ex1.js"
+    "start": "node ex1.js"
   },
   "author": "Matheus",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
 }

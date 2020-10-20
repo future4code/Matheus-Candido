@@ -1,12 +1,21 @@
-const colors = require('colors');
+// const fs = require('fs')
 
 //3)
-const tarefas = [
-    "Lavar louça",
-    "adas"
-]
 
-const tarefa = process.argv[2]
-tarefas.push(tarefa)
-console.log(colors.red("Tarefa adicionada com sucesso!", tarefas))
+// const tarefas = [
+//     ""
+// ]
+// const data = tarefas
+// const tarefa = process.argv[2]
+// tarefas.push(tarefa)
+// const mostrarTarefas = (tarefa) => {
 
+//     fs.appendFile('./ex3.txt', data, function (error) {
+//         if (error) {
+//             console.log("Erro ocorrido!")
+//         }
+//         tarefas.push(tarefa)
+//     })
+//     return console.log("Tarefa adicionada com sucesso!", tarefas)
+// }
+// mostrarTarefas(tarefa)
