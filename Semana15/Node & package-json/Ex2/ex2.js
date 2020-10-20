@@ -6,8 +6,8 @@
 // const num1 = Number(process.argv[3])
 // const num2 = Number(process.argv[4])
 
-// if (operacao === !NaN) {
-//     console.log("Digíte um parâmetro correto")
+// if (!operacao || !num1 || !num2) {
+//     console.log("Está faltando algum parâmetro ou algum parâmetro informado está incorreto!")
 // } else {
 //     switch (operacao) {
 //         case "soma":
@@ -26,4 +26,3 @@
 //             break;
 //     }
 // }
-
