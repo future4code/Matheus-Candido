@@ -3,13 +3,14 @@
 // Ele da uma mesagem de ero no nome da variavel,
 // onde diz que estou passando um valor numerico e ele espera uma string como valor
 
+import { type } from "os";
 import { number, string } from "prop-types";
 
 // b)
 
 // let meuNumero: number | string = "String"
 
-//c)
+// c)
 // let pessoa: {
 //     nome: string,
 //     idade: number,
@@ -20,7 +21,7 @@ import { number, string } from "prop-types";
 //     corFavorita: "purple"
 // }
 
-//d)
+// d)
 // type pessoa = {
 //     nome: string,
 //     idade: number,
@@ -49,7 +50,7 @@ import { number, string } from "prop-types";
 
 // console.table(HIMYM)
 
-//e)
+// e)
 // enum CORES_DO_ARCO_IRIS {
 //     PURPLE = "PURPLE",
 //     RED = "RED",
@@ -86,26 +87,3 @@ import { number, string } from "prop-types";
 // const HIMYM: Array<pessoa> = [ted, marshall, barney]
 
 // console.table(HIMYM)
-
-//2)
-//a) 
-function obterEstatisticas(numeros: number): numerosOrdenados{
-
-    const numerosOrdenados = numeros.sort(
-        (a, b) => a - b
-    )
-
-    let soma = 0
-
-    for (let num of numeros) {
-        soma += num
-    }
-
-    const estatisticas = {
-        maior: numerosOrdenados[numeros.length - 1],
-        menor: numerosOrdenados[0],
-        media: soma / numeros.length
-    }
-
-    return estatisticas
-}
