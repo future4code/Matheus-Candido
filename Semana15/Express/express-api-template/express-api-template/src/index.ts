@@ -11,7 +11,6 @@ app.get("/countries/all", (req: Request, res: Response) => {
     res.status(200).send(countries)
 })
 
-
 app.get("/countries/search", (req: Request, res: Response) => {
     try {
         if (req.query.name) {
@@ -38,31 +37,55 @@ app.get("/countries/search", (req: Request, res: Response) => {
 })
 
 app.get("/countries/:id", (req: Request, res: Response) => {
-    const result: country | undefined = countries.find(
-        country => country.id === Number(req.params.id)
-    )
-    if (result) {
-        res.status(200).send(result)
-    } else {
+    let errorCode: number = 400
+    try {
+        if (req.params.id) {
+            let result: country | undefined = countries.find(
+                country => country.id === Number(req.params.id)
+            )
+            res.status(200).send(result)
+        }
+        if (!req.params.id) {
+            errorCode = 404
+            res.status(404).send("Not found")
+        }
+    } catch (error) {
         res.status(404).send("Not found")
     }
+
+
+
 })
 app.put("/countries/edit/:id", (req: Request, res: Response) => {
     let errorCode: number = 400
     try {
-        if (!req.body.name && !req.body.capital) {
+        if (!req.headers.authorization) {
             errorCode = 401
-            throw new Error("Erro");
+            throw new Error();
         }
-        else if (req.body.name && req.body.capital) {
-            const result: country | undefined = countries.find(
-                country => country.id === Number(req.params.id)
-            )
-            res.status(200).send(countries)
+        if ((!req.body.name && !req.body.capital) || !req.params.id) {
+            errorCode = 400
+            throw new Error("Erro de parâmetro.");
         }
+        if (req.body.id || req.body.continent) {
+            errorCode = 400
+            throw new Error("Não é possível alterar esse valores.");
+        }
+        const result: country | undefined = countries.find(
+            country => country.id === Number(req.params.id)
+        )
+        if (!result) {
+            errorCode = 404
+            throw new Error("Notfound");
+
+        }
+        result.name = req.body.name || result.name
+        result.capital = req.body.capital || result.capital
+
+        res.status(200).end()
     }
     catch (error) {
-        res.status(errorCode).send(countries)
+        res.status(errorCode).send(error)
     }
 })
 
@@ -79,14 +102,11 @@ app.delete("/countries/:id", (req: Request, res: Response) => {
         if (countryIndex === -1) {
             errorCode = 404
             throw new Error();
-
         }
         if (req.headers.authorization === "hsoeu460173") {
             countries.splice(countryIndex, 1)
-
             res.status(200).end()
         }
-
     } catch (error) {
         res.status(errorCode).end()
     }
@@ -99,16 +119,9 @@ app.post("/countries/create", (req: Request, res: Response) => {
             errorCode = 401
             throw new Error()
         }
-        // const countryIndex: number = countries.findIndex(
-        //     (country) => country.id === Number(req.params.id)
-        // )
-        // if (countryIndex === -1) {
-        //     errorCode = 404
-        //     throw new Error();
-        // }
         if (req.headers.authorization === "hsoeu460173") {
             countries.push(req.body)
-            res.status(200).send(`message: Sucess! ${ req}`)
+            res.status(200).send(`message: Sucess! ${req}`)
         }
     } catch (error) {
         res.status(errorCode).end()
