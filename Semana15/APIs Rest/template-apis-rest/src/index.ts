@@ -10,48 +10,60 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+enum UserType {
+    ADMIN = "ADMIN",
+    NORMAL = "NORMAL"
+}
 
-let users = [
+type user = {
+    id: number,
+    name: string,
+    email: string,
+    type: UserType,
+    age: number
+}
+
+let users: user[] = [
     {
         id: 1,
         name: "Alice",
         email: "alice@email.com",
-        type: "ADMIN",
+        type: UserType.ADMIN,
         age: 12
     },
     {
         id: 2,
         name: "Bob",
         email: "bob@email.com",
-        type: "NORMAL",
+        type: UserType.NORMAL,
         age: 36
     },
     {
         id: 3,
         name: "Coragem",
         email: "coragem@email.com",
-        type: "NORMAL",
+        type: UserType.NORMAL,
         age: 21
     },
     {
         id: 4,
         name: "Dory",
         email: "dory@email.com",
-        type: "NORMAL",
+        type: UserType.NORMAL,
         age: 17
     },
     {
         id: 5,
         name: "Elsa",
         email: "elsa@email.com",
-        type: "ADMIN",
+        type: UserType.ADMIN,
         age: 17
     },
     {
         id: 6,
         name: "Fred",
         email: "fred@email.com",
-        type: "ADMIN",
+        type: UserType.ADMIN,
         age: 60
     }
 ]
@@ -65,6 +77,7 @@ b) seria aquilo que estamos manipulando no moemento, nesse caso o array de users
 
 2 -
 a) Passei dentro de um filtro com o req.params.type, porque dessa maneira ele irá filtrar os dados pelo tipo de dado que eu buscar.
+nesse caso buscando os tipos "Adm" e "Normal".
 b) Se não existir um tipo válido no momento de busca ele retorna nada
 
 3 -
@@ -101,10 +114,14 @@ app.get("/users", (req: Request, res: Response): void => {
 });
 
 // 2)
-app.get("/users/:type", (req: Request, res: Response): void => {
+app.get("/users/type/:type", (req: Request, res: Response): void => {
     try {
-        const usersByType = users.filter((user) => user.type === req.params.type
-        )
+        if (!(req.params.type.toLocaleUpperCase() in UserType)) {
+            throw new Error("");
+
+        }
+        const usersByType = users.filter((user) => user.type === req.params.type.toLocaleUpperCase())
+
         res.status(200).send(usersByType);
     }
     catch (error) {
@@ -118,21 +135,19 @@ app.get("/users/:type", (req: Request, res: Response): void => {
 app.get("/users/query", (req: Request, res: Response): void => {
     const name = req.query.name;
 
-    console.log(`O nome chegou: ${name}`);
+        try {
+            const user = users.filter((u) => u.name === name)
 
-    try {
-        const user = users.filter((u) => u.name === name)
-
-        if (!user) {
-            throw new Error();
+            if (!user) {
+                throw new Error();
+            }
+            res.status(200).send(user);
         }
-        res.status(200).send(user);
-    }
-    catch (error) {
-        res.status(400).send({
-            message: "Error searching for users"
-        });
-    }
+        catch (error) {
+            res.status(400).send({
+                message: "Error searching for users"
+            });
+        }
 });
 
 
