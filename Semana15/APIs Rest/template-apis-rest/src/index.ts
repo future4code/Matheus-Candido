@@ -133,21 +133,20 @@ app.get("/users/type/:type", (req: Request, res: Response): void => {
 
 // 3)
 app.get("/users/query", (req: Request, res: Response): void => {
-    const name = req.query.name;
 
-        try {
-            const user = users.filter((u) => u.name === name)
+    try {
+        const user = users.filter((u) => u.name === req.query.name)
+        if (!user.length) {
+            throw new Error();
+        }
 
-            if (!user) {
-                throw new Error();
-            }
-            res.status(200).send(user);
-        }
-        catch (error) {
-            res.status(400).send({
-                message: "Error searching for users"
-            });
-        }
+        res.status(200).send(user);
+    }
+    catch (error) {
+        res.status(400).send({
+            message: "Error searching for users"
+        });
+    }
 });
 
 
