@@ -1,17 +1,11 @@
-enum transaction {
-
-}
-
-export type account = {
-    name: string
-    age: Date
-    transactions: Array<transaction>
-}
+import { account } from "./types";
 
 export let users: account[] = [
     {
         name: "Josivaldo",
-        age: new Date(Date.UTC(1999, 12, 20)),
+        cpf: "000.000.000-00",
+        birthday: new Date(Date.UTC(1999, 12, 20)),
+        balance: 0,
         transactions: []
     }
 ]
