@@ -67,16 +67,16 @@ app.post("/create", (req: Request, res: Response): void => {
 app.put("/contas/novo-saldo", (req: Request, res: Response): void => {
 
     const { name, cpf, birthday, balance, transactions } = req.body
-    const result = users.find((u) => (u.cpf === cpf) && (u.name === name))
+    const userIndex: number = users.findIndex((u) => (u.cpf === cpf) && (u.name === name))
     try {
-        if (!result) {
+        if (userIndex === -1) {
             throw new Error("Cpf e ou nome não encontrado");
         }
 
-        const newValue = users[result?.balance].balance
-        users[result?.balance].balance += balance
+        const newValue = users[userIndex].balance + balance
+        users[userIndex].balance += balance
 
-        res.status(200).send({ message: `Novo saldo da conta ${balance}` })
+        res.status(200).send({ message: `Novo saldo da conta ${newValue}` })
     } catch (error) {
         res.status(400).send({ message: error.message })
     }
