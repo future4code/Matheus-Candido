@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get("/contas", (req: Request, res: Response): void => {
+app.get("/users", (req: Request, res: Response): void => {
     try {
         res.status(200).send(users)
     } catch (error) {
@@ -16,7 +16,7 @@ app.get("/contas", (req: Request, res: Response): void => {
     }
 })
 
-app.get("/contas/query", (req: Request, res: Response): void => {
+app.get("/user/query", (req: Request, res: Response): void => {
     // const result = users.find((u) => (u.cpf === req.query.cpf) && (u.name === req.query.name))
     const result = users.find((u) => (u.name === req.query.name))
 
@@ -64,9 +64,9 @@ app.post("/create", (req: Request, res: Response): void => {
     }
 })
 
-app.put("/contas/novo-saldo", (req: Request, res: Response): void => {
+app.put("/user/novo-saldo", (req: Request, res: Response): void => {
 
-    const { name, cpf, birthday, balance, transactions } = req.body
+    const { name, cpf, birthday, balance, value, date, description } = req.body
     const userIndex: number = users.findIndex((u) => (u.cpf === cpf) && (u.name === name))
     try {
         if (userIndex === -1) {
@@ -76,7 +76,66 @@ app.put("/contas/novo-saldo", (req: Request, res: Response): void => {
         const newValue = users[userIndex].balance + balance
         users[userIndex].balance += balance
 
+        users[userIndex].transactions.push({
+            value: balance,
+            date: new Date,
+            description: "Depósito de dinheiro"
+        })
+
         res.status(200).send({ message: `Novo saldo da conta ${newValue}` })
+    } catch (error) {
+        res.status(400).send({ message: error.message })
+    }
+})
+
+app.post("/user/pagar", (req: Request, res: Response): void => {
+
+    const { date, description, value, cpf, name } = req.body
+    const userIndex: number = users.findIndex((u) => (u.cpf === cpf) && (u.name === name))
+    try {
+        // if (new Date().get !== date) {
+        //     // res.status(405).send({ message: "Precisa ter mais de 18 anos para criar a conta." })
+        //     throw new Error("A conta está vencida.");
+        // }
+        if (userIndex === -1) {
+            throw new Error("Cpf e ou nome não encontrado");
+        }
+
+        users[userIndex].transactions.push({
+            value: value,
+            date: date || new Date,
+            description: "Pagamento de conta"
+        })
+
+        res.status(200).send({ message: `Conta paga com sucesso!` })
+    } catch (error) {
+        res.status(400).send({ message: error.message })
+    }
+})
+
+app.put("/user/atualizar-saldo", (req: Request, res: Response): void => {
+
+    const { description, cpf, name } = req.body
+    const userIndex: number = users.findIndex((u) => (u.cpf === cpf) && (u.name === name))
+    try {
+        if (userIndex === -1) {
+            throw new Error("Cpf e ou nome não encontrado");
+        }
+        // const array = users[users[userIndex].transactions.lastIndexOf(u => u.date[-1])]
+        const subs = users[userIndex].transactions.findIndex(u => u.description === "Pagamento de conta")
+
+        if (subs && new Date() !== users[userIndex].transactions[userIndex].date) {
+            users[userIndex].balance -= users[userIndex].transactions[subs].value
+        }
+
+        const adds = users[userIndex].transactions.find(u => u.description === "Depósito de dinheiro")
+
+        if (adds && new Date() !== users[userIndex].transactions[userIndex].date) {
+            users[userIndex].balance += users[userIndex].transactions[userIndex].value
+        }
+        console.log(users[userIndex].balance)
+
+        res.status(200).send({ message: `Saldo atualizado.` })
     } catch (error) {
         res.status(400).send({ message: error.message })
     }
