@@ -9,7 +9,7 @@
      Já o 'SHOW TABLES' mostra todas as tabelas que eutenho na minha base de dados.
 ```
 ```
- c) 
+ c) DESCRIBE Actor: Retorna as definições/propriedades da tabela chamada.
 ```
 ### Exercício 2
 ```
@@ -42,21 +42,31 @@
   ```
   ### Exercício 5
   ```
-   a) 
-   b) 
-   c) 
-   d) 
-   e) 
+   a) CREATE TABLE Filmes (
+	       id VARCHAR(255) PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        sinopse TEXT(2055) NOT NULL,
+        release_date DATE NOT NULL,
+	       evaluation INT,
+        CHECK (evaluation >= 0 AND evaluation <= 10)
+      );
+      Essa query cria uma tabela com id, nome, sinopse, data de lançamento e avaliação do filme podento apenas ser entre 0 a 10.
+   b) Criado.
+   c) Criado.
+   d) Criado.
+   e) Criado.
   ```
   ### Exercício 6
   ```
-   a) 
-   b) 
-   c) 
+  (Adicionei um filme extra para responder adequadamente as perguntas).
+   a) SELECT id, name, evaluation from Filmes WHERE id = "003".
+   b) SELECT * from Filmes WHERE name = "The Avengers".
+   c) SELECT id, name, sinopse from Filmes WHERE evaluation => 7.
   ```
    ### Exercício 7
   ```
-   a) 
-   b) 
-   * c) 
+   a) SELECT * from Filmes WHERE name LIKE "%War%". (Alterei o valor de busca novamente pois os filmes da tabela não tinham essa palavra).
+   b) SELECT * from Filmes WHERE name NOT LIKE "%Avengers%" (Dessa maneira o resultado foi o filme da Black Widow).
+   c) SELECT * from Filmes WHERE release_date < "2020-10-26".
+   d) SELECT * from Filmes WHERE name LIKE "%Loki%" OR sinopse LIKE "%Thanos%" AND evaluation > 7.
   ```
