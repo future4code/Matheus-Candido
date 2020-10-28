@@ -16,7 +16,7 @@ export async function createNewMovie(
             "${name}"
             "${sinopse}"
             "${release_date}"
-            "${evaluation}"
+            ${evaluation}
             "${playing_limit_date}"
         )
         `)
@@ -26,20 +26,20 @@ export async function createNewMovie(
     }
 }
 
-export async function createNewPokemonWithQueryBuilder(
-    id: number,
-    name: string,
-    type: GENDER
-): Promise<void> {
-    try {
-        await connection.insert({
-            id,
-            name,
-            type
-        })
-            .into("pokemons")
-        console.log("Sucesso")
-    } catch (error) {
-        console.log(error)
-    }
-}
+// export async function createNewPokemonWithQueryBuilder(
+//     id: number,
+//     name: string,
+//     type: GENDER
+// ): Promise<void> {
+//     try {
+//         await connection.insert({
+//             id,
+//             name,
+//             type
+//         })
+//             .into("pokemons")
+//         console.log("Sucesso")
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }

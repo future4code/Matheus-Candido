@@ -4,8 +4,11 @@ import dotenv from "dotenv";
 import { AddressInfo } from "net";
 import { Movie } from "./types";
 import { getAllMovies } from './endpoints/getAllMovies'
-import { searchMovieByName } from "./data/SearchMoviesByName";
+import { searchMovieByName } from "./data/searchMoviesByName";
 import { createMovie } from "./endpoints/createMovie";
+import { searchActorFromName } from "./endpoints/searchActorFromName";
+import { searchActorFromId } from "./endpoints/searchActorFromId";
+import { searchActorFromGender } from "./endpoints/searchActorFromGender";
 
 /**************************************************************/
 
@@ -34,9 +37,15 @@ export const movies: Movie[] = []
 
 app.get("/movies/all", getAllMovies);
 
-app.get("/movies/search", searchMovieByName);
+app.get("/movies/:search", searchMovieByName);
 
 app.post("/movies/new", createMovie)
+
+app.get("/actors/actor/:id", searchActorFromId)
+
+app.get("/actors/query", searchActorFromGender)
+
+app.get("/actors/query", searchActorFromName)
 
 
 const server = app.listen(process.env.PORT || 3003, () => {

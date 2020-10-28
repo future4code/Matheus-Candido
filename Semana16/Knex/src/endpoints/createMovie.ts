@@ -13,7 +13,7 @@ export const createMovie = async (req: Request, res: Response): Promise<void> =>
 
         await createNewMovie(id, name, sinopse, release_date, evaluation, playing_limit_date)
 
-        res.status(201).send("New movie created!");
+        res.status(200).send("New movie created!");
     } catch (error) {
         console.log(error)
         res.send(error.message)

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { searchMovieByName } from '../data/SearchMoviesByName'
+import { searchMovieByName } from '../data/searchMoviesByName'
 import { Movie } from '../types'
 
 export const getSearchMovies = async (req: Request, res: Response) => {
