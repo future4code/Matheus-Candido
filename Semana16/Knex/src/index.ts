@@ -9,6 +9,9 @@ import { createMovie } from "./endpoints/createMovie";
 import { searchActorFromName } from "./endpoints/searchActorFromName";
 import { searchActorFromId } from "./endpoints/searchActorFromId";
 import { searchActorFromGender } from "./endpoints/searchActorFromGender";
+import { searchActorById } from "./data/searchActorById";
+import { updateSalary } from "./endpoints/updateSalary";
+import { deleteActors } from "./endpoints/deleteActors";
 
 /**************************************************************/
 
@@ -41,12 +44,15 @@ app.get("/movies/:search", searchMovieByName);
 
 app.post("/movies/new", createMovie)
 
-app.get("/actors/actor/:id", searchActorFromId)
+app.get("/actor/:id", searchActorFromId)
 
 app.get("/actors/query", searchActorFromGender)
 
 app.get("/actors/query", searchActorFromName)
 
+app.post("/actor", updateSalary)
+
+app.delete("/actor/:id", deleteActors)
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
