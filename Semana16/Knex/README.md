@@ -32,7 +32,7 @@ b) Feito
 ### Exercício 5
 
 ```
-Não Feito
+Feito
 ```
 
 ### Exercício 6
@@ -44,5 +44,5 @@ Feito
 ### Exercício 7
 
 ```
-Não Feito
+Feito
 ```

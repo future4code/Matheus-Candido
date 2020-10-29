@@ -1,30 +1,35 @@
 import { connection } from '..'
 import { GENDER } from '../types';
 
-export async function createNewMovie(
+export const createNewMovie = async (
     id: string,
     name: string,
     sinopse: string,
-    release_date: Date,
-    evaluation: string,
-    playing_limit_date: Date
-): Promise<void> {
+    releaseDate: Date,
+    evaluation:number,
+    playingLimitDate: Date
+) => {
     try {
-        await connection.raw(`
-        INSERT INTO Filmes (id,name,sinopse,release_date,evaluation,playing_limit_date) VALUES(
-            "${id}"
-            "${name}"
-            "${sinopse}"
-            "${release_date}"
-            ${evaluation}
-            "${playing_limit_date}"
-        )
-        `)
-        console.log("Sucesso")
+        await connection
+            .insert({
+                id: id,
+                name: name,
+                sinopse: sinopse,
+                release_date: releaseDate,
+                evaluation: evaluation,
+                playing_limit_date: playingLimitDate,
+            })
+            .into("Filmes");
     } catch (error) {
-        console.log(error)
+        console.log(error, {id: id,
+            name: name,
+            sinopse: sinopse,
+            release_date: releaseDate,
+            evaluation: evaluation,
+            playing_limit_date: playingLimitDate,})
     }
-}
+};
+
 
 // export async function createNewPokemonWithQueryBuilder(
 //     id: number,

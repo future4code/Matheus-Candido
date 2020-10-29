@@ -40,7 +40,7 @@ export const movies: Movie[] = []
 
 app.get("/movies/all", getAllMovies);
 
-app.get("/movies/:search", searchMovieByName);
+app.get("/movies/search", searchMovieByName);
 
 app.post("/movies/new", createMovie)
 
