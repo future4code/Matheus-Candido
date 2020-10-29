@@ -58,7 +58,7 @@
  ### Exercício 5
 
  ```
- a) 
+ a) Porque estaria fazendo dois agrupamentos de referências.
 
  b) SELECT Movies.id, Movies.name,Actor.id, Actor.name  FROM Movies
     JOIN Actor ON Movies.id = Actor.id;
