@@ -1,6 +1,5 @@
 import { Request, Response } from "express"
 import selectAllUsers from "../data/selectAllUsers"
-import { Profission } from "../types/profission"
 import { User } from "../types/User"
 
 export default async function getAllUsers(

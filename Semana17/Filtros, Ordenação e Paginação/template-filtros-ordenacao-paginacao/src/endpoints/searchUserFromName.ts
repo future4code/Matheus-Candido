@@ -1,7 +1,6 @@
 import { Request, Response } from "express"
 import searchUserByName from "../data/searchUserByName"
 import selectAllUsers from "../data/selectAllUsers"
-import { Profission } from "../types/profission"
 import { User, inputData } from "../types/User"
 
 export default async function searchUserFromName(

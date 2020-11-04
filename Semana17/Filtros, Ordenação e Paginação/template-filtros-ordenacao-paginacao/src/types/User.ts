@@ -1,12 +1,14 @@
-import { Profission } from "./profission";
+import { Profession } from "./Profession";
 
 export type User = {
    id: string,
    name: string,
    email: string,
-   type: Profission[]
+   type: Profession[]
 }
 export type inputData = {
    name: string,
-   type: string
+   type: string,
+   orderByName: string,
+   orderByType: string
 }

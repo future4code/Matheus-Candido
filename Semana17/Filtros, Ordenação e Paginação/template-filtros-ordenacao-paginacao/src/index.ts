@@ -6,6 +6,7 @@ import { AddressInfo } from "net";
 import getAllUsers from "./endpoints/getAllUsers";
 import searchUserFromName from "./endpoints/searchUserFromName";
 import searchUserFromType from "./endpoints/searchUserFromType";
+import { orderUsers } from "./endpoints/orderUsers";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use(cors())
 app.get("/users/all", getAllUsers);
 app.get("/users/search", searchUserFromName);
 app.get("/users/search/:type", searchUserFromType);
+app.get("/users/all/search", orderUsers);
 
 
 const server = app.listen(process.env.PORT || 3003, () => {
