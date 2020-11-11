@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
+import deletedtUserById from "../data/deletedUserById";
 import selectUserById from "../data/selectUserById";
 import { getTokenData } from "../services/authenticator";
 
-export default async function getUserById(
+export default async function deleteUserById(
    req: Request,
    res: Response
 ) {
@@ -12,7 +13,7 @@ export default async function getUserById(
 
 
       const authenticationData = getTokenData(token);
-      const user = await selectUserById(authenticationData.id)
+      const user = await deletedtUserById(authenticationData.id)
 
       if (authenticationData.role !== 'ADMIN') {
          throw new Error("Only a normal user can access this funcionality");
@@ -22,10 +23,10 @@ export default async function getUserById(
          throw new Error("Usuário não encontrado")
       }
 
-      res.status(200).send({
-         id: user.id,
-         email: user.email
-      })
+      const id = req.params.id
+      await deletedtUserById(id)
+
+      res.sendStatus(200)
 
    } catch (error) {
       res.status(400).send({

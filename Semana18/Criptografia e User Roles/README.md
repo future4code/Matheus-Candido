@@ -26,22 +26,22 @@
 
 - ## Ex 3
 
-  - a)
+  - a) Alterado.
 
-  - b)
+  - b) Alterado.
 
-  - c)
+  - c) Alterado.
 
-  - d)
+  - d) Alterado.
 
 - ## Ex 4
 
-  - a)
+  - a) Alterado.
 
 - ## Ex 5
 
-  - )
+  - ) Feito.
 
 - ## Ex 6
 
-  - )
+  - ) Feito.

@@ -8,6 +8,7 @@ import editUser from './endpoints/editUser'
 import createTask from './endpoints/createTask'
 import getTaskById from './endpoints/getTaskById'
 import login from './endpoints/login'
+import deleteUserById from './endpoints/deleteUserById'
 
 dotenv.config()
 
@@ -34,6 +35,8 @@ app.post('/user/edit', editUser)
 
 app.put('/task', createTask)
 app.get('/task/:id', getTaskById)
+
+app.delete('/user/:id', deleteUserById)
 
 app.listen(3003, () => {
    console.log('Servidor rodando na porta 3003')
