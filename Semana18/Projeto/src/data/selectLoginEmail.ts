@@ -1,14 +1,6 @@
 import { connection } from ".."
+import { User } from "../types/User"
 import { USER_ROLES } from "../types/USER_ROLES"
-
-export type User = {
-   id: string,
-   name: string,
-   nickname: string,
-   email: string,
-   password: string,
-   role: USER_ROLES
-}
 
 export default async function selectLoginEmail(
    email: string

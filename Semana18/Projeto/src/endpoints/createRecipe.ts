@@ -1,29 +1,38 @@
 import { Request, Response } from "express";
 import insertRecipe from "../data/insertRecipe";
-import {generateId} from "../services/idGenerator";
+import { getTokenData } from "../services/authenticator";
+import { generateId } from "../services/idGenerator";
 
 export default async function createRecipe(
    req: Request,
    res: Response
 ) {
    try {
+
+      const token = req.headers.authorization as string;
+
+
+      const authenticationData = getTokenData(token);
+
       if (
-         !req.body.title ||
-         !req.body.description ||
-         !req.body.deadline ||
-         !req.body.authorId
+         !req.body.name ||
+         !req.body.igredients ||
+         !req.body.instructions
       ) {
          throw new Error('"title", "description", "deadline" e "authorId" são obrigatórios')
       }
+
+      const date = new Date()
 
       const id: string = generateId()
 
       await insertRecipe(
          id,
-         req.body.title,
-         req.body.description,
-         req.body.deadline,
-         req.body.authorId,
+         req.body.name,
+         req.body.igredients,
+         req.body.instructions,
+         authenticationData.id,
+         date
       )
 
       res.status(400).send({

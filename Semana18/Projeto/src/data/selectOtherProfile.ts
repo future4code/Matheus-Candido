@@ -1,14 +1,5 @@
 import { connection } from ".."
-import { USER_ROLES } from "../types/USER_ROLES"
-
-export type User = {
-   id: string,
-   name: string,
-   nickname: string,
-   email: string,
-   password: string,
-   role: USER_ROLES
-}
+import { User } from "../types/User"
 
 export default async function selectOtherProfile(
    email: string
