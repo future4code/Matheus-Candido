@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import selectProfile from "../data/selectProfile";
-import {  getTokenData } from "../services/authenticator";
+import { getTokenData } from "../services/authenticator";
 
 export default async function getProfile(
     req: Request,
@@ -10,11 +10,12 @@ export default async function getProfile(
         const token = req.headers.authorization as string;
 
         const authenticationData = getTokenData(token);
-        const result = await selectProfile(authenticationData.role)
 
-        if(authenticationData.role === 'NORMAL'){
+        if (authenticationData.role === 'NORMAL') {
             throw new Error("Acesso não autorizado");
         }
+
+        const result = await selectProfile(authenticationData.role)
 
         if (!result) {
             console.log(result.role)

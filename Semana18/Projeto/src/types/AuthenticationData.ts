@@ -1,6 +1,6 @@
 import { USER_ROLES } from "./USER_ROLES";
 
 export type AuthenticationData = {
-    id: string,
+    id_user: string,
     role: USER_ROLES
 }

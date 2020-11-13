@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import insertRecipe from "../data/insertRecipe";
+import selectProfile from "../data/selectProfile";
 import { getTokenData } from "../services/authenticator";
 import { generateId } from "../services/idGenerator";
 
@@ -8,45 +9,40 @@ export default async function createRecipe(
    res: Response
 ) {
    try {
-
       const token = req.headers.authorization as string;
 
-
       const authenticationData = getTokenData(token);
+
+      const result = await selectProfile(authenticationData.role)
+
+      const date = new Date()
+
+      const id: string = generateId()
 
       if (
          !req.body.name ||
          !req.body.igredients ||
          !req.body.instructions
       ) {
-         throw new Error('"title", "description", "deadline" e "authorId" são obrigatórios')
+         throw new Error('"name", "igredients", "instructions" são obrigatórios')
       }
-
-      const date = new Date()
-
-      const id: string = generateId()
 
       await insertRecipe(
          id,
          req.body.name,
          req.body.igredients,
          req.body.instructions,
-         authenticationData.id,
+         result.id_user,
          date
       )
 
       res.status(400).send({
-         message: "Tarefa criada com sucesso!",
+         message: "Receita criada com sucesso!",
          id
       })
 
    } catch (error) {
       let message = error.sqlMessage || error.message
-
-      if (message.includes("date")) {
-         message = "'deadline' deve ser uma data válida, no formato aaaa-mm-dd"
-      }
-
       res.status(400).send({ message })
    }
 }

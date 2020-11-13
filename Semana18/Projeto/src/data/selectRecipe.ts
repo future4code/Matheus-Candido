@@ -1,11 +1,11 @@
 import { connection } from "..";
 
 export default async function selectRecipe(
-    id: string
+    id_recipe: string
 ) {
     const result = await connection('Cookenu_Recipes')
         .select('*')
-        .where({ id })
+        .where({ id_recipe })
 
     return result[0]
 }

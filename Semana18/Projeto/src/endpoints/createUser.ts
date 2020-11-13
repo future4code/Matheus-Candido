@@ -9,6 +9,9 @@ export default async function createUser(
     res: Response
 ) {
     try {
+        const id: string = generateId()
+
+        const cypherPassword = await hash(req.body.password)
 
         if (
             !req.body.name ||
@@ -29,10 +32,6 @@ export default async function createUser(
             throw new Error("Invalid password");
         }
 
-        const id: string = generateId()
-
-        const cypherPassword = await hash(req.body.password)
-
         await insertUser(
             id,
             req.body.name,
@@ -43,7 +42,7 @@ export default async function createUser(
         )
 
         const token: string = generateToken({
-            id,
+            id_user: id,
             role: req.body.role
         })
 

@@ -9,18 +9,10 @@ export default async function getRecipe(
       const result = await selectRecipe(req.params.id)
 
       if (!result) {
-         throw new Error("Tarefa não encontrada")
+         throw new Error("Receita não encontrada!")
       }
 
-      res.status(200).send({
-         id: result.id,
-         title: result.title,
-         description: result.description,
-         deadline: result.deadline, 
-         status: result.status,
-         authorId: result.author_id,
-         authorNickname: result.nickname
-      })
+      res.status(200).send({ result })
 
    } catch (error) {
       res.status(400).send({

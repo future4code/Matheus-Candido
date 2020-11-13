@@ -19,13 +19,13 @@ export default async function login(
          throw new Error(message)
       }
 
-      const user: User = await selectLoginEmail(email)
-
       if (!email || email.indexOf("@") === -1) {
          res.statusCode = 406
          message = "Invalid email"
          throw new Error(message);
       }
+
+      const user: User = await selectLoginEmail(email)
 
       if (!user) {
          res.statusCode = 404
@@ -43,7 +43,7 @@ export default async function login(
 
       // Futura colinha, mostra o token gerado pelo código.
       const token: string = generateToken({
-         id: user.id,
+         id_user: user.id,
          role: user.role
       })
 

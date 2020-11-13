@@ -22,14 +22,13 @@ export const connection = knex({
    }
 })
 
-
 const app = express()
 app.use(express.json())
 app.use(cors())
 
 app.post('/user/signup', createUser)
 app.post("/user/login", login)
-app.post('/recipe', createRecipe)
+app.post('/recipe/new', createRecipe)
 
 app.get('/user/profile', getProfile)
 app.get('/other-profile/:id', getOtherProfile)
