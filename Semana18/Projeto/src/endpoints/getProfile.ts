@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import selectProfile from "../data/selectProfile";
-import { getTokenData } from "../services/authenticator";
+import {  getTokenData } from "../services/authenticator";
 
 export default async function getProfile(
     req: Request,
@@ -14,10 +14,10 @@ export default async function getProfile(
 
         if(authenticationData.role === 'NORMAL'){
             throw new Error("Acesso não autorizado");
-            
         }
 
         if (!result) {
+            console.log(result.role)
             throw new Error("Usuário não encontrado")
         }
 

@@ -1,11 +1,5 @@
 import * as jwt from "jsonwebtoken"
-import { USER_ROLES } from "../types/USER_ROLES"
-
-export type AuthenticationData = {
-   id: string,
-   role: USER_ROLES
-}
-
+import { AuthenticationData } from "../types/authenticationData"
 const expiresIn = "100min"
 
 export function generateToken(
@@ -37,5 +31,6 @@ export function getTokenData(
 //       id: payload.id,
 //       role: payload.role
 //    };
+//    console.log(result)
 //    return result;
 // };

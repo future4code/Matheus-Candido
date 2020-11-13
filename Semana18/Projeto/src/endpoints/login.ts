@@ -1,8 +1,8 @@
 import { Request, response, Response } from "express"
 import selectLoginEmail from "../data/selectLoginEmail"
-import { User } from "../data/selectOtherProfile"
 import { generateToken } from "../services/authenticator"
 import { compare } from "../services/hashManager"
+import { User } from "../types/User"
 
 export default async function login(
    req: Request,
@@ -51,7 +51,6 @@ export default async function login(
          message,
          token: token,
       })
-      console.log(token)
 
    } catch (error) {
       let { message } = error
