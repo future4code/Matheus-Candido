@@ -1,57 +1,24 @@
 import { Request, Response } from "express"
-import selectUserByEmail from "../data/selectUserByEmail"
-import { generateToken } from "../services/authenticator"
-import { compare } from "../services/hashManager"
-import { User } from "../types/user"
+import { loginBusiness } from "../business/loginBusiness"
 
 export default async function login(
    req: Request,
    res: Response
 ): Promise<void> {
    try {
-      const { email, password } = req.body
-
+      const input = {
+         email: req.body.email,
+         password: req.body.password
+      }
       let message = "Usuário logado!"
 
-      if (!email || !password) {
-         res.statusCode = 406
-         message = "'email' e 'senha' são obrigatórios"
-         throw new Error(message)
-      }
 
-      const user: User = await selectUserByEmail(email)
-
-      if (!email || email.indexOf("@") === -1) {
-         res.statusCode = 406
-         message = "E-mail inválido"
-         throw new Error(message);
-      }
-
-      if (!user) {
-         res.statusCode = 404
-         message = "Usuário não encontrado."
-         throw new Error(message)
-      }
-
-      const passwordIsCorrect: boolean = await compare(password, user.password)
-
-      if (!passwordIsCorrect) {
-         res.statusCode = 404
-         message = "Senha incorreta."
-         throw new Error(message)
-      }
-
-      // Futura colinha, mostra o token gerado pelo código.
-      const token: string = generateToken({
-         id: user.id,
-         role: user.role
-      })
+      const token = await loginBusiness(input)
 
       res.send({
          message,
          token
       })
-      console.log(token)
 
    } catch (error) {
       let { message } = error

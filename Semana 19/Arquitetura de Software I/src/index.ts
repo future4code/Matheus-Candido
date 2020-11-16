@@ -4,7 +4,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import createUser from './controller/createUser'
 import login from './controller/login'
-import deleteUserById from './controller/deleteUserById'
+import deleteUser from './controller/deleteUser'
 import getUsers from './controller/getAllUsers'
 
 dotenv.config()
@@ -29,7 +29,7 @@ app.post('/user/signup', createUser)
 app.post("/user/login", login)
 app.get('/user/all', getUsers)
 
-app.delete('/user/delete/:id', deleteUserById)
+app.delete('/user/delete/:id', deleteUser)
 
 app.listen(3003, () => {
    console.log('Servidor rodando na porta 3003')

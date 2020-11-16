@@ -1,6 +1,6 @@
 import { connection } from "..";
 
-export default async function deletedtUserById(
+export default async function deletedtUser(
     id: string
 ) {
     const result = await connection('USERS_ARQ_SOFT')

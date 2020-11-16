@@ -1,8 +1,5 @@
 import { Request, Response } from "express";
-import insertUser from "../data/insertUser";
-import { generateToken } from "../services/authenticator";
-import { hash } from "../services/hashManager";
-import { generateId } from "../services/idGenerator";
+import { createUserBusiness } from '../business/createUserBusiness'
 
 export default async function createUser(
     req: Request,
@@ -10,41 +7,14 @@ export default async function createUser(
 ) {
     try {
 
-        if (
-            !req.body.name ||
-            !req.body.role
-        ) {
-            throw new Error('Preencha os campos \"name\" e \"role\"')
-        }
-
-        if (!req.body.email ||
-            req.body.email.indexOf("@") === -1
-        ) {
-            throw new Error("Invalid email");
-        }
-
-        if (!req.body.password ||
-            req.body.password.length < 6
-        ) {
-            throw new Error("Invalid password");
-        }
-
-        const id: string = generateId()
-
-        const cypherPassword = await hash(req.body.password)
-
-        await insertUser(
-            id,
-            req.body.name,
-            req.body.email,
-            cypherPassword,
-            req.body.role
-        )
-
-        const token: string = generateToken({
-            id,
+        const input = {
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password,
             role: req.body.role
-        })
+        }
+
+        const token = await createUserBusiness(input)
 
         res
             .status(201)

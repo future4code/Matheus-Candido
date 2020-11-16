@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
-import { selectUserBusiness } from "../business/selectUserBusiness";
+import { deleteUserBusiness } from "../business/deleteUserBusiness";
 
-export default async function getAllUsers(
+
+export default async function deleteUser(
    req: Request,
    res: Response
 ) {
@@ -11,10 +12,9 @@ export default async function getAllUsers(
          id: req.params.id,
          token: req.headers.authorization
       }
+      const token = await deleteUserBusiness(input)
 
-      const user = await selectUserBusiness(input)
-
-      res.status(200).send(user)
+      res.status(200).send({ message: "Usuário apagado com sucesso!" })
 
    } catch (error) {
       res.status(400).send({
