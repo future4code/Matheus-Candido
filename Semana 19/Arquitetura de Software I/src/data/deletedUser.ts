@@ -1,4 +1,4 @@
-import { connection } from "..";
+import { connection } from "../connection/connection"
 
 export default async function deletedtUser(
     id: string

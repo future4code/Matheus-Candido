@@ -1,4 +1,4 @@
-import { connection } from "../index";
+import { connection } from "../connection/connection";
 import { USER_ROLES } from "../types/roles";
 
 export default async function insertUser(
