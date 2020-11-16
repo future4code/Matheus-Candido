@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { selectUserBusiness } from "../business/selectUserBusiness";
+import { getTokenData } from "../services/authenticator";
 
 export default async function getAllUsers(
    req: Request,
@@ -13,6 +14,8 @@ export default async function getAllUsers(
       }
 
       const user = await selectUserBusiness(input)
+
+      const token = getTokenData(input.token as string)
 
       res.status(200).send(user)
 

@@ -8,11 +8,16 @@ export default async function insertUser(
     password: string,
     role: USER_ROLES
 ) {
-    await connection.insert({
-        id,
-        name,
-        email,
-        password,
-        role
-    }).into('USERS_ARQ_SOFT')
+    try {
+        await connection.insert({
+            id,
+            name,
+            email,
+            password,
+            role
+        }).into('USERS_ARQ_SOFT')
+
+    } catch (error) {
+        throw new Error(error.slqMessage || error.message)
+    }
 }

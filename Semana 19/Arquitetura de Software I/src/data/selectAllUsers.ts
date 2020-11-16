@@ -1,8 +1,13 @@
 import { connection } from "..";
 
 export default async function selectAllUsers() {
-    const result = await connection.raw(`
+    try {
+        const result = await connection.raw(`
         SELECT * FROM USERS_ARQ_SOFT
     `)
-    return result[0]
+        return result[0]
+
+    } catch (error) {
+        throw new Error(error.slqMessage || error.message)
+    }
 }
