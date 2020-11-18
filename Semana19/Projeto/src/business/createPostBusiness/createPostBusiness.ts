@@ -18,7 +18,7 @@ export const createPostBusiness = async (input: CreatePost, tokenData: string) =
     } catch (error) {
         let message = error.sqlMessage || error.message
         if (message.includes("for key 'description'")) {
-            throw new Error("Este email já existe!");
+            throw new Error("Description already exist!");
         }
         throw new Error(error.message);
     }

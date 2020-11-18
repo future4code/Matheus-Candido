@@ -8,10 +8,18 @@ export const signupUserBusiness = async (input: CreateUser) => {
     try {
         let message = "Success!"
 
-        // if (!input.email || !input.password) {
-        //     message = '"email" and "password" must be provided'
-        //     throw new Error(message)
-        // }
+        if (!input.name || !input.email || !input.password) {
+            message = '"email" and "password" must be provided'
+            throw new Error(message)
+        }
+
+        if (input.email.indexOf("@") === -1) {
+            throw new Error("Invalid email");
+        }
+
+        if (input.password.length < 6) {
+            throw new Error("Password must contain at last six caracters");
+        }
 
         const id: string = generateId()
 
@@ -30,13 +38,10 @@ export const signupUserBusiness = async (input: CreateUser) => {
 
     } catch (error) {
         if (error.message.includes("for key 'email'")) {
-            throw new Error("Este email já existe!");
+            throw new Error("Email already exists!");
         }
         if (error.message.includes("for key 'name'")) {
-            throw new Error("Este name já existe!");
-        }
-        if (error.message.includes("for key 'role'")) {
-            throw new Error("Este role já existe!");
+            throw new Error("Name already exists!");
         }
         throw new Error(error.message);
     }

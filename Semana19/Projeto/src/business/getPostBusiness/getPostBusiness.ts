@@ -2,7 +2,7 @@ import selectPost from "../../data/selectPost/selectPost"
 
 export const getPostBusiness = async (id: any) => {
     try {
-        let message = "Success!"
+        let message
 
         if (!id) {
             message = '\"id\" must be provided'

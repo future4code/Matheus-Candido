@@ -10,12 +10,6 @@ export const login = async (req: Request, res: Response) => {
             password: req.body.password
         }
 
-        if (!input.email || !input.password) {
-            res.statusCode = 406
-            message = '"email" and "password" must be provided'
-            throw new Error(message)
-        }
-
         const token = await loginBusiness(input)
 
         res.status(200).send({ message, token })
