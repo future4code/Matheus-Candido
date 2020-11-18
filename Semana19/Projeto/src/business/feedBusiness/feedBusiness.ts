@@ -1,14 +1,10 @@
-import selectPost from "../../data/selectPost/selectPost"
+import selectFeed from "../../data/selectFeed/selectFeed"
 import { getTokenData } from "../../services/authenticator"
 
-export const getPostBusiness = async (id: any, auth: string) => {
+export const feedBusiness = async (auth: string) => {
     try {
         let message
 
-        if (!id) {
-            message = '\"id\" must be provided'
-            throw new Error(message)
-        }
         if (!auth) {
             message = 'authorization must be provided'
             throw new Error(message)
@@ -16,14 +12,14 @@ export const getPostBusiness = async (id: any, auth: string) => {
 
         await getTokenData(auth)
 
-        const queryResult: any = await selectPost(id)
+        const feedResult: any = await selectFeed()
 
-        if (!queryResult) {
-            message = "Post not found"
+        if (!feedResult) {
+            message = "No posts founds"
             throw new Error(message)
         }
 
-        return queryResult
+        return feedResult
 
     } catch (error) {
         let message = error.sqlMessage || error.message

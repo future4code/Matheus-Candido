@@ -1,17 +1,17 @@
 import { Request, Response } from "express"
-import { getPostBusiness } from '../../business/getPostBusiness/getPostBusiness'
+import { getTypePostBusiness } from "../../business/getTypePostBusiness/getTypePostBusiness"
 
-export const getPost = async (req: Request, res: Response) => {
+export const getTypePost = async (req: Request, res: Response) => {
     try {
+
         const input = {
+            type: req.query.type,
             authorization: req.headers.authorization as string
         }
 
-        const { id } = req.params
+        const feed = await getTypePostBusiness(input)
 
-        const posts = await getPostBusiness(id, input.authorization)
-
-        res.status(200).send(posts)
+        res.status(200).send(feed)
 
     } catch (error) {
         let message = error.sqlMessage || error.message
