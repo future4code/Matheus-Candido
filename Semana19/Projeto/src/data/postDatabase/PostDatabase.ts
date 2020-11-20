@@ -1,6 +1,6 @@
-import { connection } from "../../connection/connection"
+import { BaseDatabase } from "../../connection/BaseDatabase"
 
-class PostDatabase {
+class PostDatabase extends BaseDatabase {
     private tableName: string = "labook_posts"
 
     public async insertPost(
@@ -11,7 +11,7 @@ class PostDatabase {
         author_id: string
     ) {
         try {
-            await connection("labook_posts")
+            await BaseDatabase.connection(this.tableName)
                 .insert({
                     id,
                     photo,
@@ -28,7 +28,7 @@ class PostDatabase {
         id: string
     ) {
         try {
-            const queryResult: any = await connection("labook_posts")
+            const queryResult: any = await BaseDatabase.connection(this.tableName)
                 .select("*")
                 .where({ id })
 
@@ -41,7 +41,7 @@ class PostDatabase {
 
     public async selectTypePost(type: string) {
         try {
-            const feed = await connection.raw(`
+            const feed = await BaseDatabase.connection.raw(`
                 SELECT * FROM labook_posts
                 WHERE type = '${type}'
                 ORDER BY created_at DESC
@@ -56,7 +56,7 @@ class PostDatabase {
 
     public async selectFeed() {
         try {
-            const feed = await connection.raw(`
+            const feed = await BaseDatabase.connection.raw(`
                 SELECT * FROM labook_posts
                 ORDER BY created_at DESC
             `)

@@ -1,6 +1,12 @@
-import { connection } from "../../connection/connection";
+import { BaseDatabase } from "../../connection/BaseDatabase";
+import { User } from "../../model/User";
 
-class UserDatabase {
+class UserDatabase extends BaseDatabase {
+    constructor() {
+        super()
+        // console.log("Construindo")
+    }
+
     private tableName: string = "labook_users"
 
     public async insertUser(
@@ -8,10 +14,15 @@ class UserDatabase {
         name: string,
         email: string,
         password: string
+        // user: User
     ) {
         try {
-            await connection('labook_users')
+            await BaseDatabase.connection(this.tableName)
                 .insert({
+                    // id: user.getId(),
+                    // name: user.getName(),
+                    // email: user.getEmail(),
+                    // password: user.getPassword()
                     id,
                     name,
                     email,
@@ -22,19 +33,24 @@ class UserDatabase {
         }
     }
 
-    public async loginUser(
+    public async login(
         email: string
-    ): Promise<any> {
+    ): Promise<User> {
         try {
-            const queryResult: any = await connection(this.tableName)
+            const queryResult: any = await BaseDatabase.connection(this.tableName)
                 .select("*")
                 .where({ email })
 
-            return queryResult[0]
+            return new User(
+                queryResult[0].id,
+                queryResult[0].name,
+                queryResult[0].email,
+                queryResult[0].password
+            )
         } catch (error) {
             throw new Error(error.sqlMessage || error.message);
         }
     }
 }
 
-export const userDatabase: UserDatabase = new UserDatabase()
+export default new UserDatabase()

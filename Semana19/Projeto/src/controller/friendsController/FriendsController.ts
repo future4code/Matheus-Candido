@@ -39,7 +39,7 @@ class FriendsController {
 
             const tokenId: AuthenticationData = await getTokenData(input.authorization)
 
-            await friendsBusiness.unFriend(id)
+            await friendsBusiness.unFriend(tokenId.id, id)
 
             res.status(201).send({ message })
 

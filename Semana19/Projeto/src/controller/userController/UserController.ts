@@ -29,18 +29,18 @@ class UserController {
         try {
             let message = "Success!"
 
-            const input: CreateUser = {
-                name: req.body.name,
-                email: req.body.email,
-                password: req.body.password
-            }
+            const input: CreateUser = [
+                req.body.name,
+                req.body.email,
+                req.body.password
+            ]
 
             const token = await userBusiness.signup(input)
 
             res.status(201).send({ message, token })
 
         } catch (error) {
-            res.statusCode = 400
+            res.status(error.statusCode)
             let message = error.sqlMessage || error.message
 
             res.send({ message })

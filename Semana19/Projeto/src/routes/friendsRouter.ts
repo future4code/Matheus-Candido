@@ -2,7 +2,7 @@
 import express from 'express'
 import { friendsController } from '../controller/friendsController/FriendsController'
 
-export const userRoutes = express.Router()
+export const friendsRoutes = express.Router()
 
-userRoutes.post("/:id", friendsController.inviteFriend)
-userRoutes.delete("/:id", friendsController.unFriend)
+friendsRoutes.post("/:id", friendsController.inviteFriend)
+friendsRoutes.delete("/:id", friendsController.unFriend)

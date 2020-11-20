@@ -1,11 +1,12 @@
 import { postDatabase } from "../../data/postDatabase/PostDatabase"
-import { CreatePost } from "../../model/Post"
+import { CreatePost, Post } from "../../model/Post"
 import { getTokenData } from "../../services/authenticator"
+import { CustomError } from "../../services/CustomError"
 import { generateId } from "../../services/idGenerator"
 
 class PostBusiness {
 
-    createPost = async (input: CreatePost, tokenData: string) => {
+    public createPost = async (input: CreatePost, tokenData: string) => {
         try {
 
             const id: string = generateId()
@@ -21,7 +22,7 @@ class PostBusiness {
         } catch (error) {
             let message = error.sqlMessage || error.message
             if (message.includes("for key 'description'")) {
-                throw new Error("Description already exist!");
+                throw new CustomError(400, "Description already exist!");
             }
             throw new Error(error.message);
         }
@@ -68,7 +69,7 @@ class PostBusiness {
 
             await getTokenData(auth)
 
-            const queryResult: any = await postDatabase.selectPost(id)
+            const queryResult: Post = await postDatabase.selectPost(id)
 
             if (!queryResult) {
                 message = "Post not found"

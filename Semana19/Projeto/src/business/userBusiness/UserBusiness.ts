@@ -1,35 +1,37 @@
 import { CreateUser, User } from "../../model/User"
 import { generateToken } from "../../services/authenticator"
 import { compare, hash } from "../../services/hashManager"
-import { userDatabase } from "../../data/userDatabase/userDatabase"
 import { generateId } from "../../services/idGenerator"
+import { CustomError } from "../../services/CustomError"
+import userDatabase from "../../data/userDatabase/userDatabase"
 
 class UserBusiness {
     public signup = async (input: CreateUser) => {
         try {
             let message = "Success!"
+            input.sort()
 
-            if (!input.name || !input.email || !input.password) {
+            if (!input[0] || !input[1] || !input[2]) {
                 message = '"email" and "password" must be provided'
-                throw new Error(message)
+                throw new CustomError(400, message)
             }
 
-            if (input.email.indexOf("@") === -1) {
-                throw new Error("Invalid email");
+            if (input[1].indexOf("@") === -1) {
+                throw new CustomError(411, "Invalid email");
             }
 
-            if (input.password.length < 6) {
-                throw new Error("Password must contain at last six caracters");
+            if (input[2].length < 6) {
+                throw new CustomError(411, "Password must contain at last six caracters");
             }
 
             const id: string = generateId()
 
-            const cypherPassword = await hash(input.password)
+            const cypherPassword = await hash(input[2])
 
             await userDatabase.insertUser(
                 id,
-                input.name,
-                input.email,
+                input[0],
+                input[1],
                 cypherPassword
             )
 
@@ -39,12 +41,12 @@ class UserBusiness {
 
         } catch (error) {
             if (error.message.includes("for key 'email'")) {
-                throw new Error("Email already exists!");
+                throw new CustomError(409, "Email already exists!");
             }
             if (error.message.includes("for key 'name'")) {
-                throw new Error("Name already exists!");
+                throw new CustomError(409, "Name already exists!");
             }
-            throw new Error(error.message);
+            throw new CustomError(403, error.message);
         }
     }
 
@@ -58,22 +60,22 @@ class UserBusiness {
                 throw new Error(message)
             }
 
-            const user: User = await userDatabase.loginUser(input.email)
+            const user: User = await userDatabase.login(input.email)
 
             if (!user) {
                 message = "Invalid credentials"
                 throw new Error(message)
             }
 
-            const passwordIsCorrect: boolean = await compare(input.password, user.password)
+            const passwordIsCorrect: boolean = await compare(input.password, user.getPassword())
 
             if (!passwordIsCorrect) {
                 message = "Invalid credentials"
-                throw new Error(message)
+                throw new CustomError(401, message)
             }
 
             const token: string = generateToken({
-                id: user.id
+                id: user.getId()
             })
 
             return token
