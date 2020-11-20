@@ -4,21 +4,6 @@ export type CreateUser = [
     password: string
 ]
 
-
-
-// export class CreateUser {
-
-//     constructor(
-//         private name: string,
-//         private email: string,
-//         private password: string
-//     ) { }
-//     public postName = (): string => this.name
-//     public postEmail = (): string => this.email
-//     public postPassword = (): string => this.password
-
-// }
-
 export class User {
 
     constructor(

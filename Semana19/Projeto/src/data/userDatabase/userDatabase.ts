@@ -2,10 +2,6 @@ import { BaseDatabase } from "../../connection/BaseDatabase";
 import { User } from "../../model/User";
 
 class UserDatabase extends BaseDatabase {
-    constructor() {
-        super()
-        // console.log("Construindo")
-    }
 
     private tableName: string = "labook_users"
 
@@ -14,15 +10,10 @@ class UserDatabase extends BaseDatabase {
         name: string,
         email: string,
         password: string
-        // user: User
     ) {
         try {
             await BaseDatabase.connection(this.tableName)
                 .insert({
-                    // id: user.getId(),
-                    // name: user.getName(),
-                    // email: user.getEmail(),
-                    // password: user.getPassword()
                     id,
                     name,
                     email,
