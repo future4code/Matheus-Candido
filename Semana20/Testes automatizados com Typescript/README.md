@@ -1,0 +1,28 @@
+## Exercícios
+
+- ### EX 1
+  - a) Criado.
+  - b) Implementado.
+- ### EX 2
+  - a) Criado.
+  - b) Implementado.
+- ### EX 3
+  - a) Olha, dúvidas sempre persistem, mas apenas o tempo dirá quais são as respostas.
+  - b) Implementado.
+  - c) A implementação.
+- ### EX 4
+  - a) Escrito.
+  - b) Escrito.
+  - c) Escrito.
+  - d) Escrito.
+- ### EX 5
+  - a) Escrito.
+  - b) Escrito.
+  - c) Escrito.
+  - d) Escrito.
+- ### EX 6
+  - a) Criado. Porém encontra falhas, pois há divergencia nas datas de criação na hora do teste.
+  - b) Feito. Encerrar a conexão com o banco de dados.
+- ### EX 7
+  - a) Criado.
+  - b) Implementado.

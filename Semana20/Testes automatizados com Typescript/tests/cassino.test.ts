@@ -26,7 +26,7 @@ describe("Cassino tests", () => {
 
     //4 - b)
     test("1 american allowed", () => {
-        const brazilian: User1 = {
+        const american: User1 = {
             name: "Math",
             age: 19,
             nacionality: NACIONALITY.AMERICAN,
@@ -37,7 +37,7 @@ describe("Cassino tests", () => {
             location: LOCATION.BRAZIL,
         };
 
-        const result = verifyAge(casino, [brazilian]);
+        const result = verifyAge(casino, [american]);
         expect(result.americans.allowed).toEqual(["Math"]);
         //5 - b)
         expect(result.americans.unallowed.length).toBe(0);

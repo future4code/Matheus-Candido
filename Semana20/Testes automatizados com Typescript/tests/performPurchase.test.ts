@@ -16,7 +16,7 @@ describe("Holla mundo", () => {
         })
     })
 
-    test("Testing balance greater than value", () => {
+    test("Testing balance equals to value", () => {
         const user: User = {
             name: "Astrodev",
             balance: 50
@@ -30,7 +30,7 @@ describe("Holla mundo", () => {
         })
     })
 
-    test("Testing balance greater than value", () => {
+    test("Testing balance is lesser than value", () => {
         const user: User = {
             name: "Astrodev",
             balance: 30

@@ -34,6 +34,20 @@ class PostDatabase extends BaseDatabase {
             throw new Error(error.sqlMessage || error.message);
         }
     }
+    public async deletePost(
+        id: string
+    ) {
+        try {
+            const queryResult: any = await BaseDatabase.connection(this.tableName)
+                .delete("*")
+                .where({ id })
+
+            return queryResult[0]
+
+        } catch (error) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
 
 }
 export const postDatabase: PostDatabase = new PostDatabase()
