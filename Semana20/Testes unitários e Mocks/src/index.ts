@@ -35,7 +35,7 @@ export const performAttackV2 = (
     attacker: Person,
     defender: Person,
     validator: (injected: Person) => boolean
-) => {
+): void => {
     let message
     if (!validator(attacker) || !validator(defender)) {
         throw new Error("Invalid person");
@@ -45,6 +45,6 @@ export const performAttackV2 = (
         defender.life -= attacker.strength - defender.defense;
     }
     if (defender.life <= 0) {
-        throw new Error("You dead!");
+        console.log("You died!");
     }
 };
