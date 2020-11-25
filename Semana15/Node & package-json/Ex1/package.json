@@ -1,0 +1,15 @@
+{
+  "name": "ex1",
+  "version": "1.0.0",
+  "description": "Exercicio 1",
+  "main": "ex1.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node ex1.js"
+  },
+  "author": "Matheus",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
