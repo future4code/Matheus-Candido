@@ -12,4 +12,5 @@ exports.resultTotals = function (arra) {
     console.log(final - sumFinal);
     return final - sumFinal;
 };
+
 exports.resultTotals(exports.arrayNumbers);

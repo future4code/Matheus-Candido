@@ -6,7 +6,7 @@ export const resultTotals = (arra: number[]): number => {
 
     let final = 5050
     let sumFinal = 0
-    
+
     arra.map(item => {
         sumFinal += item
         return sumFinal
@@ -16,4 +16,5 @@ export const resultTotals = (arra: number[]): number => {
     console.log(final - sumFinal)
     return final - sumFinal
 }
+
 resultTotals(arrayNumbers)
